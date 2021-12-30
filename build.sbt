@@ -14,7 +14,7 @@ lazy val root = (project in file("."))
       scalatest % Test, 
       scalatestplus % Test
     )
-  )
+  ).aggregate(helloslick)
 
 
 lazy val helloslick = (project in file("hello-slick"))

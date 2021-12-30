@@ -1,4 +1,4 @@
-package one
+package v1
 import slick.jdbc.PostgresProfile.api._
 import domain._
 import slick.lifted.ProvenShape

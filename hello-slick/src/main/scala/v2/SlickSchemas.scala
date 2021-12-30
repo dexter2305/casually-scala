@@ -1,9 +1,10 @@
-package two
+package v2
 
 import slick.basic.DatabaseConfig
 import slick.jdbc.JdbcProfile
 import slick.jdbc.PostgresProfile
 import slick.lifted.ProvenShape
+
 
 class SlickSchemas[P <: JdbcProfile] private (val x: DatabaseConfig[P]) {
 
@@ -19,6 +20,8 @@ class SlickSchemas[P <: JdbcProfile] private (val x: DatabaseConfig[P]) {
   }
   lazy val users = TableQuery[UserTable]
 }
+
+
 object SlickSchemas                                                     {
 
   def apply[P <: JdbcProfile](profile: DatabaseConfig[P]) = new SlickSchemas(profile)

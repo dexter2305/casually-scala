@@ -1,4 +1,4 @@
-package one
+package v1
 
 import slick.basic.DatabaseConfig
 import slick.jdbc.PostgresProfile
@@ -11,6 +11,8 @@ import slick.jdbc.JdbcBackend
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 import slick.jdbc.H2Profile
+
+// ** exploring slick **
 
 object Main extends App {
 
