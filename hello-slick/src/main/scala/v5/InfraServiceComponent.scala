@@ -2,13 +2,14 @@ package v5
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
+import scala.concurrent.Future
 
 trait InfraServiceComponent {
 
   val infraService: InfraService
   trait InfraService {
 
-    def createTablesIfNotExists(): Unit
+    def createTablesIfNotExists(): Future[Unit]
 
   }
 }
@@ -22,13 +23,8 @@ trait InfraServiceComponentWithSlick extends InfraServiceComponent {
   import jdbcProfile.api._
 
   class InfraServiceWithSlick extends InfraService {
-
-    override def createTablesIfNotExists(): Unit = {
-      logger.info(s"creating schemas")
-      Await.result(db.run(users.schema.createIfNotExists), Duration.Inf)
-      logger.info(s"schemas created")
-    }
-
+    override def createTablesIfNotExists(): Future[Unit] = db.run(users.schema.createIfNotExists)
+    
   }
 
 }
