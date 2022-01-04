@@ -1,0 +1,25 @@
+@ep=http://localhost:8080
+
+###
+GET {{ep}}/users
+
+###
+GET {{ep}}/users/4
+
+###
+GET {{ep}}/users/10
+
+###
+DELETE {{ep}}/users/4
+
+###
+DELETE {{ep}}/users/10
+
+###
+POST {{ep}}/users/
+Content-Type: application/json
+
+{
+  "id": 6,
+  "name": "Matsumo"
+}

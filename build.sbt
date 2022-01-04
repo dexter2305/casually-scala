@@ -3,10 +3,16 @@ import Dependencies._
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
 ThisBuild / scalaVersion     := "2.13.7"
-ThisBuild / version          := "0.1.0-SNAPSHOT"
+ThisBuild / version          := "0.1.0"
 ThisBuild / organization     := "l8.io"
 ThisBuild / organizationName := "l8"
 ThisBuild / scalacOptions    := scalacCustomOptions
+
+lazy val scalacCustomOptions = Seq(
+  "-deprecation",
+  //"-Ylog-classpath",
+)
+
 
 lazy val root = (project in file("."))
   .settings(
@@ -33,6 +39,18 @@ lazy val helloslick = (project in file("hello-slick"))
     ),
   )
 
-val scalacCustomOptions = Seq(
-  "-deprecation",
-)
+  lazy val helloscalatra = (project in file("hello-scalatra"))
+  .settings(
+    name := "hello-scalatra",
+    libraryDependencies ++= Seq(
+      scalatest     % Test,
+      scalatestplus % Test,
+      slf4j_api,
+      slf4j_scribe,
+      servlet_api, 
+      scalatra,
+      scalatra_json,
+      json4s_jackson,
+      jetty_server % "compile;container",
+    ),
+  ).enablePlugins(JettyPlugin)

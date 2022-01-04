@@ -24,4 +24,12 @@ object Dependencies {
 
   //h2 driver
   lazy val h2 = "com.h2database" % "h2" % "1.4.185"
+
+  //scalatra and friends
+  private lazy val scalatra_version = "2.7.0"
+  lazy val jetty_server             = "org.eclipse.jetty" % "jetty-webapp"      % "9.4.44.v20210927"
+  lazy val servlet_api              = "javax.servlet"     % "javax.servlet-api" % "3.1.0"
+  lazy val scalatra                 = "org.scalatra"     %% "scalatra"          % s"$scalatra_version"
+  lazy val scalatra_json            = "org.scalatra"     %% "scalatra-json"     % s"$scalatra_version"
+  lazy val json4s_jackson           = "org.json4s"       %% "json4s-jackson"    % "3.5.5"
 }
