@@ -1,5 +1,6 @@
 package v2
 
-trait HttpServiceRegistry extends UserHttpServiceComponent with ExecutionContextComponent
+import scala.concurrent.ExecutionContext
 
-trait HttpServiceContext extends ScalatraWebContextComponent with ScalatraBootstrapComponent with HttpServiceRegistry
+class HttpServiceRegistry(val appExecContext: ExecutionContext) extends UserHttpServiceComponent with ExecutionContextComponent
+
