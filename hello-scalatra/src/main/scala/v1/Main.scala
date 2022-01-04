@@ -7,24 +7,24 @@ import org.eclipse.jetty.server.Server
 import org.slf4j.Logger
 import scala.io.StdIn
 import scribe.Level
+import javax.xml.ws.WebFault
 
 object Main extends App {
 
   import resources.logger._
 
+  val server = new Server(8080)
   val context = new WebAppContext
-  context.setResourceBase("src/main/webapp/WEB-INF")
   context.setContextPath("/")
-  context.setInitParameter("org.scalatra.LifeCycle", "v1.ScalatraBootstrap")
+  context.setResourceBase(".")
+  context.setInitParameter(ScalatraListener.LifeCycleKey, "v1.ScalatraBootstrap")
   context.addEventListener(new ScalatraListener)
-  context.setInitParameter("APPLICATION-TEXT", "SOME-RANDOM-VALUE")
-  val server  = new Server(8080)
-  info(s"starting server on 8080")
+  server.setHandler(context)
   server.start()
-  info(s"Press any key to shutdown")
+  info(s"Press ENTER to shutdown")
   StdIn.readLine()
+  info(s"Shutdown event received. Shutting down, gracefully !")
   server.stop()
-  info(s"Server stopped ..")
 }
 
 object resources {
