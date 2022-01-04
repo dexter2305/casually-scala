@@ -12,7 +12,7 @@ import scala.concurrent.duration.Duration
 
 object Main extends App {
 
-  object UserManagementPostgresApp extends Application {
+  object UserManagementPostgresApp extends ProductionApp {
 
     lazy val config = DatabaseConfig.forConfig[PostgresProfile]("pg_config")
 

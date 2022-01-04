@@ -3,7 +3,7 @@ package v5
 import slick.jdbc.JdbcProfile
 import slick.jdbc.JdbcBackend
 
-trait Application extends UserServiceComponent
+trait ComponentRegistry extends UserServiceComponent
                   with InfraServiceComponentWithSlick
                   with UserRepositoryComponentWithSlick 
                   with SlickJdbcProfileComponent 
@@ -16,3 +16,5 @@ trait Application extends UserServiceComponent
 
   override val infraService = new InfraServiceWithSlick
 }
+
+trait ProductionApp extends ComponentRegistry
