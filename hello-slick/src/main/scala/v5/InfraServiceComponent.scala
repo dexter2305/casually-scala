@@ -17,8 +17,7 @@ trait InfraServiceComponent {
 trait InfraServiceComponentWithSlick extends InfraServiceComponent {
   requires: UserRepositoryComponentWithSlick 
     with SlickJdbcProfileComponent 
-    with SlickDbComponent 
-    with LoggingComponentWithSlf4j =>
+    with SlickDbComponent =>
 
   import jdbcProfile.api._
 

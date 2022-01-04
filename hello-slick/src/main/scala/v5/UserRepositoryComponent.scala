@@ -18,7 +18,7 @@ trait UserRepositoryComponent {
   }
 }
 
-trait UserRepositoryComponentWithSlick extends UserRepositoryComponent { self: SlickJdbcProfileComponent with SlickDbComponent =>
+trait UserRepositoryComponentWithSlick extends UserRepositoryComponent { requires: SlickJdbcProfileComponent with SlickDbComponent =>
 
   import domain._
   import jdbcProfile.api._

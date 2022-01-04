@@ -1,0 +1,5 @@
+package v2
+
+trait HttpServiceRegistry extends UserHttpServiceComponent with ExecutionContextComponent
+
+trait HttpServiceContext extends ScalatraWebContextComponent with ScalatraBootstrapComponent with HttpServiceRegistry
