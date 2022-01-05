@@ -33,4 +33,16 @@ object Dependencies {
   lazy val scalatra_json            = "org.scalatra"     %% "scalatra-json"     % s"$scalatra_version"
   lazy val json4s_jackson           = "org.json4s"       %% "json4s-jackson"    % "3.5.5"
 
+  //http4s
+  private lazy val http4s_version = "0.23.7"
+  lazy val http4s_dsl             = "org.http4s"    %% "http4s-dsl"          % http4s_version
+  lazy val http4s_blaze_server    = "org.http4s"    %% "http4s-blaze-server" % http4s_version
+  lazy val cats_effect            = "org.typelevel" %% "cats-effect"         % "3.3.3"
+
+  //tapir with friends
+  private lazy val tapir_version          = "0.19.3"
+  lazy val tapir_core                     = "com.softwaremill.sttp.tapir" %% "tapir-core"          % tapir_version
+  lazy val tapir_json_circe               = "com.softwaremill.sttp.tapir" %% "tapir-json-circe"    % tapir_version
+  lazy val circe                          = "io.circe"                    %% "circe-parser"        % "0.14.1"
+  lazy val tapir_http4sServer_interpreter = "com.softwaremill.sttp.tapir" %% "tapir-http4s-server" % tapir_version
 }
