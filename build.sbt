@@ -17,19 +17,13 @@ lazy val scalacCustomOptions = Seq(
 lazy val root = (project in file("."))
   .settings(
     name := "casually-scala",
-    libraryDependencies ++= Seq(
-      scalatest     % Test,
-      scalatestplus % Test,
-    ),
   )
-  .aggregate(helloslick)
+  .aggregate(helloslick, helloscalatra)
 
 lazy val helloslick = (project in file("hello-slick"))
   .settings(
     name := "hello-slick3",
     libraryDependencies ++= Seq(
-      scalatest     % Test,
-      scalatestplus % Test,
       slick3,
       slick_hikari_cp,
       postgres,
@@ -43,8 +37,6 @@ lazy val helloslick = (project in file("hello-slick"))
   .settings(
     name := "hello-scalatra",
     libraryDependencies ++= Seq(
-      scalatest     % Test,
-      scalatestplus % Test,
       slf4j_api,
       slf4j_scribe,
       servlet_api, 
@@ -54,3 +46,4 @@ lazy val helloslick = (project in file("hello-slick"))
       jetty_server % "compile;container",
     ),
   ).enablePlugins(JettyPlugin)
+

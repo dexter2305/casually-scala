@@ -32,4 +32,5 @@ object Dependencies {
   lazy val scalatra                 = "org.scalatra"     %% "scalatra"          % s"$scalatra_version"
   lazy val scalatra_json            = "org.scalatra"     %% "scalatra-json"     % s"$scalatra_version"
   lazy val json4s_jackson           = "org.json4s"       %% "json4s-jackson"    % "3.5.5"
+
 }
