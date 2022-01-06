@@ -10,6 +10,7 @@ ThisBuild / scalacOptions    := scalacCustomOptions
 
 lazy val scalacCustomOptions = Seq(
   "-deprecation",
+  //"-Ypartial-unification"
   //"-Ylog-classpath",
 )
 
@@ -58,23 +59,12 @@ lazy val `hello-http4s` = (project in file("hello-http4s"))
   .settings(
     name := "hello-http4s",
     libraryDependencies ++= Seq(
-      http4s_dsl, 
-      http4s_blaze_server,
-      cats_effect,
-      slf4j_scribe
-    ),
-  )
-
-lazy val `hello-tapir` = (project in file("hello-tapir"))
-  .settings(
-    name := "hello-tapir",
-    libraryDependencies ++= Seq(
-      tapir_core,
-      tapir_json_circe,
-      circe,
-      tapir_http4sServer_interpreter,
-      http4s_blaze_server,
-      cats_effect,
+      http4s_dsl withJavadoc(), 
+      http4s_blaze_server withJavadoc() withSources(),
+      http4s_circe,
+      cats_effect withJavadoc(),
+      slf4j_scribe,
+      circe_generic withJavadoc(),
     ),
   )
 

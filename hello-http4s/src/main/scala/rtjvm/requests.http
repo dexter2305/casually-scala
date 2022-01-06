@@ -1,0 +1,7 @@
+@ep=http://localhost:8080
+###
+
+GET {{ep}}/directors/Night%20Shyamalaxx
+###
+
+GET {{ep}}/movies?director=Night%20Shyamalan&year=2abc

@@ -1,0 +1,8 @@
+@ep=http://localhost:8080
+###
+
+GET {{ep}}/users
+###
+
+GET {{ep}}/users/1
+###
