@@ -20,7 +20,7 @@ import java.util.UUID
 import scala.collection.mutable
 import scala.util.Try
 
-object App extends IOApp {
+object Http4sTutorial extends IOApp {
   /*
     requirements:
       - GET all movies for a given director optionally under a given year
