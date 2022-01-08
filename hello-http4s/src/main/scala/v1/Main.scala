@@ -15,15 +15,11 @@ import UserRoutes._
 import org.http4s.server.Server
 object Main extends IOApp.Simple {
 
-  override def run: IO[Unit] = createBlazeServerAsApp().map(_ => IO(()))
-
   val helloWorldRoute: Kleisli[IO, Request[IO], Response[IO]] = HttpRoutes
     .of[IO] { case GET -> Root / "hello" / name =>
       Ok(s"Hello, $name.")
     }
     .orNotFound
-
-
 
   def createProgram() = {
     val program = for {
@@ -50,5 +46,24 @@ object Main extends IOApp.Simple {
       .resource
       .use(_ => IO.never)
       .as(ExitCode.Success)
+
+  val pressENTER = for {
+    _ <- IO.consoleForIO.println(s"Press ENTER to terminate")
+    _ <- IO.consoleForIO.readLine
+  } yield ()
+
+  override def run: IO[Unit] = {
+
+    val runServer = BlazeServerBuilder[IO]
+      .bindHttp(8080, "localhost")
+      .withHttpApp(userRoutes)
+      .withHttpApp(helloWorldRoute)
+      .serve
+      .compile
+      .drain
+    IO.race(runServer, pressENTER)
+      .onCancel(IO.consoleForIO.print("Program terminated"))
+      .map(_ => ())
+  }
 
 }

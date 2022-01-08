@@ -6,3 +6,5 @@ GET {{ep}}/users
 
 GET {{ep}}/users/1
 ###
+
+GET {{ep}}/hello/dexter
