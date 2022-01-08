@@ -47,13 +47,21 @@ object Http4sTutorial extends IOApp {
       "api/admin" -> directorRoutes[IO],
     )
 
-    BlazeServerBuilder[IO]
+    val server = BlazeServerBuilder[IO]
       .bindHttp(8080, "localhost")
       .withHttpApp(allRoutesComplete) // alternative: 'Apis' constructed by Router
-      .resource
-      .use(_ => IO.never)
-      .as(ExitCode.Success)
+      .serve
+      .compile
+      .drain
 
+    val stopServer = for {
+      _ <- IO.consoleForIO.println("Press ENTER to shutdown")
+      _ <- IO.consoleForIO.readLine
+    } yield ()
+
+    val app = IO.race(server, stopServer).onCancel(IO.consoleForIO.println("Server shutdown complete"))
+
+    app.as(ExitCode.Success)
   }
 
   object domain {
@@ -64,7 +72,6 @@ object Http4sTutorial extends IOApp {
     }
     case class DirectorDetails(firstname: String, lastname: String, genre: String)
   }
-
 
   import domain._
   import repository._
@@ -119,11 +126,14 @@ object Http4sTutorial extends IOApp {
     val dsl = Http4sDsl[F]
     import dsl._
 
-    HttpRoutes.of[F] { case GET -> Root / "directors" / DirectorPathExtractor(director) =>
-      directorDb.get(director) match {
-        case None                => NotFound(s"Director '$director' not found.")
-        case Some(directorValue) => Ok(directorValue.asJson)
+    HttpRoutes.of[F] { 
+    
+      case GET -> Root / "directors" / DirectorPathExtractor(director) =>
+        directorDb.get(director) match {
+          case None                => NotFound(s"Director '$director' not found.")
+          case Some(directorValue) => Ok(directorValue.asJson)
       }
+      case GET -> Root / "directors" => Ok(directorDb.keySet.map(_.toString()).asJson)
     }
   }
 

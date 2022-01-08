@@ -21,32 +21,6 @@ object Main extends IOApp.Simple {
     }
     .orNotFound
 
-  def createProgram() = {
-    val program = for {
-      fiber <- BlazeServerBuilder[IO]
-        .bindHttp(8080, "localhost")
-        .withHttpApp(helloWorldRoute)
-        .withHttpApp(userRoutes)
-        .resource
-        .use(_ => IO.never[Server])
-        .start
-      _     <- IO.delay(println("Press ENTER to shutdown"))
-      _     <- IO.delay(StdIn.readLine())
-      //_ = fiber.cancel.unsafeRunSync()
-      _     <- IO.delay(println("Server cancelled"))
-    } yield ()
-    program
-  }
-
-  def createBlazeServerAsApp() =
-    BlazeServerBuilder[IO]
-      .bindHttp(8080, "localhost")
-      .withHttpApp(userRoutes)
-      .withHttpApp(helloWorldRoute)
-      .resource
-      .use(_ => IO.never)
-      .as(ExitCode.Success)
-
   val pressENTER = for {
     _ <- IO.consoleForIO.println(s"Press ENTER to terminate")
     _ <- IO.consoleForIO.readLine
