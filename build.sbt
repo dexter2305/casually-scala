@@ -71,7 +71,9 @@ lazy val `hello-http4s` = (project in file("hello-http4s"))
 lazy val `hello-cats-effect` = (project in file("hello-cats-effect"))
   .settings(
     name := "hello-cats-effect",
-    libraryDependencies ++= Seq()
+    libraryDependencies ++= Seq(
+      cats_effect,
+    )
   )
 
 
