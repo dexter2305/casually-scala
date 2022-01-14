@@ -11,7 +11,6 @@ ThisBuild / scalacOptions    := scalacCustomOptions
 lazy val scalacCustomOptions = Seq(
   "-deprecation",
   //"-Ypartial-unification"
-  //"-Ylog-classpath",
 )
 
 lazy val root = (project in file("."))
@@ -60,11 +59,12 @@ lazy val `hello-http4s` = (project in file("hello-http4s"))
     name := "hello-http4s",
     libraryDependencies ++= Seq(
       http4s_dsl withJavadoc(), 
-      http4s_blaze_server withJavadoc() withSources(),
+      http4s_blaze_server withJavadoc(),
       http4s_circe,
       cats_effect withJavadoc(),
       slf4j_scribe,
       circe_generic withJavadoc(),
+      circe_literal withJavadoc()
     ),
   )
 
@@ -72,7 +72,7 @@ lazy val `hello-cats-effect` = (project in file("hello-cats-effect"))
   .settings(
     name := "hello-cats-effect",
     libraryDependencies ++= Seq(
-      cats_effect,
+      cats_effect withJavadoc(),
     )
   )
 

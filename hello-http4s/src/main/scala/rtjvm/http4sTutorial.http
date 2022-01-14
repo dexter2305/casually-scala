@@ -1,0 +1,18 @@
+@ep=http://localhost:8080
+###
+
+GET {{ep}}/directors
+###
+
+GET {{ep}}/directors/Night%20Shyamalan
+###
+
+GET {{ep}}/movies?director=Night%20Shyamalan&year=2004
+###
+
+POST {{ep}}/users
+Content-Type: application/json
+
+{
+  "name" : "Test director"
+}

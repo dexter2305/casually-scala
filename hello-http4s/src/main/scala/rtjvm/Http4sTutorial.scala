@@ -20,6 +20,7 @@ import java.util.UUID
 import scala.collection.mutable
 import scala.util.Try
 
+
 object Http4sTutorial extends IOApp {
   /*
     requirements:
@@ -122,24 +123,33 @@ object Http4sTutorial extends IOApp {
     }
   }
 
-  def directorRoutes[F[_]: Monad] = {
-    val dsl = Http4sDsl[F]
+  def directorRoutes[F[_]: Concurrent] = {
+    val dsl                                                   = Http4sDsl[F]
     import dsl._
+    implicit val directorDecorder: EntityDecoder[F, Director] = jsonOf[F, Director]
+    HttpRoutes.of[F] {
 
-    HttpRoutes.of[F] { 
-    
       case GET -> Root / "directors" / DirectorPathExtractor(director) =>
         directorDb.get(director) match {
           case None                => NotFound(s"Director '$director' not found.")
           case Some(directorValue) => Ok(directorValue.asJson)
+        }
+      case GET -> Root / "directors"                                   => {
+        println(s"invoked get directors")
+        Ok(directorDb.keySet.map(_.toString()).asJson)
       }
-      case GET -> Root / "directors" => Ok(directorDb.keySet.map(_.toString()).asJson)
+      case req @ POST -> Root / "directors"                            =>
+        for {
+          director <- req.as[Director]
+          _ = IO.consoleForIO.println(s"received $director")
+          res <- Ok()
+        } yield res
     }
   }
 
-  def allRoutes[F[_]: Monad]: HttpRoutes[F] = movieRoutes[F] <+> directorRoutes[F]
+  def allRoutes[F[_]: Concurrent]: HttpRoutes[F] = movieRoutes[F] <+> directorRoutes[F]
 
-  def allRoutesComplete[F[_]: Monad]: HttpApp[F] = allRoutes[F].orNotFound
+  def allRoutesComplete[F[_]: Concurrent]: HttpApp[F] = allRoutes[F].orNotFound
 
   object repository {
 

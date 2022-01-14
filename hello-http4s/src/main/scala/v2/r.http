@@ -1,0 +1,24 @@
+@ep=http://localhost:8080
+###
+
+GET http://localhost:8080/users
+###
+
+GET {{ep}}/users/85f2a510-7c69-4dda-8d7b-3d5c0f0284e7
+###
+
+POST {{ep}}/users
+Content-Type: application/json
+
+{
+  "id": "",
+  "name": "sergio"
+}
+###
+
+POST {{ep}}/users
+Content-Type: application/json
+
+{
+  "name": "sainz"
+}

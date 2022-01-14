@@ -37,6 +37,8 @@ object Dependencies {
 
   lazy val circe_generic = "io.circe" %% "circe-generic" % Version.CirceVersion
   lazy val circe_parser  = "io.circe" %% "circe-parser"  % Version.CirceVersion
+  lazy val circe_literal = "io.circe" %% "circe-literal" % Version.CirceVersion
+
 
   lazy val tapir_core                     = "com.softwaremill.sttp.tapir" %% "tapir-core"          % Version.TapirVersion
   lazy val tapir_json_circe               = "com.softwaremill.sttp.tapir" %% "tapir-json-circe"    % Version.TapirVersion
