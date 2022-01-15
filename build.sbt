@@ -64,7 +64,9 @@ lazy val `hello-http4s` = (project in file("hello-http4s"))
       cats_effect withJavadoc(),
       slf4j_scribe,
       circe_generic withJavadoc(),
-      circe_literal withJavadoc()
+      circe_literal withJavadoc(),
+      scalatest,
+      scalatestplus,
     ),
   )
 
@@ -75,6 +77,3 @@ lazy val `hello-cats-effect` = (project in file("hello-cats-effect"))
       cats_effect withJavadoc(),
     )
   )
-
-
-  

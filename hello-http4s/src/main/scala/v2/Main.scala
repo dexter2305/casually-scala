@@ -10,7 +10,8 @@ object Main extends IOApp {
 
   val alwaysOnProgram = BlazeServerBuilder[IO]
     .bindHttp(8080, "localhost")
-    .withHttpApp(allRoutesComplete)
+    .withHttpApp(allRoutes[IO])
+    //.withHttpApp(userroutes.allRoutesComplete[IO])
     .serve
     .compile
     .drain
