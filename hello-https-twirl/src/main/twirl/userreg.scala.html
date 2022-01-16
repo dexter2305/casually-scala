@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>HTML CSS Register Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@@0.9.3/css/bulma.min.css">
+</head>
+
+<body>
+  <form action="/register" method="post" class="container">
+
+    <!-- form header -->
+    <div class="header">
+      <h1>Create Account</h1>
+    </div>
+
+    <!-- form body -->
+    <div>
+
+      <!-- Firstname and Lastname -->
+      <div>
+        <div>
+          <label for="firstname">First name *</label>
+          <input type="text" id="firstname" placeholder="enter your first name" required="required" />
+        </div>
+        <div>
+          <label for="lastname">Last name</label>
+          <input type="text" id="lastname" placeholder="enter your last name" />
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email">Email*</label>
+        <input type="email" id="email" placeholder="enter your email" required="required">
+      </div>
+
+      <!-- Passwrod and confirm password -->
+      <div>
+        <div>
+          <label for="password">Password *</label>
+          <input type="password" id="password" placeholder="enter your password" required="required">
+        </div>
+        <div>
+          <label for="confirm-password">Confirm Password *</label>
+          <input type="password" id="confirm-password" placeholder="enter your password again" required="required">
+        </div>
+      </div>
+
+      <!-- form-footer -->
+      <div class="footer">
+        <span>* required</span>
+        <button type="submit">Create</button>
+      </div>
+
+  </form>
+</body>
+
+</html>

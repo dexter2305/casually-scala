@@ -32,13 +32,13 @@ object Dependencies {
   lazy val http4s_dsl          = "org.http4s" %% "http4s-dsl"          % Version.Http4sVersion
   lazy val http4s_blaze_server = "org.http4s" %% "http4s-blaze-server" % Version.Http4sVersion
   lazy val http4s_circe        = "org.http4s" %% "http4s-circe"        % Version.Http4sVersion
+  lazy val http4s_twirl        = "org.http4s" %% "http4s-twirl"        % Version.Http4sVersion
 
   lazy val cats_effect = "org.typelevel" %% "cats-effect" % Version.CatsEffectVersion
 
   lazy val circe_generic = "io.circe" %% "circe-generic" % Version.CirceVersion
   lazy val circe_parser  = "io.circe" %% "circe-parser"  % Version.CirceVersion
   lazy val circe_literal = "io.circe" %% "circe-literal" % Version.CirceVersion
-
 
   lazy val tapir_core                     = "com.softwaremill.sttp.tapir" %% "tapir-core"          % Version.TapirVersion
   lazy val tapir_json_circe               = "com.softwaremill.sttp.tapir" %% "tapir-json-circe"    % Version.TapirVersion

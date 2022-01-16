@@ -77,3 +77,13 @@ lazy val `hello-cats-effect` = (project in file("hello-cats-effect"))
       cats_effect withJavadoc(),
     )
   )
+
+lazy val `hello-http4s-twirl` = (project in file("hello-https-twirl")).settings(
+  name := "hello-http4s-twirl",
+  libraryDependencies ++= Seq(
+    http4s_blaze_server,
+    http4s_dsl withJavadoc(),
+    http4s_twirl withJavadoc(),
+    slf4j_scribe % Runtime
+  )
+).enablePlugins(SbtTwirl)
