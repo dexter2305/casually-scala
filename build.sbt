@@ -87,3 +87,11 @@ lazy val `hello-http4s-twirl` = (project in file("hello-https-twirl")).settings(
     slf4j_scribe % Runtime
   )
 ).enablePlugins(SbtTwirl)
+
+lazy val challenges = (project in file("challenges")).settings(
+  name := "challenges",
+  libraryDependencies ++= Seq(
+    scalatest % Test, 
+    scalatestplus % Test
+  )
+)
