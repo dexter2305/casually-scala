@@ -84,6 +84,13 @@ lazy val `hello-http4s-twirl` = (project in file("hello-https-twirl")).settings(
     http4s_blaze_server,
     http4s_dsl withJavadoc(),
     http4s_twirl withJavadoc(),
+    http4s_circe withJavadoc(),
+    
+    circe_generic withJavadoc(),
+    circe_literal withJavadoc(),
+    
+    fs2_core withJavadoc(),
+
     slf4j_scribe % Runtime
   )
 ).enablePlugins(SbtTwirl)
@@ -93,5 +100,13 @@ lazy val challenges = (project in file("challenges")).settings(
   libraryDependencies ++= Seq(
     scalatest % Test, 
     scalatestplus % Test
+  )
+)
+
+lazy val hello_fs2 = (project in file("hello-fs2")).settings(
+  name := "hello-fs2",
+  libraryDependencies ++= Seq(
+    fs2_core withJavadoc,
+    cats_effect withJavadoc(),
   )
 )

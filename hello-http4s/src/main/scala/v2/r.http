@@ -22,3 +22,7 @@ Content-Type: application/json
 {
   "name": "sainz"
 }
+###
+
+GET {{ep}}/file/status
+###
