@@ -103,7 +103,7 @@ lazy val challenges = (project in file("challenges")).settings(
   )
 )
 
-lazy val hello_fs2 = (project in file("hello-fs2")).settings(
+lazy val `hello-fs2` = (project in file("hello-fs2")).settings(
   name := "hello-fs2",
   libraryDependencies ++= Seq(
     fs2_core withJavadoc,
