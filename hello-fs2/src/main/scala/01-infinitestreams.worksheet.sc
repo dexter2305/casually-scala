@@ -1,6 +1,3 @@
-import scala.concurrent.duration._
-import scala.concurrent.ExecutionContext
-import cats.effect.IO
 import fs2._
 
 //inifinite stream with 'constant' returns the same element infinite times
