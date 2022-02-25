@@ -107,6 +107,7 @@ lazy val `hello-fs2` = (project in file("hello-fs2")).settings(
   name := "hello-fs2",
   libraryDependencies ++= Seq(
     fs2_core withJavadoc,
+    fs2_io withJavadoc,
     cats_effect withJavadoc,
   )
 )
