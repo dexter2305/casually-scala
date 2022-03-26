@@ -58,7 +58,7 @@ lazy val `hello-http4s` = (project in file("hello-http4s"))
   .settings(
     name := "hello-http4s",
     libraryDependencies ++= Seq(
-      http4s_dsl withJavadoc, 
+      http4s_dsl withJavadoc,
       http4s_blaze_server withJavadoc,
       http4s_circe,
       cats_effect withJavadoc,
@@ -75,39 +75,45 @@ lazy val `hello-cats-effect` = (project in file("hello-cats-effect"))
     name := "hello-cats-effect",
     libraryDependencies ++= Seq(
       cats_effect withJavadoc,
-    )
+    ),
   )
 
-lazy val `hello-http4s-twirl` = (project in file("hello-https-twirl")).settings(
-  name := "hello-http4s-twirl",
-  libraryDependencies ++= Seq(
-    http4s_blaze_server,
-    http4s_dsl withJavadoc,
-    http4s_twirl withJavadoc,
-    http4s_circe withJavadoc,
-    
-    circe_generic withJavadoc,
-    circe_literal withJavadoc,
-    
-    fs2_core withJavadoc,
-
-    slf4j_scribe % Runtime
+lazy val `hello-http4s-twirl` = (project in file("hello-https-twirl"))
+  .settings(
+    name := "hello-http4s-twirl",
+    libraryDependencies ++= Seq(
+      http4s_blaze_server,
+      http4s_dsl withJavadoc,
+      http4s_twirl withJavadoc,
+      http4s_circe withJavadoc,
+      circe_generic withJavadoc,
+      circe_literal withJavadoc,
+      fs2_core withJavadoc,
+      slf4j_scribe % Runtime,
+    ),
   )
-).enablePlugins(SbtTwirl)
+  .enablePlugins(SbtTwirl)
 
-lazy val challenges = (project in file("challenges")).settings(
-  name := "challenges",
-  libraryDependencies ++= Seq(
-    scalatest % Test withJavadoc, 
-    scalatestplus % Test withJavadoc
+lazy val challenges = (project in file("challenges"))
+  .settings(
+    name := "challenges",
+    libraryDependencies ++= Seq(
+      scalatest     % Test withJavadoc,
+      scalatestplus % Test withJavadoc,
+    ),
   )
-)
 
-lazy val `hello-fs2` = (project in file("hello-fs2")).settings(
-  name := "hello-fs2",
-  libraryDependencies ++= Seq(
-    fs2_core withJavadoc,
-    fs2_io withJavadoc,
-    cats_effect withJavadoc,
+lazy val `hello-fs2` = (project in file("hello-fs2"))
+  .settings(
+    name := "hello-fs2",
+    libraryDependencies ++= Seq(
+      fs2_core withJavadoc,
+      fs2_io withJavadoc,
+      cats_effect withJavadoc,
+    ),
   )
-)
+
+lazy val `hello-type-classes` = (project in file("hello-type-classes"))
+  .settings(
+    name := "hello-type-classes",
+  )
