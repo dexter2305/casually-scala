@@ -50,12 +50,13 @@ object sql {
 
 object App extends App {
 
-  import sql._
+  
 
   // (a)
   // create sql row without using type classes
   // create a single column of type string
   {
+    import sql._    
     val nameColumn           = StringType("Naveen")
     val idColumn             = IntType(1)
     val row: Seq[ColumnType] = List(idColumn, nameColumn)
@@ -66,17 +67,21 @@ object App extends App {
   // use interface object approach or explicit approach
   {
     { // v1 - explicit encoding
+      import sql._
       import sql.codecs.{stringCodec, intCodec, nullCodec}
-      val row_excplicit_encode: Seq[ColumnType] = List(encode_v1("Naveen"), encode_v2(1), encode_v1(null))
+      val row_excplicit_encode: Seq[ColumnType] = List(encode_v1("Naveen"), encode_v2(1), encode_v2(null))
       println(row_excplicit_encode.mkString(" | "))
     }
 
     { //v2 - implicit encoding
       import sql._
-      import sql.codecs._
+      import sql.codecs.{stringCodec, intCodec}
       implicit def toColType[A](e: A)(implicit codec: codec[A]) = {
-        //println(s"encoding '$e'")
-        codec.encode(value = e)
+        
+        //codec.encode(value = e)
+        val r = encode_v1(e)
+        println(s"encoded '$e' as '$r'")
+        r
       }
       val row_implicit_encode: Seq[ColumnType] = List("Naveen", 1, null)
       println(row_implicit_encode.mkString(" "))
@@ -88,11 +93,14 @@ object App extends App {
 
   {
     import sql._
-    import sql.codecs.stringCodec
-    //import sql.ops._
-    // this is still not working
-    val x: ColumnType = "test"
-    
+    import sql.codecs.{stringCodec, intCodec, nullCodec}
+    import sql.ops._
+    {//explicit
+      //fails for null :-(
+      //val row: Seq[ColumnType] = List(1.encode, "Naveen".encode, null.encode)
+      val row: Seq[ColumnType] = List(1.encode, "Naveen".encode)
+      println(row.mkString(" "))
+    }
   }
 
 }
