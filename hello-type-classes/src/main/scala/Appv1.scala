@@ -48,7 +48,7 @@ object sql {
   }
 }
 
-object App extends App {
+object Appv1 extends App {
 
   
 
