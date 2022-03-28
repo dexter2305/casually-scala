@@ -47,7 +47,7 @@ lazy val `hello-scalatra` = (project in file("hello-scalatra"))
   )
   .enablePlugins(JettyPlugin)
 
-lazy val udemyAdvancedScala = (project in file("udemy-advanced-scala"))
+lazy val `udemy-advanced-scala` = (project in file("udemy-advanced-scala"))
   .settings(
     name := "udemy-advanced-scala",
     libraryDependencies ++= Seq(
@@ -117,3 +117,8 @@ lazy val `hello-type-classes` = (project in file("hello-type-classes"))
   .settings(
     name := "hello-type-classes",
   )
+
+  lazy val `udemy-scala-essentials` = (project in file("udemy-scala-essentials"))
+    .settings(
+      name:= "udemy-scala-essentials"
+    )
