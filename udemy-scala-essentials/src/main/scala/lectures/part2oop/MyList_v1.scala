@@ -1,4 +1,5 @@
 package lectures.part2oop
+package v1
 
 import scala.collection.immutable
 
@@ -49,5 +50,7 @@ object ListDemo extends App {
   println(ints.toString())
   println(assert(ints.head == 1), "head should be 1")
   println(assert(ints.isEmpty == false), "ints should be empty")
+
+  // MyList is a fixed ONLY to INT. 
 
 }
