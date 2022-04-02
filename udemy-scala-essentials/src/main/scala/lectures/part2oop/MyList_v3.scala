@@ -5,6 +5,7 @@ import scala.collection.immutable
 
 /**
  * List of "Generics" with map, filter and flatMap
+ * v3 was initially a regular and is now upgrded to 'case class'
  */
 
 abstract class MyList[+A] {
@@ -24,7 +25,7 @@ abstract class MyList[+A] {
 
 }
 
-object Empty extends MyList[Nothing] {
+case object Empty extends MyList[Nothing] {
 
   override def head: Nothing = throw new NoSuchElementException
 
@@ -32,7 +33,7 @@ object Empty extends MyList[Nothing] {
 
   override def isEmpty: Boolean = true
 
-  override def add[B >: Nothing](e: B): MyList[B] = new Cons(e, this)
+  override def add[B >: Nothing](e: B): MyList[B] = Cons(e, this)
 
   override def asString: String = ""
 
@@ -46,7 +47,7 @@ object Empty extends MyList[Nothing] {
 
 }
 
-class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
+case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
 
   override def head: A = h
 
@@ -54,9 +55,9 @@ class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
 
   override def isEmpty: Boolean = false
 
-  override def add[B >: A](e: B): MyList[B] = new Cons(e, this)
+  override def add[B >: A](e: B): MyList[B] = Cons(e, this)
 
-  override def asString: String = if (this == Empty) this.asString else s" $head " + tail.asString
+  override def asString: String = if (isEmpty) this.asString else s" $head " + tail.asString
 
   /*
     = [1, 2] ++ [3, 4]
@@ -65,14 +66,14 @@ class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
     = new Cons(1, new Cons(2, [3, 4]))
     = new Cons(1, new Cons(2, new Cons(3, new Cons(4, Empty))))
    */
-  override def ++[B >: A](list: MyList[B]): MyList[B] = new Cons(h, t.++(list))
+  override def ++[B >: A](list: MyList[B]): MyList[B] = Cons(h, t.++(list))
 
   override def filter(condition: MyPredicate[A]): MyList[A] =
-    if (condition.test(head)) new Cons(head, tail.filter(condition))
+    if (condition.test(head)) Cons(head, tail.filter(condition))
     else tail.filter(condition)
 
   override def map[B](transformer: MyTransformer[A, B]): MyList[B] =
-    new Cons(transformer.transform(h), t.map(transformer))
+    Cons(transformer.transform(h), t.map(transformer))
 
   /*
     = [1, 2].flatMap(n => [n, n + 1])
@@ -96,8 +97,8 @@ trait MyTransformer[-A, B] {
 }
 object ListDemo extends App {
 
-  val ints: MyList[Int]       = new Cons(1, new Cons(2, new Cons(3, new Cons(4, Empty))))
-  val strings: MyList[String] = new Cons("helo ", new Cons(" generics", Empty))
+  val ints: MyList[Int]       = Cons(1, Cons(2, Cons(3, Cons(4, Empty))))
+  val strings: MyList[String] = Cons("helo ", Cons(" generics", Empty))
   println(ints.toString())
   println(strings.toString())
   println(assert(ints.head == 1), "head should be 1")
@@ -124,16 +125,16 @@ object ListDemo extends App {
   //flatMap (long form)
   val intsPlus10 = ints.flatMap(new MyTransformer[Int, MyList[Int]] {
 
-    override def transform(element: Int): MyList[Int] = new Cons(element, new Cons(element + 10, Empty))
+    override def transform(element: Int): MyList[Int] = Cons(element, Cons(element + 10, Empty))
 
   })
   //short form
   /*
-  ints.flatMap{ n => 
-    val x = new Cons(n, new Cons(n + 10, Empty))  
+  ints.flatMap{ n =>
+    val x = new Cons(n, new Cons(n + 10, Empty))
     x
   }
-  */
+   */
   println(intsPlus10)
 
 }
