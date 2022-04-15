@@ -1,5 +1,5 @@
 package hackerrank
-
+import scala.language.implicitConversions
 object PolygonPerimeter extends App {
   import scala.io.StdIn
   case class Point(x: Int, y: Int)
