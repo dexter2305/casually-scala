@@ -2,6 +2,23 @@ package interviewbit
 
 object ArrayProblems extends App {
 
+  println(s"${majorityElement(Array(2, 1, 2))}")
+
+  def majorityElement(n: Array[Int]): Int = {
+    val limit = math.floor(n.size / 2)
+    n.groupBy(n => n).map { case (e, l) => (e, l.size) }.find { case (e, f) => f > limit }.map { case (e, _) => e }.get
+  }
+
+  /*
+    https://www.interviewbit.com/problems/product-of-all/
+
+   */
+  def productOfAll(nums: Array[Int]): Array[Int] = {
+    val modulo7 = 1000000007
+    val p       = nums.reduce(_ * _)
+    nums.map(p / _)
+  }
+
   //https://www.interviewbit.com/problems/max-min-05542f2f-69aa-4253-9cc7-84eb7bf739c4/
   def maxMinSum(nums: Array[Int]): Int = {
     val (max, min) = nums.tail.foldLeft((nums.head, nums.head)) { case ((max, min), e) =>
@@ -38,11 +55,9 @@ object ArrayProblems extends App {
       .map { case (n, _) => n }
       .getOrElse(-1)
   }
-  val list = Array(-8, -7, -6)
-  println(s"=> ${firstMissingPositive(list)}")
 
   //https://www.interviewbit.com/problems/pick-from-both-sides/
-    /*
+  /*
     //psuedocode
     max = nums.take(n).sum
     ri <- n - 1 to 0
