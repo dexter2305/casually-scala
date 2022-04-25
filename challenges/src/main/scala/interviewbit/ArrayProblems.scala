@@ -4,19 +4,18 @@ object ArrayProblems extends App {
 
   println(s"${majorityElement(Array(2, 1, 2))}")
 
+  //https://www.interviewbit.com/problems/positive-negative/
+  def positiveNegative(array: Array[Int]): Array[Int] = {
+    val (sizeOfPositive, sizeOfNegative) = array.partition(_ > 0) match {
+      case (pos, negsWithMayBeZero) =>
+        (pos.size, negsWithMayBeZero.count(_ < 0))
+    }
+    Array(sizeOfPositive, sizeOfNegative)
+  }
+
   def majorityElement(n: Array[Int]): Int = {
     val limit = math.floor(n.size / 2)
     n.groupBy(n => n).map { case (e, l) => (e, l.size) }.find { case (e, f) => f > limit }.map { case (e, _) => e }.get
-  }
-
-  /*
-    https://www.interviewbit.com/problems/product-of-all/
-
-   */
-  def productOfAll(nums: Array[Int]): Array[Int] = {
-    val modulo7 = 1000000007
-    val p       = nums.reduce(_ * _)
-    nums.map(p / _)
   }
 
   //https://www.interviewbit.com/problems/max-min-05542f2f-69aa-4253-9cc7-84eb7bf739c4/
