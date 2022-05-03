@@ -70,9 +70,9 @@ lazy val `hello-http4s` = (project in file("hello-http4s"))
     ),
   )
 
-lazy val `hello-cats-effect` = (project in file("hello-cats-effect"))
+lazy val `hello-cats` = (project in file("hello-cats"))
   .settings(
-    name := "hello-cats-effect",
+    name := "hello-cats",
     libraryDependencies ++= Seq(
       cats_effect withJavadoc,
     ),
@@ -118,7 +118,7 @@ lazy val `hello-type-classes` = (project in file("hello-type-classes"))
     name := "hello-type-classes",
   )
 
-  lazy val `udemy-scala-essentials` = (project in file("udemy-scala-essentials"))
-    .settings(
-      name:= "udemy-scala-essentials"
-    )
+lazy val `udemy-scala-essentials` = (project in file("udemy-scala-essentials"))
+  .settings(
+    name := "udemy-scala-essentials",
+  ) 

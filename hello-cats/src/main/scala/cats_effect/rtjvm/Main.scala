@@ -1,4 +1,4 @@
-package rtjvm
+package cats_effect.rtjvm
 
 import scala.util.Random
 import scala.io.StdIn

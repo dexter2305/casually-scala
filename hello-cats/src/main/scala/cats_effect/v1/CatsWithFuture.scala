@@ -1,4 +1,4 @@
-package v1
+package cats_effect.v1
 
 import scala.concurrent.Future
 import cats.effect.IOApp
