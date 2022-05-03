@@ -13,7 +13,7 @@ abstract class MyList[+A] {
   def isEmpty: Boolean
   def add[B >: A](e: B): MyList[B]
   def asString: String
-  override def toString(): String = s"[${asString}]"
+  override def toString: String = s"[${asString}]"
 }
 
 object Empty extends MyList[Nothing] {
