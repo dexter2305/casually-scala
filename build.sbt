@@ -113,11 +113,6 @@ lazy val `hello-fs2` = (project in file("hello-fs2"))
     ),
   )
 
-lazy val `hello-type-classes` = (project in file("hello-type-classes"))
-  .settings(
-    name := "hello-type-classes",
-  )
-
 lazy val `udemy-scala-essentials` = (project in file("udemy-scala-essentials"))
   .settings(
     name := "udemy-scala-essentials",
