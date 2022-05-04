@@ -1,6 +1,6 @@
 package uderscore
 
-object `01_TypeClasses` extends App {
+object A_TypeClasses extends App {
 
   final case class Cat(name: String, age: Int, color: String)
   object Cat {
