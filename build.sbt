@@ -70,14 +70,24 @@ lazy val `hello-http4s` = (project in file("hello-http4s"))
     ),
   )
 
-lazy val `hello-cats` = (project in file("hello-cats"))
+lazy val `hello-cats-effect` = (project in file("hello-cats-effect"))
   .settings(
-    name := "hello-cats",
+    name := "hello-cats-effect",
     libraryDependencies ++= Seq(
       cats_effect withJavadoc,
     ),
   )
 
+lazy val `hello-cats-core` = (project in file("hello-cats-core"))
+  .settings(
+    name := "hello-cats-core",
+    libraryDependencies ++= Seq(
+      cats_core withJavadoc,
+    ),
+  )
+
+  
+  
 lazy val `hello-http4s-twirl` = (project in file("hello-https-twirl"))
   .settings(
     name := "hello-http4s-twirl",

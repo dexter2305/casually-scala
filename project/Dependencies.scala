@@ -34,6 +34,7 @@ object Dependencies {
   lazy val http4s_circe        = "org.http4s" %% "http4s-circe"        % Version.Http4sVersion
   lazy val http4s_twirl        = "org.http4s" %% "http4s-twirl"        % Version.Http4sVersion
 
+  lazy val cats_core   = "org.typelevel" %% "cats-core"   % Version.CatsCoreVersion
   lazy val cats_effect = "org.typelevel" %% "cats-effect" % Version.CatsEffectVersion
 
   lazy val fs2_core = "co.fs2" %% "fs2-core" % Version.FS2Version
@@ -49,6 +50,7 @@ object Dependencies {
 
   object Version {
     val SlickVersion          = "3.3.3"
+    val CatsCoreVersion       = "2.7.0"
     val CatsEffectVersion     = "3.3.3"
     val FS2Version            = "3.2.4"
     val ScalatraVersion       = "2.7.0"
