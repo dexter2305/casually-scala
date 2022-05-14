@@ -2,6 +2,31 @@ package leetcode
 
 object MatrixProblems extends App {
 
+  val matrix = Array(Array(1, 3, 5, 7), Array(10, 11, 16, 20), Array(23, 30, 34, 60))
+  println(searchMatrix(matrix, 16))
+
+  //https://leetcode.com/problems/search-a-2d-matrix/
+  //2d array accessing nth element: array(n / colCount)(n % colCount) 
+  def searchMatrix(matrix: Array[Array[Int]], target: Int): Boolean = {
+    val rowCount = matrix.length
+    val colCount = matrix.head.size
+
+    @scala.annotation.tailrec
+    def search(matrix: Array[Array[Int]], target: Int, left: Int, right: Int): Boolean = {
+
+      val mid = (left + right - 1) / 2
+      println(s"l: $left, r: $right, mid: $mid, e($mid): ${matrix(mid / colCount)(mid % colCount)}")
+      (left, right) match {
+        case (l, r) if l == r => false
+        case (l, r) if matrix(mid / colCount)(mid % colCount) == target => true
+        case (l, r) if matrix(mid / colCount)(mid % colCount) < target => search(matrix, target, mid + 1, right)
+        case (l, r) if matrix(mid / colCount)(mid % colCount) > target => search(matrix, target, left, mid)
+      }
+    }
+    search(matrix, target, 0, rowCount * colCount)
+
+  }
+
   //https://leetcode.com/problems/reshape-the-matrix/
   //assumption: every row is equally sized
   //t: O(n)
