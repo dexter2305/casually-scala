@@ -2,7 +2,27 @@ package leetcode
 
 object ArrayProblems extends App {
 
-  assert(ArrayProblems.maxProfit(Array(7, 1, 5, 3, 6, 4)) == 5)
+  val a = construct2DArray(Array(1, 2, 3, 4, 5, 6), 2, 2)
+  a.foreach(r => println(r.mkString(" ")))
+  //
+  def construct2DArray(original: Array[Int], r: Int, c: Int): Array[Array[Int]] = {
+    if (r * c == original.length) {
+      //((for (i <- 0 until r) yield for (ci <- 0 until c) yield (original(ci + (i * c)))).map(_.toArray)).toArray
+      Array.tabulate(r, c)((x, y) => original(x * c + y))
+    } else Array.empty
+  }
+
+  //https://leetcode.com/problems/contains-duplicate/
+  def containsDuplicate(nums: Array[Int]): Boolean = {
+    @scala.annotation.tailrec
+    def hasDupes(nums: Array[Int], i: Int, set: Set[Int]): Boolean = {
+      if (i == nums.length) false
+      else if (set.contains(nums(i))) true
+      else hasDupes(nums, i + 1, set + nums(i))
+    }
+    hasDupes(nums, i = 0, Set.empty[Int])
+  }
+
   //https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
   /*
       => track min element and profit

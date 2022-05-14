@@ -4,8 +4,43 @@ import org.scalatest.freespec.AnyFreeSpec
 import org.scalatest.matchers.should.Matchers
 
 import leetcode._
+
+import org.scalatest.concurrent.TimeLimitedTests
+import org.scalatest.time.Span
+import org.scalatest.time.Millis
+import org.scalatest.time.Seconds
+
 class ArrayProblemsSpec extends AnyFreeSpec with Matchers {
 
+  "Convert 1d array to 2d array" - {
+    "when transformation not possible" - {
+      "return empty array" - {
+        "with input as empty array" in {
+          ArrayProblems.construct2DArray(Array(1, 2, 3), 2, 3) should be(Array.empty)
+        }
+        "with 1d array length is odd" in {
+          ArrayProblems.construct2DArray(Array(1, 2, 3, 4, 5), 2, 2) should be(Array.empty)
+        }
+        "with 1d array length is even; given 2d size is large" in {
+          ArrayProblems.construct2DArray(Array(1, 2, 3, 4, 5, 6), 10, 10) should be(Array.empty)
+        }
+        "with 1d array length is even; given 2d size is small" in {
+          ArrayProblems.construct2DArray(Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 2, 2) should be(Array.empty)
+        }
+      }
+    }
+    "when transformation possible" - {
+      "return 2d array" - {
+        "with 1d array length is even; given 2d size fits" in {
+          ArrayProblems.construct2DArray(Array(1, 2, 3, 4, 5, 6), 2, 3) should be (Array(Array(1,2,3), Array(4,5,6)))
+        }
+        "with 1d array length is odd; given 2d with r =1" in {
+          ArrayProblems.construct2DArray(Array(1, 2, 3, 4, 5, 6), 1, 6) should be(Array(Array(1, 2, 3, 4, 5, 6)))
+        }
+      }
+
+    }
+  }
   "Merge sorted arrays" - {
     "when left has smallest element" in {
       val left      = Array(1, 2, 3, 0, 0, 0)
@@ -91,37 +126,37 @@ class ArrayProblemsSpec extends AnyFreeSpec with Matchers {
         ArrayProblems.intersect(left, right) should contain theSameElementsAs (Array(7, 4))
       }
       "when multiple identical ints intersect" in {
-        val left = Array(8, 9, -1, 8)
+        val left  = Array(8, 9, -1, 8)
         val right = Array(27, 8, 8, 9)
       }
       "when both arrays are empty" in {
-        ArrayProblems.intersect(Array.emptyIntArray, Array.emptyIntArray) should be (Array.emptyIntArray)
+        ArrayProblems.intersect(Array.emptyIntArray, Array.emptyIntArray) should be(Array.emptyIntArray)
       }
     }
     "when arrays are varying size" - {
       "when left array is empty" in {
-        ArrayProblems.intersect(Array.emptyIntArray, Array(9,10,11)) should be (Array.emptyIntArray)
+        ArrayProblems.intersect(Array.emptyIntArray, Array(9, 10, 11)) should be(Array.emptyIntArray)
       }
       "when right array is empty" in {
-        ArrayProblems.intersect(Array(7, 2, 1), Array.emptyIntArray) should be (Array.emptyIntArray)
+        ArrayProblems.intersect(Array(7, 2, 1), Array.emptyIntArray) should be(Array.emptyIntArray)
       }
       "when distinct ints intersect" in {
-        val left = Array(1, 2, 3, 4, 5)
+        val left  = Array(1, 2, 3, 4, 5)
         val right = Array(3, 2, 5)
-        ArrayProblems.intersect(left, right) should be (Array(2, 3, 5))
+        ArrayProblems.intersect(left, right) should be(Array(2, 3, 5))
       }
     }
   }
 
   "maxProfit" - {
     "should be profit when prices increase constantly" in {
-      ArrayProblems.maxProfit(Array(1,2,3)) should be (2)
+      ArrayProblems.maxProfit(Array(1, 2, 3)) should be(2)
     }
     "should be no profit when prices decrease constantly" in {
-      ArrayProblems.maxProfit(Array(7,6,5,4,3)) should be (0)
+      ArrayProblems.maxProfit(Array(7, 6, 5, 4, 3)) should be(0)
     }
     "profit when early peaks with drops" in {
-      ArrayProblems.maxProfit(Array(7,1,5,3,6,4)) should be (5)
+      ArrayProblems.maxProfit(Array(7, 1, 5, 3, 6, 4)) should be(5)
     }
   }
 }
