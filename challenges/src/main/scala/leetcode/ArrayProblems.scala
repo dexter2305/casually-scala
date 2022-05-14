@@ -2,30 +2,6 @@ package leetcode
 
 object ArrayProblems extends App {
 
-  //https://leetcode.com/problems/reshape-the-matrix/
-  //assumption: every row is equally sized
-  //t: O(n)
-  //s: O(n); new array has to be built
-  def matrixReshape(mat: Array[Array[Int]], r: Int, c: Int): Array[Array[Int]] = {
-    if (mat.length > 0 && mat.length * mat(0).length == r * c) {
-      
-      val n = mat.head.size
-      val x = for (x <- 0 until r) yield for (y <- 0 until c) yield {
-        val index = (c * x) + y 
-        println(s"$index => (${index / n}, ${index % n})")
-        mat(index / n)( index % n)
-      }
-      x.map(_.toArray).toArray
-    } else mat
-  }
-
-  //https://leetcode.com/problems/convert-1d-array-into-2d-array/
-  def construct2DArray(original: Array[Int], r: Int, c: Int): Array[Array[Int]] = {
-    if (r * c == original.length) {
-      //((for (i <- 0 until r) yield for (ci <- 0 until c) yield (original(ci + (i * c)))).map(_.toArray)).toArray
-      Array.tabulate(r, c)((x, y) => original(x * c + y))
-    } else Array.empty
-  }
 
   //https://leetcode.com/problems/contains-duplicate/
   def containsDuplicate(nums: Array[Int]): Boolean = {
@@ -38,31 +14,7 @@ object ArrayProblems extends App {
     hasDupes(nums, i = 0, Set.empty[Int])
   }
 
-  //https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
-  /*
-      => track min element and profit
-         newMin = min (curMin, currentElement)
-         newProfit = max (curProfit, currentElement - newMin)
 
-      t: O(n)
-      s: O(1)
-
-      => In a way this is application of Kadane's algorithm.
-         Prices will never be negative which is same as max sum subarray with all positives.
-         In this case, differential price gives negatives which is passed through kadanes' algorithm
-      val differentialPrice = prices.sliding(2).toList.map(array => array(1)- array(0))
-      kadaneAlgo(differentialPrice)
-   */
-  def maxProfit(prices: Array[Int]): Int = {
-    val rMin        = Int.MaxValue
-    val rProfit     = 0
-    val (_, profit) = prices.foldLeft((rMin, rProfit)) { case ((rMin, rProfit), e) =>
-      val newMin    = math.min(rMin, e)
-      val newProfit = math.max(rProfit, e - newMin)
-      (newMin, newProfit)
-    }
-    profit
-  }
 
   // https://leetcode.com/problems/intersection-of-two-arrays-ii/
   def intersect(nums1: Array[Int], nums2: Array[Int]): Array[Int] = {
