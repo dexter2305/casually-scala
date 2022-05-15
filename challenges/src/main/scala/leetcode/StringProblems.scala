@@ -2,7 +2,7 @@ package leetcode
 
 object StringProblems extends App {
 
-  println(s"${firstUniqChar("aabbcc")}")
+  println(s"${canConstruct("a", "b")}")
 
   //https://leetcode.com/problems/first-unique-character-in-a-string/
   //2 pass approach
@@ -15,5 +15,18 @@ object StringProblems extends App {
       frequency
     }
     s.indexWhere(ch => frequency(ch - 'a') == 1)
+  }
+
+  //https://leetcode.com/problems/ransom-note/
+  def canConstruct(ransomNote: String, magazine: String): Boolean = {
+    val frequency: Array[Int] = magazine.foldLeft(Array.ofDim[Int](26)) { (frequency, char) =>
+      frequency(char - 'a') += 1
+      frequency
+    }
+    // check if there exists a char in ransomNote that does not exist frequency
+    !ransomNote.exists { char =>
+      frequency(char - 'a') = frequency(char - 'a') - 1
+      frequency(char - 'a') < 0
+    }
   }
 }
