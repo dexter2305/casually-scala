@@ -17,6 +17,8 @@ object LinkedListProblems extends App {
   minusOne.next = one
   println(s"${showList(removeElements(minusOne, 2))}")
 
+  println(s"${showList(reverseList(oneToFour))}")
+
   object hasCycle {
     //Definition for singly-linked list.
     class ListNode(var _x: Int = 0) {
@@ -77,11 +79,27 @@ object LinkedListProblems extends App {
       }
     }
 
+    // https://leetcode.com/problems/remove-linked-list-elements/
     def removeElements(head: ListNode, `val`: Int): ListNode = {
       if (head == null) null
       else if (head.x == `val`) removeElements(head.next, `val`)
       else {
         head.next = removeElements(head.next, `val`)
+        head
+      }
+    }
+
+    /*
+      1 -> 2 -> 3 -> 4 -> null
+     */
+    // https://leetcode.com/problems/reverse-linked-list/
+    def reverseList(cur: ListNode): ListNode = {
+      if (cur == null || cur.next == null) cur
+      // returns 4
+      else {
+        val head = reverseList(cur.next)
+        cur.next.next = cur
+        cur.next = null
         head
       }
     }

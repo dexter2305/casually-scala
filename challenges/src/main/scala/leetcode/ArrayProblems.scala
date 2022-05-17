@@ -2,7 +2,6 @@ package leetcode
 
 object ArrayProblems extends App {
 
-
   //https://leetcode.com/problems/contains-duplicate/
   def containsDuplicate(nums: Array[Int]): Boolean = {
     @scala.annotation.tailrec
@@ -13,8 +12,6 @@ object ArrayProblems extends App {
     }
     hasDupes(nums, i = 0, Set.empty[Int])
   }
-
-
 
   // https://leetcode.com/problems/intersection-of-two-arrays-ii/
   def intersect(nums1: Array[Int], nums2: Array[Int]): Array[Int] = {
@@ -69,5 +66,15 @@ object ArrayProblems extends App {
       }
     }
     sortMerge(nums1, nums2, m - 1, n - 1, (m + n - 1))
+  }
+
+  //https://leetcode.com/problems/missing-number/
+  def missingNumber(nums: Array[Int]): Int = {
+    if (nums.length == nums.max) {
+      val (max, sum) = nums.tail.foldLeft(( nums.head, nums.head)) { case ((max, sum), e) =>
+        ( math.max(max, e), sum + e)
+      }
+      ((max + 1)* max / 2 ) - sum
+    } else nums.length
   }
 }
