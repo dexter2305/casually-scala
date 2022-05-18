@@ -71,10 +71,10 @@ object ArrayProblems extends App {
   //https://leetcode.com/problems/missing-number/
   def missingNumber(nums: Array[Int]): Int = {
     if (nums.length == nums.max) {
-      val (max, sum) = nums.tail.foldLeft(( nums.head, nums.head)) { case ((max, sum), e) =>
-        ( math.max(max, e), sum + e)
+      val (max, sum) = nums.tail.foldLeft((nums.head, nums.head)) { case ((max, sum), e) =>
+        (math.max(max, e), sum + e)
       }
-      ((max + 1)* max / 2 ) - sum
+      ((max + 1) * max / 2) - sum
     } else nums.length
   }
 }

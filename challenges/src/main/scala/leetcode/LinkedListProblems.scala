@@ -5,19 +5,18 @@ object LinkedListProblems extends App {
   import mergeTwoList._
   val one   = new ListNode(1)
   val three = new ListNode(3)
-  one.next = three
   val two   = new ListNode(2)
   val four  = new ListNode(4)
-  two.next = four
-
-  val oneToFour = mergeTwoLists(one, two)
-  println(s">> ${showList(oneToFour)}")
-
-  val minusOne = new ListNode(-1)
-  minusOne.next = one
-  println(s"${showList(removeElements(minusOne, 2))}")
-
-  println(s"${showList(reverseList(oneToFour))}")
+  val a1    = new ListNode(1)
+  val a2    = new ListNode(1)
+  val a4    = new ListNode(4)
+  one.next = a1
+  a1.next = a2
+  a2.next = two
+  two.next = three
+  three.next = four
+  four.next = a4
+  println(s"${showList(deleteDuplicates(one))}")
 
   object hasCycle {
     //Definition for singly-linked list.
@@ -101,6 +100,26 @@ object LinkedListProblems extends App {
         cur.next.next = cur
         cur.next = null
         head
+      }
+    }
+
+    def deleteDuplicates(head: ListNode): ListNode = {
+      def loop(left: ListNode, right: ListNode): Unit = {
+        (left, right) match {
+          case (left, right) if right == null     =>
+            left.next = null
+            ()
+          case (left, right) if left.x == right.x => loop(left, right.next)
+          case (left, right) if left.x < right.x  =>
+            left.next = right
+            loop(right, right.next)
+        }
+      }
+      head match {
+        case null => head
+        case _    =>
+          loop(head, head.next)
+          head
       }
     }
   }

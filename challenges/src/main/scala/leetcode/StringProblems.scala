@@ -29,4 +29,12 @@ object StringProblems extends App {
       frequency(char - 'a') < 0
     }
   }
+
+  //https://leetcode.com/problems/number-of-different-integers-in-a-string/
+  //"a123b456bcd" = 2
+  def numDifferentIntegers(word: String): Int = {
+    val r = "[0-9]+".r
+    r.findAllIn(word).toList.toSet.size
+  }
+
 }
