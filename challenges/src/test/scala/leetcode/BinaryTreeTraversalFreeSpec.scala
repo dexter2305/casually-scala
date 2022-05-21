@@ -71,4 +71,8 @@ class BinaryTreeTraversalFreeSpec extends AnyFreeSpec with Matchers {
     "when tree is left only" in { postorderTraversal(leftOnlyTree) should be(List(4, 3, 2, 1, 0)) }
     "when tree is right only" in { postorderTraversal(rightOnlyTree) should be(List(4, 3, 2, 1, 0)) }
   }
+  "Level order traversal" - {
+    "when tree is null" in { levelOrder(null) should be(List.empty) }
+    "when tree has one node" in {levelOrder(new TreeNode(1)) should be (List(List(1)))}
+  }
 }
