@@ -68,14 +68,46 @@ object BinaryTreeTraversal extends App {
             case (v, (l, r))       => (v, List(l, r))
           }
           //println(s"${aggregation.mkString(" ")}")
-          val (currentValues, nextLevels)              = aggregation.foldLeft((List.empty[Int], List.empty[TreeNode])) { case (acc, element) =>
-            (acc._1 :+ element._1, acc._2 ::: element._2)
-          }
+          val (currentValues, nextLevels)              = aggregation
+            .foldLeft((List.empty[Int], List.empty[TreeNode])) { case ((valueAcc, nodeAcc), element) =>
+              (valueAcc :+ element._1, nodeAcc ::: element._2)
+            }
 
           go(nextLevels, acc.appended(currentValues))
       }
     }
 
     go(List(root), List.empty)
+  }
+
+  //https://leetcode.com/problems/maximum-depth-of-binary-tree/
+  def maxDepth(root: TreeNode): Int = {
+    def loop(levelNodes: List[TreeNode], acc: Int): Int = {
+
+      if (levelNodes.isEmpty) acc
+      else {
+        val nextLevel =
+          levelNodes
+            .filter(node => node.left != null || node.right != null)
+            .flatMap(node => List(node.left, node.right))
+            .filter(_ != null)
+        loop(nextLevel, acc + 1)
+      }
+    }
+
+    if (root == null) 0 else loop(List(root), -1)
+  }
+
+  //https://leetcode.com/problems/symmetric-tree/
+  def isSymmetric(root: TreeNode): Boolean = {
+    def loop(left: TreeNode, right: TreeNode): Boolean = {
+      (left, right) match {
+        case (null, null) => true
+        case (null, r)    => false
+        case (l, null)    => false
+        case (l, r)       => l.value == r.value && loop(l.left, r.right) && loop(l.right, r.left)
+      }
+    }
+    loop(root.left, root.right)
   }
 }
