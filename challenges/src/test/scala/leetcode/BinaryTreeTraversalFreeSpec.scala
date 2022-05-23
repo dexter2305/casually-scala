@@ -1,7 +1,7 @@
 package leetcode
 
 import org.scalatest.freespec.AnyFreeSpec
-import leetcode.BinaryTreeTraversal._
+import leetcode.BinaryTree._
 import org.scalatest.matchers.should.Matchers
 import data._
 
@@ -49,7 +49,7 @@ object data {
   }
 }
 
-class BinaryTreeTraversalFreeSpec extends AnyFreeSpec with Matchers {
+class BinaryTreeFreeSpec extends AnyFreeSpec with Matchers {
   "Preorder traversal" - {
     "when tree is empty" in { preorderTraversal(emptyTree) shouldBe (List.empty[Int]) }
     "when tree has only root node" in { preorderTraversal(treeWithOnlyRoot) shouldBe List(treeWithOnlyRoot.value) }

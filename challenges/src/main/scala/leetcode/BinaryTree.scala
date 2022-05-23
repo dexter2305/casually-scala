@@ -1,6 +1,6 @@
 package leetcode
 
-object BinaryTreeTraversal extends App {
+object BinaryTree extends App {
 
   val three   = new TreeNode(3)
   val nine    = new TreeNode(9)
@@ -12,8 +12,12 @@ object BinaryTreeTraversal extends App {
   twenty.left = fifteen
   twenty.right = seven
 
-  levelOrder(null)
+  //levelOrder(null)
   //levelOrder(three)
+
+  //invertTree(three)
+
+
 
   class TreeNode(_value: Int = 0, _left: TreeNode = null, _right: TreeNode = null) {
     var value: Int                  = _value
@@ -109,5 +113,28 @@ object BinaryTreeTraversal extends App {
       }
     }
     loop(root.left, root.right)
+  }
+
+  //https://leetcode.com/problems/path-sum/
+  def hasPathSum(root: TreeNode, targetSum: Int): Boolean = {
+    if (root == null) false
+    else
+      (root.left, root.right) match {
+        case (null, null)  => root.value == targetSum
+        case (null, node)  => hasPathSum(node, targetSum - root.value)
+        case (node, null)  => hasPathSum(node, targetSum - root.value)
+        case (left, right) => hasPathSum(left, targetSum - root.value) || hasPathSum(right, targetSum - root.value)
+      }
+  }
+
+  //https://leetcode.com/problems/invert-binary-tree/
+  def invertTree(root: TreeNode): TreeNode = {
+    if (root == null) null
+    else {
+      val currentRight = root.right
+      root.right = invertTree(root.left)
+      root.left = invertTree(currentRight)
+      root
+    }
   }
 }
