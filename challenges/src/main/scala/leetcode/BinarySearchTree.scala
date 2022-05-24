@@ -15,7 +15,7 @@ object BinarySearchTree extends App {
     if (root == null) null
     else
       root.value match {
-        case value          => root
+        case `value`          => root
         case x if value < x => searchBST(root.left, value)
         case x if value > x => searchBST(root.right, value)
       }
