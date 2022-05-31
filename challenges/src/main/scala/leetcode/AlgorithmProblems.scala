@@ -3,8 +3,12 @@ package leetcode
 object AlgorithmProblems extends App {
 
   //println(s"${search(Array(1, 2, 3, 4), 0)}")
-  println(firstBadVersion(90))
+  //println(firstBadVersion(90))
+  val array = Array(1, 2)
+  rotate(array, 2)
+  println(array.mkString(" "))
 
+  //https://leetcode.com/problems/binary-search/
   def search(nums: Array[Int], target: Int): Int = {
     @scala.annotation.tailrec
     def searchBinary(left: Int, right: Int): Int = {
@@ -20,6 +24,7 @@ object AlgorithmProblems extends App {
     searchBinary(0, nums.length - 1)
   }
 
+  //https://leetcode.com/problems/squares-of-a-sorted-array/
   def sortedSquares(nums: Array[Int]): Array[Int] = {
     @scala.annotation.tailrec
     def helper(left: Int, right: Int, acc: List[Int]): List[Int] = {
@@ -35,6 +40,7 @@ object AlgorithmProblems extends App {
 
   def isBadVersion(version: Int): Boolean = version >= 4
 
+  //https://leetcode.com/problems/first-bad-version/
   def firstBadVersion(n: Int): Int = {
     @scala.annotation.tailrec
     def binarySearch(left: Int, right: Int): Int = {
@@ -47,6 +53,48 @@ object AlgorithmProblems extends App {
 
     }
     binarySearch(0, n)
+  }
+
+  //https://leetcode.com/problems/rotate-array/
+  def rotate(nums: Array[Int], k: Int): Unit = {
+
+    val d = if (k > nums.length) k % nums.length else k
+
+    @scala.annotation.tailrec
+    def reverse(l: Int, r: Int): Unit = {
+      if (l < r) {
+        val x = nums(l)
+        nums(l) = nums(r)
+        nums(r) = x
+        reverse(l + 1, r - 1)
+      }
+    }
+    // reverse the complete array
+    reverse(0, nums.length - 1)
+    // reverse only the first segment
+    reverse(0, d - 1)
+    // reverse only the second segement
+    reverse(d, nums.length - 1)
+
+  }
+
+  //https://leetcode.com/problems/reverse-string/
+  def reverseString(s: Array[Char]): Unit = {
+    @scala.annotation.tailrec
+    def reverse(s: Array[Char], l: Int, r: Int): Unit = {
+      if (l < r) {
+        val t = s(l)
+        s(l) = s(r)
+        s(r) = t
+        reverse(s, l + 1, r - 1)
+      }
+    }
+    reverse(s, 0, s.length - 1)
+  }
+
+  //https://leetcode.com/problems/reverse-words-in-a-string-iii/
+  def reverseWords(s: String): String = {
+    s.split(" ").map(_.reverse).mkString
   }
 
 }
