@@ -55,6 +55,7 @@ object LinkedListProblems extends App {
     class ListNode(_x: Int = 0, _next: ListNode = null) {
       var next: ListNode = _next
       var x: Int         = _x
+      override def toString(): String = s"$x -> $next"
     }
     def showNode(node: ListNode): String = if (node != null) node.x.toString else "NULL"
     def showList(node: ListNode): String = {
@@ -122,5 +123,26 @@ object LinkedListProblems extends App {
           head
       }
     }
+
+    //https://leetcode.com/problems/middle-of-the-linked-list/
+    def middleNode(head: ListNode): ListNode = {
+
+      @scala.annotation.tailrec
+      def traverse(slow: ListNode, fast: ListNode): ListNode = {
+        Option(fast) match {
+          case None                      => slow.next
+          case Some(x) if x.next == null => slow.next
+          case _                         => traverse(slow.next, fast.next.next)
+        }
+      }
+
+      Option(head) match {
+        case None                            => head
+        case Some(node) if node.next == null => node
+        case _                               => traverse(head, head.next.next)
+      }
+
+    }
   }
+
 }

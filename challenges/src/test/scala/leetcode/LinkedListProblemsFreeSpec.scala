@@ -8,7 +8,7 @@ class LinkedListProblemsFreeSpec extends AnyFreeSpec with Matchers {
   "HasCycle" - {
     "has no loop" - {
       "when length == 0" in {
-        hasCycle(null) should be (false)
+        hasCycle(null) should be(false)
       }
       "when length == 1" in {
         val one = new ListNode(1)
@@ -17,7 +17,7 @@ class LinkedListProblemsFreeSpec extends AnyFreeSpec with Matchers {
       "when list ends with null" in {
         val one = new ListNode(1)
         val two = new ListNode(2)
-        one.next = two 
+        one.next = two
         hasCycle(one) shouldBe false
       }
     }
@@ -31,7 +31,7 @@ class LinkedListProblemsFreeSpec extends AnyFreeSpec with Matchers {
         two.next = thr
         thr.next = fou
         fou.next = thr
-        hasCycle(one) should be (true)
+        hasCycle(one) should be(true)
       }
       "with list with odd number of elements" in {
         val one = new ListNode(1)
@@ -40,9 +40,8 @@ class LinkedListProblemsFreeSpec extends AnyFreeSpec with Matchers {
         one.next = two
         two.next = thr
         thr.next = one
-        hasCycle(one) should be (true)
-      }      
+        hasCycle(one) should be(true)
+      }
     }
-
   }
 }
