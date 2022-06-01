@@ -54,6 +54,53 @@ class AlgorithmProblemsFreeSpec extends AnyFreeSpec with Matchers {
       val a = Array(1, 2)
       rotate(a, 6)
       a should be(Array(1, 2))
-    }    
+    }
+  }
+
+  "Move zeroes" - {
+    "when array array size > 1" - {
+      "array has no zero" in {
+        val input = Array(1, 2, 3, 4, 5)
+        moveZeroes(input)
+        input should be(Array(1, 2, 3, 4, 5))
+      }
+      "array has only zeroes" in {
+        val input = Array(0, 0, 0, 0)
+        moveZeroes(input)
+        input should be(Array(0, 0, 0, 0))
+      }
+      "array has a single 0" in {
+        val input = Array(1, 0, 2, 3)
+        moveZeroes(input)
+        input should be(Array(1, 2, 3, 0))
+      }
+      "array has multiple zeroes together" in {
+        val input = Array(1, 0, 0, 0, 0, 2)
+        moveZeroes(input)
+        input should be(Array(1, 2, 0, 0, 0, 0))
+      }
+      "array has distributed zeroes" in {
+        val input = Array(1, 0, 2, 0, 3)
+        moveZeroes(input)
+        input should be(Array(1, 2, 3, 0, 0))
+      }
+      "array has leading zero" in {
+        val input = Array(0, 0, 0, 1)
+        moveZeroes(input)
+        input should be(Array(1, 0, 0, 0))
+      }
+    }
+    "when array size == 1" - {
+      "only element is non-zero" in {
+        val input = Array(10)
+        moveZeroes(input)
+        input should be (Array(10))
+      }
+      "only element is a zero" in {
+        val input = Array(0)
+        moveZeroes(input)
+        input should be (Array(0))
+      }
+    }
   }
 }

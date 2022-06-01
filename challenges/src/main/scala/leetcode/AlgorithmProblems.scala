@@ -1,5 +1,7 @@
 package leetcode
 
+import scala.annotation.tailrec
+
 object AlgorithmProblems extends App {
 
   //println(s"${search(Array(1, 2, 3, 4), 0)}")
@@ -95,6 +97,39 @@ object AlgorithmProblems extends App {
   //https://leetcode.com/problems/reverse-words-in-a-string-iii/
   def reverseWords(s: String): String = {
     s.split(" ").map(_.reverse).mkString
+  }
+
+  //https://leetcode.com/problems/search-insert-position/
+  def searchInsert(nums: Array[Int], target: Int): Int = {
+
+    @scala.annotation.tailrec
+    def loop(left: Int, right: Int): Int = left + (right - left) / 2 match {
+      case mid if left > right        => left
+      case mid if nums(mid) == target => mid
+      case mid if nums(mid) < target  => loop(mid + 1, right)
+      case mid if nums(mid) > target  => loop(0, mid - 1)
+    }
+    loop(0, nums.length - 1)
+    loop(0, nums.length - 1)
+  }
+
+  //https://leetcode.com/problems/move-zeroes/
+  def moveZeroes(nums: Array[Int]): Unit = {
+
+    @scala.annotation.tailrec
+    def move(left: Int, right: Int): Unit = {
+      if (left < nums.length && right < nums.length) {
+        (nums(left), nums(right)) match {
+          case (x, _) if x != 0 => move(left + 1, right + 1)
+          case (0, 0)           => move(left, right + 1)
+          case (0, y) if y != 0 =>
+            nums(left) = y
+            nums(right) = 0
+            move(left + 1, right + 1)
+        }
+      }
+    }
+    move(0, 0)
   }
 
 }
