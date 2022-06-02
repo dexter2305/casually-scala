@@ -6,7 +6,7 @@ object MatrixProblems extends App {
   println(searchMatrix(matrix, 16))
 
   //https://leetcode.com/problems/search-a-2d-matrix/
-  //2d array accessing nth element: array(n / colCount)(n % colCount) 
+  //2d array accessing nth element: array(n / colCount)(n % colCount)
   def searchMatrix(matrix: Array[Array[Int]], target: Int): Boolean = {
     val rowCount = matrix.length
     val colCount = matrix.head.size
@@ -50,6 +50,15 @@ object MatrixProblems extends App {
       //((for (i <- 0 until r) yield for (ci <- 0 until c) yield (original(ci + (i * c)))).map(_.toArray)).toArray
       Array.tabulate(r, c)((x, y) => original(x * c + y))
     } else Array.empty
+  }
+
+  def transpose(matrix: Array[Array[Int]]): Array[Array[Int]] = {
+    val rowCount = matrix.size
+    val colCount = matrix.head.size
+
+    (for (r <- 0 until colCount) yield for (c <- 0 until rowCount) yield (matrix(c)(r)))
+      .map(_.toArray)
+      .toArray
   }
 
 }

@@ -61,4 +61,20 @@ class MatrixProblemsSpec extends AnyFreeSpec with Matchers {
 
     }
   }
+
+  "matrix transpose" - {
+    "matrix: 3 x 3" in {
+      MatrixProblems.transpose(Array(Array(1, 2, 3), Array(4, 5, 6), Array(7, 8, 9))) shouldBe (
+        Array(
+          Array(1, 4, 7),
+          Array(2, 5, 8),
+          Array(3, 6, 9),
+        ),
+      )
+    }
+    "matrix: 1 x 3" in {
+      MatrixProblems.transpose(Array(Array(1,2,3))) should be (Array(Array(1), Array(2), Array(3)))
+    }
+  }
+
 }

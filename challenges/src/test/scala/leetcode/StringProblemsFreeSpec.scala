@@ -5,7 +5,7 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatest.propspec.AnyPropSpec
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 
-class StringProblemsSpec extends AnyFreeSpec with Matchers {
+class StringProblemsFreeSpec extends AnyFreeSpec with Matchers {
 
   "First Uniq Char" - {
     "return -1" - {

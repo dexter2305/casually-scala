@@ -6,11 +6,16 @@ ThisBuild / scalaVersion     := "2.13.7"
 ThisBuild / version          := "0.1.0"
 ThisBuild / organization     := "l8.io"
 ThisBuild / organizationName := "l8"
-ThisBuild / scalacOptions    := scalacCustomOptions
+ThisBuild / scalacOptions    := customScalacOptions
+ThisBuild / testOptions      := customTestOptions
 
-lazy val scalacCustomOptions = Seq(
+lazy val customScalacOptions = Seq(
   "-deprecation",
   //"-Ypartial-unification"
+)
+
+lazy val customTestOptions = Seq (
+  Tests.Argument(TestFrameworks.ScalaTest, "-oSD")
 )
 
 lazy val root = (project in file("."))
