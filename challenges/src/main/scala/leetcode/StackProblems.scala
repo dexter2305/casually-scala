@@ -39,7 +39,7 @@ object StackProblems extends App {
       for (_ <- 0 until data.size - 1) {
         data.enqueue(data.dequeue())
       }
-      println(s"$data")
+      //println(s"$data")
     }
 
     def pop(): Int = data.dequeue()
