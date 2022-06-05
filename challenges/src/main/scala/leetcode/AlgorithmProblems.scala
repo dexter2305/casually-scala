@@ -132,4 +132,11 @@ object AlgorithmProblems extends App {
     move(0, 0)
   }
 
+  //https://leetcode.com/problems/power-of-two/
+  def isPowerOfTwo(n: Int): Boolean = n match {
+        case 0 => false
+        case 1 => true
+        case n => n % 2 == 0 && isPowerOfTwo(n / 2)
+  }
+
 }
