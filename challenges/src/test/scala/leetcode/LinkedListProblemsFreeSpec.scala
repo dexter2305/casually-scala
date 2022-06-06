@@ -3,6 +3,7 @@ package leetcode
 import org.scalatest.freespec.AnyFreeSpec
 import LinkedListProblems.hasCycle._
 import org.scalatest.matchers.should.Matchers
+import scala.annotation.compileTimeOnly
 class LinkedListProblemsFreeSpec extends AnyFreeSpec with Matchers {
 
   "HasCycle" - {
@@ -44,4 +45,31 @@ class LinkedListProblemsFreeSpec extends AnyFreeSpec with Matchers {
       }
     }
   }
+
+  "Intersection of Two Linked Lists" - {
+    "with intersecting arrays" - {
+      "intersect at the end" in {
+        val common = new ListNode(100)
+        val one1 = new ListNode(1)
+        val two1 = new ListNode(2)
+        val thr1 = new ListNode(3)
+        one1.next = two1
+        two1.next = thr1
+        thr1.next = common
+        
+        val one = new ListNode(1)
+        val two = new ListNode(2)
+        val thr = new ListNode(3)
+        one.next = two
+        two.next = thr
+        thr.next = common
+
+        LinkedListProblems.hasCycle.getIntersectionNode(one, one1) should be (common)
+        
+
+
+      }
+    }
+  }
+
 }

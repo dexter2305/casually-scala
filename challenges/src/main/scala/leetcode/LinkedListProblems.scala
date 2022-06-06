@@ -48,6 +48,25 @@ object LinkedListProblems extends App {
       if (head == null) false
       else race(head, head.next)
     }
+
+    //https://leetcode.com/problems/intersection-of-two-linked-lists/
+    def getIntersectionNode(headA: ListNode, headB: ListNode): ListNode = {
+      // keep moving next until there is one intersecting node - two lists always meet at null, finally
+      // keep swapping heads between p1 and p2 until the intersecting node is reached which could be null at the end.
+
+      def loop(a: ListNode, b: ListNode, headA: ListNode = headA, headB: ListNode = headB): Option[ListNode] = (a, b) match {
+        case (null, null)     => None
+        case (a, null)        => loop(a.next, headA)
+        case (null, b)        => loop(headB, b.next)
+        case (a, b) if a == b => Some(a)
+        case (a, b)           => loop(a.next, b.next)
+      }
+      loop(headA, headB) match {
+        case Some(x) => x
+        case None    => null
+      }
+    }
+
   }
 
   object mergeTwoList {
@@ -144,5 +163,4 @@ object LinkedListProblems extends App {
 
     }
   }
-
 }
