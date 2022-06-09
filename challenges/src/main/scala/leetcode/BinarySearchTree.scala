@@ -3,9 +3,10 @@ package leetcode
 object BinarySearchTree extends App {
 
   class TreeNode(_value: Int = 0, _left: TreeNode = null, _right: TreeNode = null) {
-    var value: Int      = _value
-    var left: TreeNode  = _left
-    var right: TreeNode = _right
+    var value: Int                  = _value
+    var left: TreeNode              = _left
+    var right: TreeNode             = _right
+    override def toString(): String = s"$value"
   }
 
   //https://leetcode.com/problems/search-in-a-binary-search-tree/
@@ -15,7 +16,7 @@ object BinarySearchTree extends App {
     if (root == null) null
     else
       root.value match {
-        case `value`          => root
+        case `value`        => root
         case x if value < x => searchBST(root.left, value)
         case x if value > x => searchBST(root.right, value)
       }
@@ -33,4 +34,43 @@ object BinarySearchTree extends App {
         root
     }
   }
+
+  def isValidBST(root: TreeNode): Boolean = {
+
+    def validate(oNode: Option[TreeNode], oLow: Option[Int], oHigh: Option[Int]): Boolean = oNode match {
+      case None       => true
+      case Some(node) =>
+        println(s"evaluating ${node.value} in range [$oLow -> $oHigh]")
+        (oLow, oHigh) match {
+
+          case (None, None)            =>
+            validate(Option(node.left), oLow, Option(node.value)) &&
+              validate(Option(node.right), Option(node.value), oHigh)
+          case (None, Some(high))      =>
+            node.value < high &&
+              validate(Option(node.left), oLow, Option(node.value)) &&
+              validate(Option(node.right), Option(node.value), oHigh)
+          case (Some(low), None)       =>
+            low < node.value &&
+              validate(Option(node.left), oLow, Option(node.value)) &&
+              validate(Option(node.right), Option(node.value), oHigh)
+          case (Some(low), Some(high)) =>
+            low < node.value && node.value < high &&
+            validate(Option(node.left), oLow, Option(node.value)) &&
+            validate(Option(node.right), Option(node.value), oHigh)
+        }
+    }
+
+    validate(Option(root), None, None)
+
+  }
+
+  val nodes = (0 to 7).map(new TreeNode(_))
+  nodes(6).left = nodes(3)
+  nodes(6).right = nodes(7)
+  nodes(5).left = nodes(4)
+  nodes(5).right = nodes(6)
+  val root  = nodes(5)
+  isValidBST(root)
+
 }

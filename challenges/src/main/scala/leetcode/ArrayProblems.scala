@@ -17,7 +17,14 @@ object ArrayProblems extends App {
   def intersect(nums1: Array[Int], nums2: Array[Int]): Array[Int] = {
 
     @scala.annotation.tailrec
-    def aux(nums1: Array[Int], nums2: Array[Int], i: Int, j: Int, acc: Array[Int], k: Int): Array[Int] = {
+    def aux(
+        nums1: Array[Int],
+        nums2: Array[Int],
+        i: Int,
+        j: Int,
+        acc: Array[Int],
+        k: Int
+      ): Array[Int] = {
       if (i == nums1.length || j == nums2.length) acc
       else if (nums1(i) < nums2(j)) aux(nums1, nums2, i + 1, j, acc, k)
       else if (nums1(i) > nums2(j)) aux(nums1, nums2, i, j + 1, acc, k)
@@ -42,7 +49,13 @@ object ArrayProblems extends App {
   def merge(nums1: Array[Int], m: Int, nums2: Array[Int], n: Int): Unit = {
 
     @scala.annotation.tailrec
-    def sortMerge(left: Array[Int], right: Array[Int], l: Int, r: Int, ri: Int): Array[Int] = {
+    def sortMerge(
+        left: Array[Int],
+        right: Array[Int],
+        l: Int,
+        r: Int,
+        ri: Int
+      ): Array[Int] = {
       //println(s"${left.mkString(" ")} | ${right.mkString(" ")}")
       (l, r) match {
         //right underflow means left had smaller elements than right
@@ -53,7 +66,7 @@ object ArrayProblems extends App {
             left(i) = right(i)
           }
           left
-        case _               =>
+        case _ =>
           if (right(r) >= left(l)) {
             left(ri) = right(r)
             right(r) = 0
@@ -71,10 +84,25 @@ object ArrayProblems extends App {
   //https://leetcode.com/problems/missing-number/
   def missingNumber(nums: Array[Int]): Int = {
     if (nums.length == nums.max) {
-      val (max, sum) = nums.tail.foldLeft((nums.head, nums.head)) { case ((max, sum), e) =>
-        (math.max(max, e), sum + e)
+      val (max, sum) = nums.tail.foldLeft((nums.head, nums.head)) {
+        case ((max, sum), e) =>
+          (math.max(max, e), sum + e)
       }
       ((max + 1) * max / 2) - sum
     } else nums.length
+  }
+
+  //https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+  def twoSum(numbers: Array[Int], target: Int): Array[Int] = {
+
+    @scala.annotation.tailrec
+    def _twoSum(numbers: Array[Int], l: Int, r: Int): Array[Int] = {
+      (numbers(l), numbers(r)) match {
+        case (x, y) if x + y == target => Array(l + 1, r + 1)
+        case (x, y) if x + y < target  => _twoSum(numbers, l + 1, r)
+        case (x, y) if x + y > target  => _twoSum(numbers, l, r - 1)
+      }
+    }
+    _twoSum(numbers, 0, numbers.length - 1)
   }
 }
