@@ -134,9 +134,17 @@ object AlgorithmProblems extends App {
 
   //https://leetcode.com/problems/power-of-two/
   def isPowerOfTwo(n: Int): Boolean = n match {
-        case 0 => false
-        case 1 => true
-        case n => n % 2 == 0 && isPowerOfTwo(n / 2)
+    case 0 => false
+    case 1 => true
+    case n => n % 2 == 0 && isPowerOfTwo(n / 2)
   }
+
+  //https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/
+  def countOdds(low: Int, high: Int): Int = (low, high) match{
+    //even is balanced odd & even :-)
+    case (l, r) if (l % 2 == 0) && (r % 2 == 0) => (r - l) / 2
+    //odd is 1 + even
+    case (l, r) => (r - l) / 2 + 1
+}
 
 }

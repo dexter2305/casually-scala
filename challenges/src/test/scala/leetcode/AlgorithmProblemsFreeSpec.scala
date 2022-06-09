@@ -103,4 +103,10 @@ class AlgorithmProblemsFreeSpec extends AnyFreeSpec with Matchers {
       }
     }
   }
+
+  "Count of odds" - {
+    "should be 3 in 3-7" in {
+      countOdds(3, 7) shouldBe 3
+    }
+  }
 }

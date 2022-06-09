@@ -8,6 +8,7 @@ ThisBuild / organization     := "l8.io"
 ThisBuild / organizationName := "l8"
 ThisBuild / scalacOptions    := customScalacOptions
 ThisBuild / testOptions      := customTestOptions
+ThisBuild / watchBeforeCommand := Watch.clearScreen
 
 lazy val customScalacOptions = Seq(
   "-deprecation",
