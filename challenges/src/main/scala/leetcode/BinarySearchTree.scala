@@ -12,14 +12,15 @@ object BinarySearchTree extends App {
   //https://leetcode.com/problems/search-in-a-binary-search-tree/
   @scala.annotation.tailrec
   def searchBST(root: TreeNode, value: Int): TreeNode = {
-
-    if (root == null) null
-    else
-      root.value match {
-        case `value`        => root
-        case x if value < x => searchBST(root.left, value)
-        case x if value > x => searchBST(root.right, value)
-      }
+    Option(root) match {
+      case None       => null
+      case Some(node) =>
+        node.value match {
+          case x if value == x => node
+          case x if value < x  => searchBST(node.left, value)
+          case x if value > x  => searchBST(node.right, value)
+        }
+    }
   }
 
   //https://leetcode.com/problems/insert-into-a-binary-search-tree/
@@ -56,8 +57,8 @@ object BinarySearchTree extends App {
               validate(Option(node.right), Option(node.value), oHigh)
           case (Some(low), Some(high)) =>
             low < node.value && node.value < high &&
-            validate(Option(node.left), oLow, Option(node.value)) &&
-            validate(Option(node.right), Option(node.value), oHigh)
+              validate(Option(node.left), oLow, Option(node.value)) &&
+              validate(Option(node.right), Option(node.value), oHigh)
         }
     }
 
