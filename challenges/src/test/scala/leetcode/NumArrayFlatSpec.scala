@@ -1,10 +1,10 @@
 package leetcode
 
 import org.scalatest.matchers.should.Matchers
+import basetypes.UnitTest
 import leetcode.PrefixSumProblems._
-import org.scalatest.flatspec.AnyFlatSpec
 
-class NumArrayFlatSpec extends AnyFlatSpec with Matchers {
+class NumArrayFlatSpec extends UnitTest {
 
   val sourceArray = Array(0, 1, 2, 3, 4, 5)
   val obj         = new NumArray(sourceArray)

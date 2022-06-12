@@ -4,7 +4,7 @@ import org.scalatest.freespec.AnyFreeSpec
 import org.scalatest.matchers.should.Matchers
 
 import leetcode.AlgorithmProblems._
-
+import basetypes._
 class AlgorithmProblemsFreeSpec extends AnyFreeSpec with Matchers {
 
   "Binary search" - {
@@ -109,4 +109,5 @@ class AlgorithmProblemsFreeSpec extends AnyFreeSpec with Matchers {
       countOdds(3, 7) shouldBe 3
     }
   }
+
 }
