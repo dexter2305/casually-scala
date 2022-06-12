@@ -33,8 +33,20 @@ object StringProblems extends App {
   //https://leetcode.com/problems/number-of-different-integers-in-a-string/
   //"a123b456bcd" = 2
   def numDifferentIntegers(word: String): Int = {
-      val r = "[0-9]+".r
-      r.findAllIn(word).toList.map(_.toIntOption).toSet.size 
+    val r = "[0-9]+".r
+    r.findAllIn(word).toList.map(_.toIntOption).toSet.size
   }
+
+  //https://leetcode.com/problems/maximum-number-of-words-found-in-sentences/
+  def mostWordsFound(sentences: Array[String]): Int =
+    Option(sentences) match {
+      case None            => 0
+      case Some(sentences) =>
+        val max = sentences.foldLeft(0) { case (max, sentence) =>
+          val length = sentence.split(" ").size
+          if (length > max) length else max
+        }
+        max
+    }
 
 }
