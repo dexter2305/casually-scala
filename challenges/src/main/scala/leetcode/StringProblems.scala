@@ -49,4 +49,19 @@ object StringProblems extends App {
         max
     }
 
+  //https://leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/
+  def freqAlphabets(s: String): String = {
+
+    def helper(p: Int, acc: String): String =
+      if (p < 0) acc
+      else {
+        s(p) match {
+          case '#'   => ???
+          case digitAsString => helper(p - 1, acc + (digitAsString.toInt + 96).toChar)
+        }
+      }
+
+    helper(s.length() - 1, "")
+  }
+  println(freqAlphabets("1"))
 }

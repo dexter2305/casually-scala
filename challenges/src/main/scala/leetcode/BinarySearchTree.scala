@@ -66,12 +66,9 @@ object BinarySearchTree extends App {
 
   }
 
-  val nodes = (0 to 7).map(new TreeNode(_))
-  nodes(6).left = nodes(3)
-  nodes(6).right = nodes(7)
-  nodes(5).left = nodes(4)
-  nodes(5).right = nodes(6)
-  val root  = nodes(5)
-  isValidBST(root)
+  //https://leetcode.com/explore/learn/card/introduction-to-data-structure-binary-search-tree/141/basic-operations-in-a-bst/1006/
+  def deleteNode(root: TreeNode, key: Int): TreeNode = {
+    ???
+  }
 
 }
