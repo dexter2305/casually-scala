@@ -7,7 +7,7 @@ import org.eclipse.jetty.server.Server
 import org.slf4j.Logger
 import scala.io.StdIn
 import scribe.Level
-import javax.xml.ws.WebFault
+
 
 object Main extends App {
 

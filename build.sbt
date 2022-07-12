@@ -29,7 +29,7 @@ lazy val `hello-slick` = (project in file("hello-slick"))
   .settings(
     name := "hello-slick3",
     libraryDependencies ++= Seq(
-      slick3,
+      slick,
       slick_hikari_cp,
       postgres,
       h2,

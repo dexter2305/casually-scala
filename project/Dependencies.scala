@@ -13,7 +13,7 @@ object Dependencies {
   lazy val slf4j_scribe = "com.outr" %% "scribe-slf4j" % Version.Slf4jScribeVersion
 
   // slick3
-  lazy val slick3          = "com.typesafe.slick" %% "slick"          % Version.SlickVersion
+  lazy val slick          = "com.typesafe.slick" %% "slick"          % Version.SlickVersion
   lazy val slick_hikari_cp = "com.typesafe.slick" %% "slick-hikaricp" % Version.SlickVersion
 
   //postgres driver

@@ -56,12 +56,16 @@ object StringProblems extends App {
       if (p < 0) acc
       else {
         s(p) match {
-          case '#'   => ???
+          case '#'           => ???
           case digitAsString => helper(p - 1, acc + (digitAsString.toInt + 96).toChar)
         }
       }
 
     helper(s.length() - 1, "")
+  }
+  //
+  def sortSentence(s: String): String = {
+    
   }
   println(freqAlphabets("1"))
 }
