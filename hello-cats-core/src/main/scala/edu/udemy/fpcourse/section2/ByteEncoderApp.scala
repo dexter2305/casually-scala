@@ -1,4 +1,4 @@
-package edu.udemy.fpcourse.v1
+package edu.udemy.fpcourse.section2
 
 /**
  * NOTE: Implement type-classes Use case: Represent types are byte array eg; String, Int, Switch(case class)
