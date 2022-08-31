@@ -1,3 +1,4 @@
+package underscore
 import cats.Show
 object B_CatsShow extends App {
 

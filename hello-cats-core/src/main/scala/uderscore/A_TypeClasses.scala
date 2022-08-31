@@ -1,4 +1,4 @@
-package uderscore
+package underscore
 
 object A_TypeClasses extends App {
 
