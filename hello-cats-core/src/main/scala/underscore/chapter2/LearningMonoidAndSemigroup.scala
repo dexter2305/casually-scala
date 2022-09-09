@@ -1,4 +1,4 @@
-package uderscore.chapter2
+package undersscore.chapter2
 
 object LearningMonoidAndSemigroup extends App {
 

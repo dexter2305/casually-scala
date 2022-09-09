@@ -1,4 +1,4 @@
-package uderscore.chapter1
+package undersscore.chapter1
 import cats.Show
 import cats.syntax.show._
 object CatsShowApp extends App {

@@ -1,4 +1,4 @@
-package uderscore.chapter1
+package undersscore.chapter1
 
 import cats.Eq
 object CatsEqApp extends App {

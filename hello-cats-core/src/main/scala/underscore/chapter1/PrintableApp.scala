@@ -1,4 +1,4 @@
-package uderscore.chapter1
+package undersscore.chapter1
 
 object PrintableApp extends App {
 
