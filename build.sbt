@@ -53,9 +53,9 @@ lazy val `hello-scalatra` = (project in file("hello-scalatra"))
   )
   .enablePlugins(JettyPlugin)
 
-lazy val `udemy-advanced-scala` = (project in file("udemy-advanced-scala"))
+lazy val `udemy-rtjvm-advanced-scala` = (project in file("udemy-rtjvm-advanced-scala"))
   .settings(
-    name := "udemy-advanced-scala",
+    name := "udemy-rtjvm-advanced-scala",
     libraryDependencies ++= Seq(
     ),
   )
