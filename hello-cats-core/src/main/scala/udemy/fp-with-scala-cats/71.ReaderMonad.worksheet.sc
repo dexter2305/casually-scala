@@ -86,7 +86,7 @@ def findOwnerNameByAccountId(accountId: Int): Reader[PersonRepository with Accou
     person  = personModule.personRepository.findById(account.ownerid)
   } yield person.name
 
-def openAccount(accountId: Int, ownerId: Int) =
+def openAccount(accountId: Int, ownerId: Int): Reader[PersonRepository with AccountRepository with EmailService, Account] =
   for {
     personModule  <- Reader(identity[PersonRepository])
     accountModule <- Reader(identity[AccountRepository])
