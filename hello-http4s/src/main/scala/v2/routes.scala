@@ -6,7 +6,7 @@ import cats.implicits._
 import org.http4s.server.Router
 
 object routes {
-  import userroutes._
+  import userroute._
 
   def allRoutes[F[_]: Concurrent] = Router {
     "/" -> userRoutes[F]

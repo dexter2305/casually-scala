@@ -13,7 +13,7 @@ import org.http4s.EntityDecoder
 import io.circe.Decoder
 import io.circe.HCursor
 
-object userroutes {
+object userroute {
 
   @deprecated("prefer using consolidated routes under routes.allRoutes")
   def allRoutesComplete[F[_]: Concurrent] = userRoutes[F].orNotFound
