@@ -11,9 +11,10 @@ object Dependencies {
   //slf4j
   lazy val slf4j_api    = "org.slf4j" % "slf4j-api"    % Version.Slf4jApiVersion
   lazy val slf4j_scribe = "com.outr" %% "scribe-slf4j" % Version.Slf4jScribeVersion
+  lazy val logback_classic = "ch.qos.logback" % "logback-classic" % Version.LogbackClassicVersion
 
   // slick3
-  lazy val slick          = "com.typesafe.slick" %% "slick"          % Version.SlickVersion
+  lazy val slick           = "com.typesafe.slick" %% "slick"          % Version.SlickVersion
   lazy val slick_hikari_cp = "com.typesafe.slick" %% "slick-hikaricp" % Version.SlickVersion
 
   //postgres driver
@@ -48,6 +49,9 @@ object Dependencies {
   lazy val tapir_json_circe               = "com.softwaremill.sttp.tapir" %% "tapir-json-circe"    % Version.TapirVersion
   lazy val tapir_http4sServer_interpreter = "com.softwaremill.sttp.tapir" %% "tapir-http4s-server" % Version.TapirVersion
 
+  lazy val log4cats_core = "org.typelevel" %% "log4cats-core"  % Version.Log4catsVersion
+  lazy val log4cats_slfj = "org.typelevel" %% "log4cats-slf4j" % Version.Log4catsVersion
+
   object Version {
     val SlickVersion          = "3.3.3"
     val CatsCoreVersion       = "2.7.0"
@@ -67,5 +71,7 @@ object Dependencies {
     val PureConfigVersion     = "0.17.1"
     val ScalatestVersion      = "3.2.9"
     val ScalatestPlusVersion  = "3.2.9.0"
+    val Log4catsVersion       = "2.5.0"
+    val LogbackClassicVersion = "1.2.10"
   }
 }

@@ -128,6 +128,14 @@ lazy val `hello-fs2` = (project in file("hello-fs2"))
       cats_effect withJavadoc,
     ),
   )
+lazy val `hello-log4cats` = (project in file("hello-log4cats")).settings(
+  name := "hello-log4cats",
+  libraryDependencies ++= Seq(
+    cats_effect,
+    log4cats_slfj withJavadoc, 
+    logback_classic
+  )
+) 
 
 lazy val `udemy-scala-essentials` = (project in file("udemy-scala-essentials"))
   .settings(
