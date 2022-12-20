@@ -9,8 +9,8 @@ object Dependencies {
   lazy val pureconfig = "com.github.pureconfig" %% "pureconfig" % Version.PureConfigVersion
 
   //slf4j
-  lazy val slf4j_api    = "org.slf4j" % "slf4j-api"    % Version.Slf4jApiVersion
-  lazy val slf4j_scribe = "com.outr" %% "scribe-slf4j" % Version.Slf4jScribeVersion
+  lazy val slf4j_api       = "org.slf4j"      % "slf4j-api"       % Version.Slf4jApiVersion
+  lazy val slf4j_scribe    = "com.outr"      %% "scribe-slf4j"    % Version.Slf4jScribeVersion
   lazy val logback_classic = "ch.qos.logback" % "logback-classic" % Version.LogbackClassicVersion
 
   // slick3
@@ -41,6 +41,7 @@ object Dependencies {
   lazy val fs2_core = "co.fs2" %% "fs2-core" % Version.FS2Version
   lazy val fs2_io   = "co.fs2" %% "fs2-io"   % Version.FS2Version
 
+  lazy val circe_core    = "io.circe" %% "circe-core"    % Version.CirceVersion
   lazy val circe_generic = "io.circe" %% "circe-generic" % Version.CirceVersion
   lazy val circe_parser  = "io.circe" %% "circe-parser"  % Version.CirceVersion
   lazy val circe_literal = "io.circe" %% "circe-literal" % Version.CirceVersion

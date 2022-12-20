@@ -127,6 +127,8 @@ object Http4sTutorial extends IOApp {
     val dsl                                                   = Http4sDsl[F]
     import dsl._
     implicit val directorDecorder: EntityDecoder[F, Director] = jsonOf[F, Director]
+    
+    
     HttpRoutes.of[F] {
 
       case GET -> Root / "directors" / DirectorPathExtractor(director) =>
@@ -134,17 +136,22 @@ object Http4sTutorial extends IOApp {
           case None                => NotFound(s"Director '$director' not found.")
           case Some(directorValue) => Ok(directorValue.asJson)
         }
+
+
       case GET -> Root / "directors"                                   => {
         println(s"invoked get directors")
         Ok(directorDb.keySet.map(_.toString()).asJson)
       }
+
+
       case req @ POST -> Root / "directors"                            =>
         for {
           director <- req.as[Director]
-          _ = IO.consoleForIO.println(s"received $director")
+          // _ = IO.consoleForIO.println(s"received $director")
           res <- Ok()
         } yield res
     }
+    
   }
 
   def allRoutes[F[_]: Concurrent]: HttpRoutes[F] = movieRoutes[F] <+> directorRoutes[F]

@@ -2,12 +2,12 @@ import Dependencies._
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
-ThisBuild / scalaVersion     := "2.13.7"
-ThisBuild / version          := "0.1.0"
-ThisBuild / organization     := "l8.io"
-ThisBuild / organizationName := "l8"
-ThisBuild / scalacOptions    := customScalacOptions
-ThisBuild / testOptions      := customTestOptions
+ThisBuild / scalaVersion       := "2.13.7"
+ThisBuild / version            := "0.1.0"
+ThisBuild / organization       := "l8.io"
+ThisBuild / organizationName   := "l8"
+ThisBuild / scalacOptions      := customScalacOptions
+ThisBuild / testOptions        := customTestOptions
 ThisBuild / watchBeforeCommand := Watch.clearScreen
 
 lazy val customScalacOptions = Seq(
@@ -15,8 +15,8 @@ lazy val customScalacOptions = Seq(
   //"-Ypartial-unification"
 )
 
-lazy val customTestOptions = Seq (
-  Tests.Argument(TestFrameworks.ScalaTest, "-oSD")
+lazy val customTestOptions = Seq(
+  Tests.Argument(TestFrameworks.ScalaTest, "-oSD"),
 )
 
 lazy val root = (project in file("."))
@@ -92,8 +92,6 @@ lazy val `hello-cats-core` = (project in file("hello-cats-core"))
     ),
   )
 
-  
-  
 lazy val `hello-http4s-twirl` = (project in file("hello-https-twirl"))
   .settings(
     name := "hello-http4s-twirl",
@@ -119,7 +117,7 @@ lazy val challenges = (project in file("challenges"))
     ),
   )
 
-lazy val `hello-fs2` = (project in file("hello-fs2"))
+lazy val `hello-fs2`      = (project in file("hello-fs2"))
   .settings(
     name := "hello-fs2",
     libraryDependencies ++= Seq(
@@ -128,16 +126,27 @@ lazy val `hello-fs2` = (project in file("hello-fs2"))
       cats_effect withJavadoc,
     ),
   )
-lazy val `hello-log4cats` = (project in file("hello-log4cats")).settings(
-  name := "hello-log4cats",
-  libraryDependencies ++= Seq(
-    cats_effect,
-    log4cats_slfj withJavadoc, 
-    logback_classic
+lazy val `hello-log4cats` = (project in file("hello-log4cats"))
+  .settings(
+    name := "hello-log4cats",
+    libraryDependencies ++= Seq(
+      cats_effect,
+      log4cats_slfj withJavadoc,
+      logback_classic,
+    ),
   )
-) 
+
+lazy val `hello-circe` = (project in file("hello-circe"))
+  .settings(
+    name := "hello-circe",
+    libraryDependencies ++= Seq(
+      circe_core withJavadoc(),
+      circe_generic withJavadoc(),
+      circe_parser withJavadoc,
+    ),
+  )
 
 lazy val `udemy-scala-essentials` = (project in file("udemy-scala-essentials"))
   .settings(
     name := "udemy-scala-essentials",
-  ) 
+  )
