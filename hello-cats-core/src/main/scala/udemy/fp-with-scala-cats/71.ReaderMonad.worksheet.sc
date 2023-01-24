@@ -24,18 +24,14 @@ case class Account(id: Int, ownerid: Int)
 trait PersonRepository {
 
   val personRepository: Service
-
   trait Service {
     def findById(id: Int): Person
-
   }
-
 }
 
 trait AccountRepository {
 
   val accountRepository: Service
-
   trait Service {
     def findById(id: Int): Account
     def save(account: Account): Unit
@@ -45,7 +41,6 @@ trait AccountRepository {
 trait EmailService {
 
   val emailService: Service
-
   trait Service {
     def sendEmail(address: String, text: String): Unit
   }
@@ -55,19 +50,14 @@ trait EmailService {
 trait LivePersonRepository extends PersonRepository {
 
   override val personRepository: Service = new Service {
-
     override def findById(id: Int): Person = Person(100, "Dexter", "dexter@udemy.com")
-
   }
 }
 
 trait LiveAccountRepository extends AccountRepository {
   override val accountRepository: Service = new Service {
-
     override def save(account: Account): Unit = println(s"Account $account saved.")
-
     override def findById(id: Int): Account = Account(1, 100)
-
   }
 }
 
@@ -103,4 +93,4 @@ type Env = PersonRepository with AccountRepository with EmailService
 val liveEnv: Env = new LivePersonRepository with LiveAccountRepository with LiveEmailService
 
 findOwnerNameByAccountId(100).run(liveEnv)
-openAccount(200, 1).run(liveEnv)
+val x = openAccount(200, 1).run(liveEnv)

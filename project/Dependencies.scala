@@ -5,6 +5,10 @@ object Dependencies {
   lazy val scalatest     = "org.scalatest"     %% "scalatest"       % Version.ScalatestVersion
   lazy val scalatestplus = "org.scalatestplus" %% "scalacheck-1-15" % Version.ScalatestPlusVersion
 
+  //specs2
+  lazy val specs2 = "org.specs2" %% "specs2-core" % "4.13.0" 
+
+
   //pureconfig
   lazy val pureconfig = "com.github.pureconfig" %% "pureconfig" % Version.PureConfigVersion
 
@@ -53,6 +57,10 @@ object Dependencies {
   lazy val log4cats_core = "org.typelevel" %% "log4cats-core"  % Version.Log4catsVersion
   lazy val log4cats_slfj = "org.typelevel" %% "log4cats-slf4j" % Version.Log4catsVersion
 
+  lazy val doobie_core   = "org.tpolecat" %% "doobie-core"     % Version.DoobieVersion
+  lazy val doobie_hikari = "org.tpolecat" %% "doobie-hikari"   % Version.DoobieVersion
+  lazy val doobie_pg     = "org.tpolecat" %% "doobie-postgres" % Version.DoobieVersion
+
   object Version {
     val SlickVersion          = "3.3.3"
     val CatsCoreVersion       = "2.7.0"
@@ -74,5 +82,7 @@ object Dependencies {
     val ScalatestPlusVersion  = "3.2.9.0"
     val Log4catsVersion       = "2.5.0"
     val LogbackClassicVersion = "1.2.10"
+    val DoobieVersion         = "1.0.0-RC1"
+    val Specs2Version          = "5.2.0"
   }
 }

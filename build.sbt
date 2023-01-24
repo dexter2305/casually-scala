@@ -150,3 +150,22 @@ lazy val `udemy-scala-essentials` = (project in file("udemy-scala-essentials"))
   .settings(
     name := "udemy-scala-essentials",
   )
+
+
+lazy val `hello-doobie` = (project in file("hello-doobie"))
+  .settings(
+    name := "hello-doobie",
+    libraryDependencies ++= Seq (
+      doobie_core, 
+      doobie_hikari,
+      doobie_pg
+    )
+  )
+
+lazy val `hello-specs2` = (project in file("hello-specs2"))
+  .settings(
+    name := "hello-specs2",
+    libraryDependencies ++= Seq (
+      specs2
+    )
+  )
