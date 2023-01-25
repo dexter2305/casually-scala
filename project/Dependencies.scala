@@ -6,8 +6,7 @@ object Dependencies {
   lazy val scalatestplus = "org.scalatestplus" %% "scalacheck-1-15" % Version.ScalatestPlusVersion
 
   //specs2
-  lazy val specs2 = "org.specs2" %% "specs2-core" % "4.13.0" 
-
+  lazy val specs2 = "org.specs2" %% "specs2-core" % "4.13.0"
 
   //pureconfig
   lazy val pureconfig = "com.github.pureconfig" %% "pureconfig" % Version.PureConfigVersion
@@ -50,12 +49,13 @@ object Dependencies {
   lazy val circe_parser  = "io.circe" %% "circe-parser"  % Version.CirceVersion
   lazy val circe_literal = "io.circe" %% "circe-literal" % Version.CirceVersion
 
-  lazy val tapir_core                     = "com.softwaremill.sttp.tapir" %% "tapir-core"          % Version.TapirVersion
-  lazy val tapir_json_circe               = "com.softwaremill.sttp.tapir" %% "tapir-json-circe"    % Version.TapirVersion
-  lazy val tapir_http4sServer_interpreter = "com.softwaremill.sttp.tapir" %% "tapir-http4s-server" % Version.TapirVersion
+  lazy val tapir_core                     = "com.softwaremill.sttp.tapir" %% "tapir-core"              % Version.TapirVersion
+  lazy val tapir_json_circe               = "com.softwaremill.sttp.tapir" %% "tapir-json-circe"        % Version.TapirVersion
+  lazy val tapir_http4sServer_interpreter = "com.softwaremill.sttp.tapir" %% "tapir-http4s-server"     % Version.TapirVersion
+  lazy val tapir_swagger_ui_bundle        = "com.softwaremill.sttp.tapir" %% "tapir-swagger-ui-bundle" % Version.TapirVersion
 
-  lazy val log4cats_core = "org.typelevel" %% "log4cats-core"  % Version.Log4catsVersion
-  lazy val log4cats_slfj = "org.typelevel" %% "log4cats-slf4j" % Version.Log4catsVersion
+  lazy val log4cats_core                  = "org.typelevel"               %% "log4cats-core"           % Version.Log4catsVersion
+  lazy val log4cats_slfj                  = "org.typelevel"               %% "log4cats-slf4j"          % Version.Log4catsVersion
 
   lazy val doobie_core   = "org.tpolecat" %% "doobie-core"     % Version.DoobieVersion
   lazy val doobie_hikari = "org.tpolecat" %% "doobie-hikari"   % Version.DoobieVersion
@@ -68,7 +68,7 @@ object Dependencies {
     val FS2Version            = "3.2.4"
     val ScalatraVersion       = "2.7.0"
     val Http4sVersion         = "0.23.7"
-    val TapirVersion          = "0.19.3"
+    val TapirVersion          = "1.2.6"
     val CirceVersion          = "0.14.1"
     val Json4sJacksonVersion  = "3.5.5"
     val ServletApiVersion     = "3.1.0"
@@ -83,6 +83,6 @@ object Dependencies {
     val Log4catsVersion       = "2.5.0"
     val LogbackClassicVersion = "1.2.10"
     val DoobieVersion         = "1.0.0-RC1"
-    val Specs2Version          = "5.2.0"
+    val Specs2Version         = "5.2.0"
   }
 }

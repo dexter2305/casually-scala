@@ -169,3 +169,18 @@ lazy val `hello-specs2` = (project in file("hello-specs2"))
       specs2
     )
   )
+
+lazy val `hello-tapir`  = (project in file("hello-tapir"))
+  .settings(
+    libraryDependencies ++= Seq(
+      cats_core,
+      cats_effect,
+      tapir_core,
+      tapir_http4sServer_interpreter,
+      tapir_json_circe,
+      tapir_swagger_ui_bundle,
+      circe_generic,
+      http4s_blaze_server,
+      logback_classic
+    )
+  )
