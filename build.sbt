@@ -184,3 +184,14 @@ lazy val `hello-tapir`  = (project in file("hello-tapir"))
       logback_classic
     )
   )
+
+  lazy val `hello-quill` = (project in file("hello-quill"))
+  .settings(
+    libraryDependencies ++= Seq(
+      quill_jdbc withJavadoc(),
+      //quill_async withJavadoc(), 
+      postgres,
+      logback_classic
+    )
+  )
+    

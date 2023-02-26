@@ -1,0 +1,13 @@
+version: "3.5"
+services: 
+  pg11:
+    image: postgres:11
+    volumes:
+      - ./world.sql:/docker-entrypoint-initdb.d/world.sql
+    environment:
+      # POSTGRES_DB: world
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+    ports:
+    - published: 5432
+      target: 5432      

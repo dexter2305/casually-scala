@@ -54,12 +54,15 @@ object Dependencies {
   lazy val tapir_http4sServer_interpreter = "com.softwaremill.sttp.tapir" %% "tapir-http4s-server"     % Version.TapirVersion
   lazy val tapir_swagger_ui_bundle        = "com.softwaremill.sttp.tapir" %% "tapir-swagger-ui-bundle" % Version.TapirVersion
 
-  lazy val log4cats_core                  = "org.typelevel"               %% "log4cats-core"           % Version.Log4catsVersion
-  lazy val log4cats_slfj                  = "org.typelevel"               %% "log4cats-slf4j"          % Version.Log4catsVersion
+  lazy val log4cats_core = "org.typelevel" %% "log4cats-core"  % Version.Log4catsVersion
+  lazy val log4cats_slfj = "org.typelevel" %% "log4cats-slf4j" % Version.Log4catsVersion
 
   lazy val doobie_core   = "org.tpolecat" %% "doobie-core"     % Version.DoobieVersion
   lazy val doobie_hikari = "org.tpolecat" %% "doobie-hikari"   % Version.DoobieVersion
   lazy val doobie_pg     = "org.tpolecat" %% "doobie-postgres" % Version.DoobieVersion
+
+  lazy val quill_jdbc  = "io.getquill" %% "quill-jdbc"  % Version.QuillVersion
+  lazy val quill_async = "io.getquill" %% "quill-async" % Version.QuillVersion
 
   object Version {
     val SlickVersion          = "3.3.3"
@@ -84,5 +87,6 @@ object Dependencies {
     val LogbackClassicVersion = "1.2.10"
     val DoobieVersion         = "1.0.0-RC1"
     val Specs2Version         = "5.2.0"
+    val QuillVersion          = "3.12.0"
   }
 }
