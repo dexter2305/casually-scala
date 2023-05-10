@@ -2,7 +2,7 @@ package leetcode
 
 
 import org.scalatest.wordspec.AnyWordSpec
-import org.scalatest.matchers.should.Matchers
+import org.scalatest.matchers.must.Matchers
 
 class SampleWordSpec extends AnyWordSpec with Matchers {
 
@@ -15,15 +15,15 @@ class SampleWordSpec extends AnyWordSpec with Matchers {
     "empty" should { // All tests within these curly braces are about "A Set (when empty)"
 
       "have size 0" in {            // Here, 'it' refers to "A Set (when empty)". The full name
-        set.size shouldBe 0 // of this test is: "A Set (when empty) should have size 0"
+        set.size mustBe 0 // of this test is: "A Set (when empty) should have size 0"
       }
       "produce NoSuchElementException when head is invoked" in { // Define another test
         intercept[NoSuchElementException] {
           set.head
         }
       }
-      "should be empty" ignore { // To ignore a test, change 'it' to 'ignore'...
-        set.isEmpty shouldBe true
+      "must be empty" ignore { // To ignore a test, change 'it' to 'ignore'...
+        set.isEmpty mustBe true
       }
     }
 

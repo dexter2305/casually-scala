@@ -4,7 +4,7 @@
 ## Properties of effect
   - describe the type of computation to be performed
   - describe the type of VALUE returned by the computation
-  - construction of effect should be separated from execution of effect
+  - construction of effect must be separated from execution of effect
 
 
 Monads/Properties | Type of computation  | Type of return value | Construction & Execution decoupled

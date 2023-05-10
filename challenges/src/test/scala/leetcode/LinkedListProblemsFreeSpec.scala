@@ -2,24 +2,24 @@ package leetcode
 
 import org.scalatest.freespec.AnyFreeSpec
 import LinkedListProblems.hasCycle._
-import org.scalatest.matchers.should.Matchers
+import org.scalatest.matchers.must.Matchers
 import scala.annotation.compileTimeOnly
 class LinkedListProblemsFreeSpec extends AnyFreeSpec with Matchers {
 
   "HasCycle" - {
     "has no loop" - {
       "when length == 0" in {
-        hasCycle(null) should be(false)
+        hasCycle(null) must be(false)
       }
       "when length == 1" in {
         val one = new ListNode(1)
-        hasCycle(one) shouldBe false
+        hasCycle(one) mustBe false
       }
       "when list ends with null" in {
         val one = new ListNode(1)
         val two = new ListNode(2)
         one.next = two
-        hasCycle(one) shouldBe false
+        hasCycle(one) mustBe false
       }
     }
     "has loop" - {
@@ -32,7 +32,7 @@ class LinkedListProblemsFreeSpec extends AnyFreeSpec with Matchers {
         two.next = thr
         thr.next = fou
         fou.next = thr
-        hasCycle(one) should be(true)
+        hasCycle(one) must be(true)
       }
       "with list with odd number of elements" in {
         val one = new ListNode(1)
@@ -41,7 +41,7 @@ class LinkedListProblemsFreeSpec extends AnyFreeSpec with Matchers {
         one.next = two
         two.next = thr
         thr.next = one
-        hasCycle(one) should be(true)
+        hasCycle(one) must be(true)
       }
     }
   }
@@ -64,7 +64,7 @@ class LinkedListProblemsFreeSpec extends AnyFreeSpec with Matchers {
         two.next = thr
         thr.next = common
 
-        LinkedListProblems.hasCycle.getIntersectionNode(one, one1) should be (common)
+        LinkedListProblems.hasCycle.getIntersectionNode(one, one1) must be (common)
         
 
 

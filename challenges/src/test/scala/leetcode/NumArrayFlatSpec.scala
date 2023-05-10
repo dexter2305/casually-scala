@@ -1,6 +1,6 @@
 package leetcode
 
-import org.scalatest.matchers.should.Matchers
+
 import basetypes.UnitTest
 import leetcode.PrefixSumProblems._
 
@@ -10,21 +10,21 @@ class NumArrayFlatSpec extends UnitTest {
   val obj         = new NumArray(sourceArray)
 
   "Array (1,2,3,4)" should "be valid for range: full length" in {
-    obj.sumRange(0, sourceArray.length - 1) shouldBe sourceArray.sum
+    obj.sumRange(0, sourceArray.length - 1) mustBe sourceArray.sum
   }
 
   it should "be valid for range: sub array from start" in {
-    obj.sumRange(0, 2) shouldBe 3
+    obj.sumRange(0, 2) mustBe 3
   }
 
   it should "be valid for range: sub array at end" in {
-    obj.sumRange(3, 5) should be(12)
+    obj.sumRange(3, 5) must be(12)
   }
   it should "be valid for range: sub array in middle" in {
-    obj.sumRange(1, 4) shouldBe 10
+    obj.sumRange(1, 4) mustBe 10
   }
   it should "be valid for range: sub array has 1 element" in {
-    obj.sumRange(0, 0) should be(sourceArray.head)
+    obj.sumRange(0, 0) must be(sourceArray.head)
 
   }
 }

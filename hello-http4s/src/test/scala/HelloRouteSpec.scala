@@ -1,6 +1,6 @@
 import org.scalatest.propspec.AnyPropSpec
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import org.scalatest.matchers.should.Matchers
+import org.scalatest.matchers.must.Matchers
 import org.http4s.Request
 import org.http4s.Method
 import org.http4s.Uri
@@ -20,8 +20,8 @@ class HelloRouteSpec extends AnyPropSpec with Matchers with ScalaCheckPropertyCh
       {
         val hello: Request[IO]     = Request(Method.GET, Uri.unsafeFromString("/hello"))
         val response: Response[IO] = helloRoutes[IO]().orNotFound.run(hello).unsafeRunSync()
-        response.status.code should be(200)
-        response.as[String].unsafeRunSync() should be("Welcome")
+        response.status.code must be(200)
+        response.as[String].unsafeRunSync() must be("Welcome")
       }
     }
   }
@@ -30,8 +30,8 @@ class HelloRouteSpec extends AnyPropSpec with Matchers with ScalaCheckPropertyCh
       {
         val request: Request[IO]   = Request(Method.GET, Uri.unsafeFromString(s"/hello/${Uri.pathEncode(name)}"))
         val response: Response[IO] = helloRoutes[IO]().orNotFound.run(request).unsafeRunSync()
-        response.status.code should be(200)
-        response.as[String].unsafeRunSync() should be(s"Hello $name")
+        response.status.code must be(200)
+        response.as[String].unsafeRunSync() must be(s"Hello $name")
       }
     }
   }

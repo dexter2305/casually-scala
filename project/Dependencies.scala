@@ -5,9 +5,6 @@ object Dependencies {
   lazy val scalatest     = "org.scalatest"     %% "scalatest"       % Version.ScalatestVersion
   lazy val scalatestplus = "org.scalatestplus" %% "scalacheck-1-15" % Version.ScalatestPlusVersion
 
-  //specs2
-  lazy val specs2 = "org.specs2" %% "specs2-core" % "4.13.0"
-
   //pureconfig
   lazy val pureconfig = "com.github.pureconfig" %% "pureconfig" % Version.PureConfigVersion
 
@@ -86,7 +83,6 @@ object Dependencies {
     val Log4catsVersion       = "2.5.0"
     val LogbackClassicVersion = "1.2.10"
     val DoobieVersion         = "1.0.0-RC1"
-    val Specs2Version         = "5.2.0"
     val QuillVersion          = "3.12.0"
   }
 }

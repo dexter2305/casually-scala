@@ -48,8 +48,8 @@ object ListDemo extends App {
 
   val ints = new Cons(1, new Cons(2, new Cons(3, Empty)))
   println(ints.toString())
-  println(assert(ints.head == 1), "head should be 1")
-  println(assert(ints.isEmpty == false), "ints should be empty")
+  println(assert(ints.head == 1), "head must be 1")
+  println(assert(ints.isEmpty == false), "ints must be empty")
 
   // MyList is a fixed ONLY to INT. 
 

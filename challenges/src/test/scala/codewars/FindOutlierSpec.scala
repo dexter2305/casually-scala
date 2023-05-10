@@ -2,7 +2,7 @@ package codewars
 
 import org.scalatest.propspec.AnyPropSpec
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import org.scalatest.matchers.should.Matchers
+import org.scalatest.matchers.must.Matchers
 import org.scalacheck.Gen
 import org.scalactic.anyvals.PosInt
 
@@ -14,12 +14,12 @@ class FindOutlierSpec extends AnyPropSpec with ScalaCheckPropertyChecks with Mat
   override def minSuccessful(value: PosInt): MinSuccessful = MinSuccessful(5000)
   property("odd outlier in even list") {
     forAll(evenGenerator) { evens: List[Int] =>
-      Kyu6.findOutlier(5 :: evens) should be(5)
+      Kyu6.findOutlier(5 :: evens) must be(5)
     }
   }
   property("even outlier in odd list") {
     forAll(oddGenerator) { evens: List[Int] =>
-      Kyu6.findOutlier(4 :: evens) should be(4)
+      Kyu6.findOutlier(4 :: evens) must be(4)
     }
   }
 }

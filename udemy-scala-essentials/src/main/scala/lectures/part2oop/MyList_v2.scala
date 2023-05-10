@@ -50,7 +50,7 @@ object ListDemo extends App {
   val strings: MyList[String] = new Cons("helo ", new Cons(" generics", Empty))
   println(ints.toString())
   println(strings.toString())
-  println(assert(ints.head == 1), "head should be 1")
-  println(assert(ints.isEmpty == false), "ints should be empty")
+  println(assert(ints.head == 1), "head must be 1")
+  println(assert(ints.isEmpty == false), "ints must be empty")
 
 }

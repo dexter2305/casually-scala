@@ -1,7 +1,7 @@
 package leetcode
 
 import org.scalatest.wordspec.AnyWordSpec
-import org.scalatest.matchers.should.Matchers
+import org.scalatest.matchers.must.Matchers
 
 class BSTIteratorWordSpec extends AnyWordSpec with Matchers {
 
@@ -9,9 +9,9 @@ class BSTIteratorWordSpec extends AnyWordSpec with Matchers {
     val node = new TreeNode(100)
     val it   = new BSTIterator(node)
     "tree with ONLY one node" should {
-      "first hasNext() should be true" in { it.hasNext() shouldBe true }
-      "next() should return values set in node" in { it.next() shouldBe node.value }
-      "following hasNext() should be false" in { it.hasNext() shouldBe false }
+      "first hasNext() must be true" in { it.hasNext() mustBe true }
+      "next() should return values set in node" in { it.next() mustBe node.value }
+      "following hasNext() must be false" in { it.hasNext() mustBe false }
 
     }
   }
@@ -34,7 +34,7 @@ class BSTIteratorWordSpec extends AnyWordSpec with Matchers {
           } else acc
 
         val bit = new BSTIterator(root)
-        get(bit, List.empty[Int]) shouldBe List(3, 7, 9, 15, 20)
+        get(bit, List.empty[Int]) mustBe List(3, 7, 9, 15, 20)
 
       }
     }

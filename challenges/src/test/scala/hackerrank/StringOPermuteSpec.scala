@@ -2,7 +2,7 @@ package hackerrank
 
 import org.scalatest.propspec.AnyPropSpec
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import org.scalatest.matchers.should.Matchers
+import org.scalatest.matchers.must.Matchers
 import org.scalacheck.Gen
 import org.scalactic.anyvals.PosInt
 
@@ -23,8 +23,8 @@ class StringOPermuteSpec extends AnyPropSpec with ScalaCheckPropertyChecks with 
     forAll((evenLengthStringGen, "string")) { s: String =>
       if (s.isEmpty) {
         println("*** empty string ")
-        StringOPermute.stringOPermute(s) should be(s)
-      } else StringOPermute.stringOPermute(s).length() should be(s.length())
+        StringOPermute.stringOPermute(s) must be(s)
+      } else StringOPermute.stringOPermute(s).length() must be(s.length())
     }
   }
 
@@ -32,7 +32,7 @@ class StringOPermuteSpec extends AnyPropSpec with ScalaCheckPropertyChecks with 
     forAll((evenLengthStringGen, "string")) { s =>
       val permuted  = StringOPermute.stringOPermute(s)
       val expectedS = StringOPermute.stringOPermute(permuted)
-      expectedS should be(s)
+      expectedS must be(s)
     }
   }
 }

@@ -2,5 +2,5 @@ object WelcomeService {
 
   def welcome: String = "Welcome"
 
-  def welcome(name: String) = s"${welcome}, name"
+  def welcome(name: String): String = s"${welcome}, name"
 }

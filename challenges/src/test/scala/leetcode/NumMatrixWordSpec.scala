@@ -1,7 +1,7 @@
 package leetcode
 
 import org.scalatest.wordspec.AnyWordSpec
-import org.scalatest.matchers.should.Matchers
+import org.scalatest.matchers.must.Matchers
 import leetcode.PrefixSumProblems._
 class NumMatrixWordSpec extends AnyWordSpec with Matchers {
 
@@ -21,10 +21,10 @@ class NumMatrixWordSpec extends AnyWordSpec with Matchers {
     val dp        = o.matrixPrefixSumWithLeadingZeroes()
 
     s"$whenTitle" should {
-      "have row 0 =>  0   0   0    0" in { dp(0) shouldBe Array(0, 0, 0, 0) }
-      "have row 1 =>  0  10  30   60" in { dp(1) shouldBe Array(0, 10, 30, 60) }
-      "have row 2 =>  0  15  45   95" in { dp(2) shouldBe Array(0, 15, 45, 95) }
-      "have row 3 =>  0  17  51  107" in { dp(3) shouldBe Array(0, 17, 51, 107) }
+      "have row 0 =>  0   0   0    0" in { dp(0) mustBe Array(0, 0, 0, 0) }
+      "have row 1 =>  0  10  30   60" in { dp(1) mustBe Array(0, 10, 30, 60) }
+      "have row 2 =>  0  15  45   95" in { dp(2) mustBe Array(0, 15, 45, 95) }
+      "have row 3 =>  0  17  51  107" in { dp(3) mustBe Array(0, 17, 51, 107) }
     }
 
     "Range Sum Query - 2D immutable" when {
@@ -39,7 +39,7 @@ class NumMatrixWordSpec extends AnyWordSpec with Matchers {
       val matrixAsString = sourceArray.map(_.mkString(" | ")).mkString("\n")
       val title          = s"matrix: 5 x 5 \n$matrixAsString"
       s"$title" should {
-        "return 8 for range (2,1) -> (4,3) " in { o.sumRegion(2, 1, 4, 3) should be(8) }
+        "return 8 for range (2,1) -> (4,3) " in { o.sumRegion(2, 1, 4, 3) must be(8) }
         "return 11 for range (1,1) -> (2,2)" in (o.sumRegion(1, 1, 2, 2))
       }
 

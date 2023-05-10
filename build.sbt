@@ -162,13 +162,7 @@ lazy val `hello-doobie` = (project in file("hello-doobie"))
     )
   )
 
-lazy val `hello-specs2` = (project in file("hello-specs2"))
-  .settings(
-    name := "hello-specs2",
-    libraryDependencies ++= Seq (
-      specs2
-    )
-  )
+
 
 lazy val `hello-tapir`  = (project in file("hello-tapir"))
   .settings(

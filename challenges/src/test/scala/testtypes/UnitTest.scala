@@ -1,8 +1,10 @@
 package basetypes
 
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers
+import org.scalatest.matchers.must.Matchers
 
-trait UnitTest extends AnyFlatSpec with Matchers {
-  
+abstract class UnitTest(component: String) extends AnyFlatSpec with Matchers {
+  def this() = {
+    this("")
+  }
 }

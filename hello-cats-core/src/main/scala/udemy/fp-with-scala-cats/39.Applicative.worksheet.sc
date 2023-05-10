@@ -4,7 +4,7 @@ sealed trait Validated[+A]
 case class Valid[A](a: A)                  extends Validated[A]
 case class Invalid[A](errors: Seq[String]) extends Validated[A]
 
-def validateName(name: String): Validated[String] = if (name.forall(_.isLetter)) Valid(name) else Invalid(List("Name should contain only alphabets"))
+def validateName(name: String): Validated[String] = if (name.forall(_.isLetter)) Valid(name) else Invalid(List("Name must contain only alphabets"))
 
 def validateAge(age: Int): Validated[Int] = if (age > 18) Valid(age) else Invalid(List("age must be greater than 18"))
 

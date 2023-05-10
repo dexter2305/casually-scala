@@ -2,7 +2,7 @@ package leetcode
 
 import org.scalatest.freespec.AnyFreeSpec
 import leetcode.BinaryTree._
-import org.scalatest.matchers.should.Matchers
+import org.scalatest.matchers.must.Matchers
 import data._
 
 object data {
@@ -51,28 +51,28 @@ object data {
 
 class BinaryTreeFreeSpec extends AnyFreeSpec with Matchers {
   "Preorder traversal" - {
-    "when tree is empty" in { preorderTraversal(emptyTree) shouldBe (List.empty[Int]) }
-    "when tree has only root node" in { preorderTraversal(treeWithOnlyRoot) shouldBe List(treeWithOnlyRoot.value) }
-    "when tree is balanced" in { preorderTraversal(balancedTree) shouldBe List(0, 1, 2, 3, 4, 5, 6) }
-    "when tree is left only" in { preorderTraversal(leftOnlyTree) should be(List(0, 1, 2, 3, 4)) }
-    "when tree is right only" in { preorderTraversal(rightOnlyTree) should be(List(0, 1, 2, 3, 4)) }
+    "when tree is empty" in { preorderTraversal(emptyTree) mustBe (List.empty[Int]) }
+    "when tree has only root node" in { preorderTraversal(treeWithOnlyRoot) mustBe List(treeWithOnlyRoot.value) }
+    "when tree is balanced" in { preorderTraversal(balancedTree) mustBe List(0, 1, 2, 3, 4, 5, 6) }
+    "when tree is left only" in { preorderTraversal(leftOnlyTree) must be(List(0, 1, 2, 3, 4)) }
+    "when tree is right only" in { preorderTraversal(rightOnlyTree) must be(List(0, 1, 2, 3, 4)) }
   }
   "Inorder traversal" - {
-    "when tree is empty" in { inorderTraversal(emptyTree) should be(List.empty[Int]) }
-    "when tree with only root" in { inorderTraversal(treeWithOnlyRoot) should be(List(treeWithOnlyRoot.value)) }
-    "when tree is balanced" in { inorderTraversal(balancedTree) should be(List(2, 1, 3, 0, 5, 4, 6)) }
-    "when tree is left only" in { inorderTraversal(leftOnlyTree) should be(List(4, 3, 2, 1, 0)) }
-    "when tree is right only" in { inorderTraversal(rightOnlyTree) should be(List(0, 1, 2, 3, 4)) }
+    "when tree is empty" in { inorderTraversal(emptyTree) must be(List.empty[Int]) }
+    "when tree with only root" in { inorderTraversal(treeWithOnlyRoot) must be(List(treeWithOnlyRoot.value)) }
+    "when tree is balanced" in { inorderTraversal(balancedTree) must be(List(2, 1, 3, 0, 5, 4, 6)) }
+    "when tree is left only" in { inorderTraversal(leftOnlyTree) must be(List(4, 3, 2, 1, 0)) }
+    "when tree is right only" in { inorderTraversal(rightOnlyTree) must be(List(0, 1, 2, 3, 4)) }
   }
   "Postorder traversal" - {
-    "when tree is empty" in { postorderTraversal(emptyTree) should be(List.empty[Int]) }
-    "when tree with only root" in { postorderTraversal(treeWithOnlyRoot) should be(List(treeWithOnlyRoot.value)) }
-    "when tree is balanced" in { postorderTraversal(balancedTree) should be(List(2, 3, 1, 5, 6, 4, 0)) }
-    "when tree is left only" in { postorderTraversal(leftOnlyTree) should be(List(4, 3, 2, 1, 0)) }
-    "when tree is right only" in { postorderTraversal(rightOnlyTree) should be(List(4, 3, 2, 1, 0)) }
+    "when tree is empty" in { postorderTraversal(emptyTree) must be(List.empty[Int]) }
+    "when tree with only root" in { postorderTraversal(treeWithOnlyRoot) must be(List(treeWithOnlyRoot.value)) }
+    "when tree is balanced" in { postorderTraversal(balancedTree) must be(List(2, 3, 1, 5, 6, 4, 0)) }
+    "when tree is left only" in { postorderTraversal(leftOnlyTree) must be(List(4, 3, 2, 1, 0)) }
+    "when tree is right only" in { postorderTraversal(rightOnlyTree) must be(List(4, 3, 2, 1, 0)) }
   }
   "Level order traversal" - {
-    "when tree is null" in { levelOrder(null) should be(List.empty) }
-    "when tree has one node" in {levelOrder(new TreeNode(1)) should be (List(List(1)))}
+    "when tree is null" in { levelOrder(null) must be(List.empty) }
+    "when tree has one node" in {levelOrder(new TreeNode(1)) must be (List(List(1)))}
   }
 }
