@@ -1,8 +1,8 @@
 package leetcode
 
-import basetypes.UnitTest
+import basetypes.UnitTestFlatSpec
 import MathProblems._
-class MathProblemsUnitTests extends UnitTest {
+class MathProblemsUnitTests extends UnitTestFlatSpec {
 
   "Number of Steps to Reduce a Number to Zero" should "return 6 for n = 14" in { numberOfSteps(14) mustBe 6 }
   it should "return 4 for n = 8" in { numberOfSteps(8) mustBe 4 }

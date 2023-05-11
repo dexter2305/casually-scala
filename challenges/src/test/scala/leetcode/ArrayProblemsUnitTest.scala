@@ -1,8 +1,8 @@
 package leetcode
 
-import basetypes.UnitTest
+import basetypes.UnitTestFlatSpec
 import leetcode.ArrayProblems._
-class ArrayProblemsUnitTest extends UnitTest {
+class ArrayProblemsUnitTest extends UnitTestFlatSpec {
 
   "Average Salary Excluding the Minimum and Maximum Salary" should "be 2500 for [4000, 2000, 3000, 1000]" in {
     average(Array(4000, 2000, 1000, 3000)) mustBe 2500.00

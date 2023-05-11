@@ -1,8 +1,8 @@
 package leetcode
-import basetypes.UnitTest
+import basetypes.UnitTestFlatSpec
 import StringProblems._
 
-class StringProblemsUnitTests extends UnitTest {
+class StringProblemsUnitTests extends UnitTestFlatSpec {
   "Maximum Number of Words Found in Sentences" should "return 2 for ['Never quit']" in { mostWordsFound(Array("Never quit")) mustBe 2 }
   it should "return 4 for ['scala rox', 'tdd makes refactor easier']" in {
     mostWordsFound(Array("scala rox", "tdd makes refactor easier")) mustBe 4

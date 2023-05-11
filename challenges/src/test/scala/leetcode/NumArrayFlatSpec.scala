@@ -1,10 +1,10 @@
 package leetcode
 
 
-import basetypes.UnitTest
+import basetypes.UnitTestFlatSpec
 import leetcode.PrefixSumProblems._
 
-class NumArrayFlatSpec extends UnitTest {
+class NumArrayFlatSpec extends UnitTestFlatSpec {
 
   val sourceArray = Array(0, 1, 2, 3, 4, 5)
   val obj         = new NumArray(sourceArray)
