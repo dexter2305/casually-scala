@@ -1,11 +1,11 @@
 package neetcode
 
 import neetcode.ArraysAndHashing._
-import org.scalatestplus.scalacheck.ScalaCheckDrivenPropertyChecks
 import testtypes.UnitTestPropSpec
 import org.scalacheck.Gen
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import org.scalatest.propspec.AnyPropSpec
+import leetcode.AlgorithmProblems
 
 class ArrayAndHashingPropertySpec extends UnitTestPropSpec("ArrayAndHashing") with ScalaCheckPropertyChecks {
 
@@ -22,6 +22,17 @@ class ArrayAndHashingPropertySpec extends UnitTestPropSpec("ArrayAndHashing") wi
     forAll(gArrayOfReals) { (array: Array[Int]) =>
       //println(s"test array received of length: ${array.length}")
       minimumOperations(array) must be(array.filter(_ != 0).distinct.size)
+    }
+  }
+
+  property("two sum with table driven examples") {
+    val data = Table(
+      ("array", "target", "expectation"),
+      (Array(2, 7, 11, 15), 9, Array(1, 0)),
+    )
+
+    forAll(data) { case (array: Array[Int], target: Int, expectation: Array[Int]) =>
+      twoSum(array, target) must contain theSameElementsAs expectation
     }
   }
 }

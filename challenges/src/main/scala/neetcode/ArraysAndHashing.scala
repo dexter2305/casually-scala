@@ -24,4 +24,15 @@ object ArraysAndHashing extends App {
   def minimumOperations(nums: Array[Int]): Int =
     nums.filter(_ != 0).distinct.size
 
+  def twoSum(nums: Array[Int], target: Int): Array[Int] = {
+
+    @scala.annotation.tailrec
+    def aux(index: Int, acc: Map[Int, Int]): Array[Int] = {
+      if (index == nums.length) Array.emptyIntArray
+      if (acc.contains(target - nums(index))) Array(acc(target - nums(index)), index)
+      else aux(index + 1, acc + (nums(index) -> index))
+    }
+    aux(0, Map.empty[Int, Int])
+  }
+
 }
