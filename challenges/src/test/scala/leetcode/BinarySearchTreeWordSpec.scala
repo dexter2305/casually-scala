@@ -1,10 +1,8 @@
 package leetcode
 
-import org.scalatest.wordspec.AnyWordSpec
-import org.scalatest.matchers.must.Matchers
 import leetcode.BinarySearchTree
 import leetcode.BinarySearchTree._
-class BinarySearchTreeWordSpec extends AnyWordSpec with Matchers {
+class BinarySearchTreeWordSpec extends testtypes.UnitTestWordSpec {
 
   "Search in BST" when {
     val root = new TreeNode(100)

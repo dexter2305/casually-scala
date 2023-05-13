@@ -1,14 +1,8 @@
 package hackerrank
 
-import org.scalatest.propspec.AnyPropSpec
-import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
-import org.scalatest.matchers.must.Matchers
 import org.scalacheck.Gen
-import org.scalactic.anyvals.PosInt
 
-class StringOPermuteSpec extends AnyPropSpec with ScalaCheckPropertyChecks with Matchers {
-
-  override def minSuccessful(value: PosInt): MinSuccessful = MinSuccessful(500)
+class StringOPermuteWordSpec extends testtypes.UnitTestPropSpec{
 
   val evenLengthStringGen =
     Gen.alphaNumStr.map { s =>

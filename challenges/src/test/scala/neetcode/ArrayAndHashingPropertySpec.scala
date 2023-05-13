@@ -7,7 +7,7 @@ import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import org.scalatest.propspec.AnyPropSpec
 import leetcode.AlgorithmProblems
 
-class ArrayAndHashingPropertySpec extends UnitTestPropSpec("ArrayAndHashing") with ScalaCheckPropertyChecks {
+class ArrayAndHashingPropertySpec extends UnitTestPropSpec("ArrayAndHashing") {
 
   override implicit val generatorDrivenConfig: PropertyCheckConfiguration = PropertyCheckConfiguration(minSuccessful = 100)
 

@@ -7,7 +7,7 @@ import AlgorithmProblems._
 import org.scalacheck.Gen._
 import org.scalacheck.Gen
 
-class AlgorithmProblemsPropertySpec extends AnyPropSpec with ScalaCheckPropertyChecks with Matchers {
+class AlgorithmProblemsPropSpec extends testtypes.UnitTestPropSpec {
 
   property("reverse a string") {
     forAll((Gen.asciiPrintableStr), minSuccessful(100)) { (string: String) =>
