@@ -75,4 +75,17 @@ class ArrayAndHashingWordSpec extends UnitTestWordSpec with TableDrivenPropertyC
     }
   }
 
+  val twoSumExample = Table(
+    ("Array", "target", "expectation"),
+    (Array(1, 2, 3, 4, 5, 6), 11, Array(5, 4)),
+    (Array(-1, -3, 5, 7, 6), 6, Array(0, 3)),
+  )
+  "Two sum" must {
+    forAll(twoSumExample) { (array: Array[Int], target: Int, expectation: Array[Int]) =>
+      s"return [${expectation.mkString("-")}] for input [${array.mkString("-")}] with target as $target" in {
+        twoSum(array, target) must contain theSameElementsAs expectation
+      }
+    }
+  }
+
 }

@@ -3,7 +3,7 @@ import StringProblems._
 import testtypes.UnitTestWordSpec
 import org.scalatest.prop.TableDrivenPropertyChecks
 
-class StringProblemsUnitTests extends UnitTestWordSpec with TableDrivenPropertyChecks {
+class StringProblemsWordSpec extends UnitTestWordSpec with TableDrivenPropertyChecks {
 
   val examplesForMaxWords = Table(
     ("Array of words", "Count"),

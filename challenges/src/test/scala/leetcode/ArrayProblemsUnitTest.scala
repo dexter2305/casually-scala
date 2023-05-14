@@ -16,5 +16,4 @@ class ArrayProblemsUnitTest extends testtypes.UnitTestWordSpec with TableDrivenP
       }
     }
   }
-
 }
