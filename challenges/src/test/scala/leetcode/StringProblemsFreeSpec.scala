@@ -57,7 +57,9 @@ class StringProblemsFreeSpec extends AnyFreeSpec with Matchers {
         StringProblems.numDifferentIntegers("a123b123c") must be(1)
       }
       "when string of ints exceeds (2^ 32) -1; breaking assumptions with Int" in {
-        StringProblems.numDifferentIntegers("123131313131318892942194128412461247129812374912836129219842139846312") must be(1)
+        StringProblems.numDifferentIntegers(
+          "123131313131318892942194128412461247129812374912836129219842139846312"
+        ) must be(1)
       }
     }
     "cases dealing with zero" - {
@@ -65,14 +67,15 @@ class StringProblemsFreeSpec extends AnyFreeSpec with Matchers {
         StringProblems.numDifferentIntegers("0") must be(1)
       }
       "with 0 and 00 are separated by chars" in {
-        StringProblems.numDifferentIntegers("a0bc00sd") must be (1)
+        StringProblems.numDifferentIntegers("a0bc00sd") must be(1)
       }
       "with 01 and 1" in {
-        StringProblems.numDifferentIntegers("a1bc01asdf") must be (1)
+        StringProblems.numDifferentIntegers("a1bc01asdf") must be(1)
       }
       "with 10 and 1" in {
-        StringProblems.numDifferentIntegers("a10asdf1") must be (2)
+        StringProblems.numDifferentIntegers("a10asdf1") must be(2)
       }
     }
   }
+
 }

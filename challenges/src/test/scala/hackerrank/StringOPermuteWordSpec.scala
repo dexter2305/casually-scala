@@ -2,7 +2,7 @@ package hackerrank
 
 import org.scalacheck.Gen
 
-class StringOPermuteWordSpec extends testtypes.UnitTestPropSpec{
+class StringOPermuteWordSpec extends testtypes.UnitTestPropSpec {
 
   val evenLengthStringGen =
     Gen.alphaNumStr.map { s =>
@@ -29,4 +29,5 @@ class StringOPermuteWordSpec extends testtypes.UnitTestPropSpec{
       expectedS must be(s)
     }
   }
+
 }

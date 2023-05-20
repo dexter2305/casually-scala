@@ -37,7 +37,7 @@ class BinarySearchTreeFreeSpec extends AnyFreeSpec with Matchers {
         val nodes = (0 to 2).map(n => new TreeNode(n)).toList
         nodes(1).left = nodes(0)
         nodes(1).right = nodes(2)
-        val root = nodes(1)
+        val root  = nodes(1)
         isValidBST(root) mustBe true
       }
       "when [5, 1, 4, null, null, 3, 6]" in {
@@ -54,9 +54,9 @@ class BinarySearchTreeFreeSpec extends AnyFreeSpec with Matchers {
         val nodes = (0 to 7).map(new TreeNode(_))
         nodes(6).left = nodes(3)
         nodes(6).right = nodes(7)
-        nodes(5).left  = nodes(4)
+        nodes(5).left = nodes(4)
         nodes(5).right = nodes(6)
-        val root = nodes(5)
+        val root  = nodes(5)
         isValidBST(root) mustBe false
       }
     }

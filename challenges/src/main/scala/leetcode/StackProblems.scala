@@ -7,10 +7,10 @@ object StackProblems extends App {
   stack.push(2)
   stack.push(3)
 
-  //https://leetcode.com/problems/valid-parentheses/
+  // https://leetcode.com/problems/valid-parentheses/
   def isValid(s: String): Boolean = {
     @scala.annotation.tailrec
-    def loop(s: String, i: Int, stack: List[Char]): Boolean = {
+    def loop(s: String, i: Int, stack: List[Char]): Boolean =
       if (i == s.length()) stack.size == 0
       else
         s(i) match {
@@ -19,14 +19,14 @@ object StackProblems extends App {
           case ')'             => if (stack.size > 0 && stack.head == '(') loop(s, i + 1, stack.tail) else false
           case '}'             => if (stack.size > 0 && stack.head == '{') loop(s, i + 1, stack.tail) else false
         }
-    }
     loop(s, 0, List.empty[Char])
   }
-  //https://leetcode.com/problems/implement-stack-using-queues/
+  // https://leetcode.com/problems/implement-stack-using-queues/
   class MyStack {
-    //pop friendly Stack
+
+    // pop friendly Stack
     import scala.collection.mutable.Queue
-    //private val data = Queue[Int]()
+    // private val data = Queue[Int]()
 
     /*
         - enqueue the new element; say at pos 'n' - meaning nth dequeue should evict 'n' from queu
@@ -36,10 +36,9 @@ object StackProblems extends App {
 
     def push(x: Int): Unit = {
       data.enqueue(x)
-      for (_ <- 0 until data.size - 1) {
+      for (_ <- 0 until data.size - 1)
         data.enqueue(data.dequeue())
-      }
-      //println(s"$data")
+      // println(s"$data")
     }
 
     def pop(): Int = data.dequeue()
@@ -47,5 +46,7 @@ object StackProblems extends App {
     def top(): Int = data.front
 
     def empty(): Boolean = data.isEmpty
+
   }
+
 }

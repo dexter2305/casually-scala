@@ -34,4 +34,5 @@ class KadaneAlgorithmSpec extends AnyFreeSpec with Matchers {
       KadaneAlgorithm.maxProfit(Array(7, 1, 5, 3, 6, 4)) must be(5)
     }
   }
+
 }

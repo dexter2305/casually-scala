@@ -15,7 +15,7 @@ class NumMatrixWordSpec extends AnyWordSpec with Matchers {
     val source    = Array(
       Array(10, 20, 30),
       Array(5, 10, 20),
-      Array(2, 4, 6),
+      Array(2, 4, 6)
     )
     val o         = new NumMatrix(source)
     val dp        = o.matrixPrefixSumWithLeadingZeroes()
@@ -33,7 +33,7 @@ class NumMatrixWordSpec extends AnyWordSpec with Matchers {
         Array(5, 6, 3, 2, 1),
         Array(1, 2, 0, 1, 5),
         Array(4, 1, 0, 1, 7),
-        Array(1, 0, 3, 0, 5),
+        Array(1, 0, 3, 0, 5)
       )
       val o              = new NumMatrix(sourceArray)
       val matrixAsString = sourceArray.map(_.mkString(" | ")).mkString("\n")

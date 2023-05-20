@@ -3,8 +3,8 @@ package leetcode
 object PascalsTriangle extends App {
 
   generate(3).foreach(r => println(r.mkString(" ")))
-  //https://leetcode.com/problems/pascals-triangle/
-  //every row starts with '1'
+  // https://leetcode.com/problems/pascals-triangle/
+  // every row starts with '1'
   //
   def generate(numRows: Int): List[List[Int]] = {
     lazy val pascalsNthRow: Int => List[Int] = n => {
@@ -14,7 +14,8 @@ object PascalsTriangle extends App {
       }
       row
     }
-    val triangle                             = ((0 to numRows).map(n => pascalsNthRow(n))).toList
+    val triangle                             = (0 to numRows).map(n => pascalsNthRow(n)).toList
     triangle
   }
+
 }

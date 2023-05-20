@@ -10,7 +10,7 @@ import org.scalacheck.Gen
 class AlgorithmProblemsPropSpec extends testtypes.UnitTestPropSpec {
 
   property("reverse a string") {
-    forAll((Gen.asciiPrintableStr), minSuccessful(100)) { (string: String) =>
+    forAll(Gen.asciiPrintableStr, minSuccessful(100)) { (string: String) =>
       val input = string.toCharArray()
       reverseString(input)
       input.mkString must be(string.reverse)

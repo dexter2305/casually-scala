@@ -68,12 +68,12 @@ class MatrixProblemsSpec extends AnyFreeSpec with Matchers {
         Array(
           Array(1, 4, 7),
           Array(2, 5, 8),
-          Array(3, 6, 9),
+          Array(3, 6, 9)
         ),
       )
     }
     "matrix: 1 x 3" in {
-      MatrixProblems.transpose(Array(Array(1,2,3))) must be (Array(Array(1), Array(2), Array(3)))
+      MatrixProblems.transpose(Array(Array(1, 2, 3))) must be(Array(Array(1), Array(2), Array(3)))
     }
   }
 

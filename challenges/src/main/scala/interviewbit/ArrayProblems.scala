@@ -4,7 +4,7 @@ object ArrayProblems extends App {
 
   println(s"${majorityElement(Array(2, 1, 2))}")
 
-  //https://www.interviewbit.com/problems/positive-negative/
+  // https://www.interviewbit.com/problems/positive-negative/
   def positiveNegative(array: Array[Int]): Array[Int] = {
     val (sizeOfPositive, sizeOfNegative) = array.partition(_ > 0) match {
       case (pos, negsWithMayBeZero) =>
@@ -18,7 +18,7 @@ object ArrayProblems extends App {
     n.groupBy(n => n).map { case (e, l) => (e, l.size) }.find { case (e, f) => f > limit }.map { case (e, _) => e }.get
   }
 
-  //https://www.interviewbit.com/problems/max-min-05542f2f-69aa-4253-9cc7-84eb7bf739c4/
+  // https://www.interviewbit.com/problems/max-min-05542f2f-69aa-4253-9cc7-84eb7bf739c4/
   def maxMinSum(nums: Array[Int]): Int = {
     val (max, min) = nums.tail.foldLeft((nums.head, nums.head)) { case ((max, min), e) =>
       (math.max(max, e), math.min(min, e))
@@ -27,7 +27,7 @@ object ArrayProblems extends App {
     max + min
   }
 
-  //https://www.interviewbit.com/problems/first-missing-integer/
+  // https://www.interviewbit.com/problems/first-missing-integer/
   /*
       case 1
       1 2 3 4
@@ -39,23 +39,25 @@ object ArrayProblems extends App {
   def firstMissingPositive(nums: Array[Int]): Int = {
     val (positives, _)    = nums.sorted.partition(_ > 0)
     val distinctPositives = positives.distinct
-    distinctPositives.zipWithIndex.find { case (element, index) =>
-      element > index + 1
-    }.map { case (element, index) =>
-      index + 1
-    }.getOrElse(distinctPositives.size + 1)
+    distinctPositives.zipWithIndex
+      .find { case (element, index) =>
+        element > index + 1
+      }
+      .map { case (element, index) =>
+        index + 1
+      }
+      .getOrElse(distinctPositives.size + 1)
   }
 
-  //https://www.interviewbit.com/problems/find-duplicate-in-array/
-  def findDuplicateInArray(nums: Array[Int]): Int = {
+  // https://www.interviewbit.com/problems/find-duplicate-in-array/
+  def findDuplicateInArray(nums: Array[Int]): Int =
     nums
       .groupBy(i => i)
       .find { case (n, list) => list.size > 1 }
       .map { case (n, _) => n }
       .getOrElse(-1)
-  }
 
-  //https://www.interviewbit.com/problems/pick-from-both-sides/
+  // https://www.interviewbit.com/problems/pick-from-both-sides/
   /*
     //psuedocode
     max = nums.take(n).sum
@@ -73,7 +75,7 @@ object ArrayProblems extends App {
       12; 1; 12 - 2 + nums(4 - 2) -> 10 + 3 -> 13 (newMax)
       13; 0; 13 - 1 + nums(4 - 3) -> 12 + 2 -> 14 (newMax)
    */
-  def pickFromBothSides(nums: Array[Int], n: Int): Int = {
+  def pickFromBothSides(nums: Array[Int], n: Int): Int =
     if (nums.length == n) nums.sum
     else {
       val initialMax = nums.take(n).sum
@@ -85,6 +87,5 @@ object ArrayProblems extends App {
       }
       max
     }
-  }
 
 }

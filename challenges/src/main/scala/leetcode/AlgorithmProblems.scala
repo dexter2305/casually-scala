@@ -4,17 +4,17 @@ import scala.annotation.tailrec
 
 object AlgorithmProblems extends App {
 
-  //println(s"${search(Array(1, 2, 3, 4), 0)}")
-  //println(firstBadVersion(90))
+  // println(s"${search(Array(1, 2, 3, 4), 0)}")
+  // println(firstBadVersion(90))
   val array = Array(1, 2)
   rotate(array, 2)
   println(array.mkString(" "))
 
-  //https://leetcode.com/problems/binary-search/
+  // https://leetcode.com/problems/binary-search/
   def search(nums: Array[Int], target: Int): Int = {
     @scala.annotation.tailrec
     def searchBinary(left: Int, right: Int): Int = {
-      //println(s"left: $left, right: $right")
+      // println(s"left: $left, right: $right")
       val mid = (left + right) / 2
       mid match {
         case _ if left > right          => -1
@@ -26,26 +26,25 @@ object AlgorithmProblems extends App {
     searchBinary(0, nums.length - 1)
   }
 
-  //https://leetcode.com/problems/squares-of-a-sorted-array/
+  // https://leetcode.com/problems/squares-of-a-sorted-array/
   def sortedSquares(nums: Array[Int]): Array[Int] = {
     @scala.annotation.tailrec
-    def helper(left: Int, right: Int, acc: List[Int]): List[Int] = {
+    def helper(left: Int, right: Int, acc: List[Int]): List[Int] =
       if (left <= right) {
         val leftSq  = nums(left) * nums(left)
         val rightSq = nums(right) * nums(right)
         if (leftSq > rightSq) helper(left + 1, right, leftSq :: acc)
         else helper(left, right - 1, rightSq :: acc)
       } else acc
-    }
     helper(0, nums.length - 1, List.empty).toArray
   }
 
   def isBadVersion(version: Int): Boolean = version >= 4
 
-  //https://leetcode.com/problems/first-bad-version/
+  // https://leetcode.com/problems/first-bad-version/
   def firstBadVersion(n: Int): Int = {
     @scala.annotation.tailrec
-    def binarySearch(left: Int, right: Int): Int = {
+    def binarySearch(left: Int, right: Int): Int =
       if (left == right) left
       else {
         val mid = left + (right - left) / 2
@@ -53,24 +52,22 @@ object AlgorithmProblems extends App {
         else binarySearch(mid + 1, right)
       }
 
-    }
     binarySearch(0, n)
   }
 
-  //https://leetcode.com/problems/rotate-array/
+  // https://leetcode.com/problems/rotate-array/
   def rotate(nums: Array[Int], k: Int): Unit = {
 
     val d = if (k > nums.length) k % nums.length else k
 
     @scala.annotation.tailrec
-    def reverse(l: Int, r: Int): Unit = {
+    def reverse(l: Int, r: Int): Unit =
       if (l < r) {
         val x = nums(l)
         nums(l) = nums(r)
         nums(r) = x
         reverse(l + 1, r - 1)
       }
-    }
     // reverse the complete array
     reverse(0, nums.length - 1)
     // reverse only the first segment
@@ -80,26 +77,24 @@ object AlgorithmProblems extends App {
 
   }
 
-  //https://leetcode.com/problems/reverse-string/
+  // https://leetcode.com/problems/reverse-string/
   def reverseString(s: Array[Char]): Unit = {
     @scala.annotation.tailrec
-    def reverse(s: Array[Char], l: Int, r: Int): Unit = {
+    def reverse(s: Array[Char], l: Int, r: Int): Unit =
       if (l < r) {
         val t = s(l)
         s(l) = s(r)
         s(r) = t
         reverse(s, l + 1, r - 1)
       }
-    }
     reverse(s, 0, s.length - 1)
   }
 
-  //https://leetcode.com/problems/reverse-words-in-a-string-iii/
-  def reverseWords(s: String): String = {
+  // https://leetcode.com/problems/reverse-words-in-a-string-iii/
+  def reverseWords(s: String): String =
     s.split(" ").map(_.reverse).mkString
-  }
 
-  //https://leetcode.com/problems/search-insert-position/
+  // https://leetcode.com/problems/search-insert-position/
   def searchInsert(nums: Array[Int], target: Int): Int = {
 
     @scala.annotation.tailrec
@@ -113,11 +108,11 @@ object AlgorithmProblems extends App {
     loop(0, nums.length - 1)
   }
 
-  //https://leetcode.com/problems/move-zeroes/
+  // https://leetcode.com/problems/move-zeroes/
   def moveZeroes(nums: Array[Int]): Unit = {
 
     @scala.annotation.tailrec
-    def move(left: Int, right: Int): Unit = {
+    def move(left: Int, right: Int): Unit =
       if (left < nums.length && right < nums.length) {
         (nums(left), nums(right)) match {
           case (x, _) if x != 0 => move(left + 1, right + 1)
@@ -128,23 +123,22 @@ object AlgorithmProblems extends App {
             move(left + 1, right + 1)
         }
       }
-    }
     move(0, 0)
   }
 
-  //https://leetcode.com/problems/power-of-two/
+  // https://leetcode.com/problems/power-of-two/
   def isPowerOfTwo(n: Int): Boolean = n match {
     case 0 => false
     case 1 => true
     case n => n % 2 == 0 && isPowerOfTwo(n / 2)
   }
 
-  //https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/
-  def countOdds(low: Int, high: Int): Int = (low, high) match{
-    //even is balanced odd & even :-)
+  // https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/
+  def countOdds(low: Int, high: Int): Int = (low, high) match {
+    // even is balanced odd & even :-)
     case (l, r) if (l % 2 == 0) && (r % 2 == 0) => (r - l) / 2
-    //odd is 1 + even
+    // odd is 1 + even
     case (l, r) => (r - l) / 2 + 1
-}
+  }
 
 }

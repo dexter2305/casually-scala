@@ -8,11 +8,15 @@ import org.scalatest.time.Span
 import org.scalatest.prop.Configuration
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 
-abstract class UnitTestPropSpec(component: String) extends AnyPropSpec with must.Matchers with TimeLimitedTests with ScalaCheckPropertyChecks{
+abstract class UnitTestPropSpec(component: String)
+    extends AnyPropSpec
+    with must.Matchers
+    with TimeLimitedTests
+    with ScalaCheckPropertyChecks {
 
-  def this() = {
+  def this() =
     this("")
-  }
 
   override def timeLimit: Span = Span(700, Millis)
+
 }

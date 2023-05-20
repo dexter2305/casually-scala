@@ -1,4 +1,5 @@
 package leetcode
+
 import StringProblems._
 import testtypes.UnitTestWordSpec
 import org.scalatest.prop.TableDrivenPropertyChecks
@@ -10,7 +11,7 @@ class StringProblemsWordSpec extends UnitTestWordSpec with TableDrivenPropertyCh
     (Array("Never quit"), 2),
     (Array("scala rocks", "tdd makes refactor easier"), 4),
     (Array.empty[String], 0),
-    (null, 0),
+    (null, 0)
   )
 
   "Max number of words in sentence" must {
@@ -20,4 +21,5 @@ class StringProblemsWordSpec extends UnitTestWordSpec with TableDrivenPropertyCh
       }
     }
   }
+
 }

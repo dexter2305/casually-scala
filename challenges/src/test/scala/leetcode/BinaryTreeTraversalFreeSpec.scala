@@ -7,8 +7,8 @@ import data._
 
 object data {
 
-  val emptyTree        = null
-  val treeWithOnlyRoot = new TreeNode(0)
+  val emptyTree              = null
+  val treeWithOnlyRoot       = new TreeNode(0)
   val balancedTree: TreeNode = {
     /*
     ---- 0
@@ -47,9 +47,11 @@ object data {
     }
     nodes(0)
   }
+
 }
 
 class BinaryTreeFreeSpec extends AnyFreeSpec with Matchers {
+
   "Preorder traversal" - {
     "when tree is empty" in { preorderTraversal(emptyTree) mustBe (List.empty[Int]) }
     "when tree has only root node" in { preorderTraversal(treeWithOnlyRoot) mustBe List(treeWithOnlyRoot.value) }
@@ -73,6 +75,7 @@ class BinaryTreeFreeSpec extends AnyFreeSpec with Matchers {
   }
   "Level order traversal" - {
     "when tree is null" in { levelOrder(null) must be(List.empty) }
-    "when tree has one node" in {levelOrder(new TreeNode(1)) must be (List(List(1)))}
+    "when tree has one node" in { levelOrder(new TreeNode(1)) must be(List(List(1))) }
   }
+
 }

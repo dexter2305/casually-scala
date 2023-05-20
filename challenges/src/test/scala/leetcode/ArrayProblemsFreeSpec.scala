@@ -14,70 +14,70 @@ class ArrayProblemsFreeSpec extends AnyFreeSpec with Matchers {
 
   "Merge sorted arrays" - {
     "when left has smallest element" in {
-      val left = Array(1, 2, 3, 0, 0, 0)
-      val leftSize = 3
-      val right = Array(8, 9, 12)
+      val left      = Array(1, 2, 3, 0, 0, 0)
+      val leftSize  = 3
+      val right     = Array(8, 9, 12)
       val rightSize = 3
 
-      val leftClone = left.take(leftSize)
+      val leftClone      = left.take(leftSize)
       val sortedExpected = (leftClone ++ right).sorted
 
       ArrayProblems.merge(left, leftSize, right, rightSize)
       left must equal(sortedExpected)
     }
     "when right has smallest element" in {
-      val left = Array(100, 200, 349, 0, 0, 0)
-      val leftSize = 3
-      val right = Array(8, 9, 12)
+      val left      = Array(100, 200, 349, 0, 0, 0)
+      val leftSize  = 3
+      val right     = Array(8, 9, 12)
       val rightSize = 3
 
-      val leftClone = left.take(leftSize)
+      val leftClone      = left.take(leftSize)
       val sortedExpected = (leftClone ++ right).sorted
 
       ArrayProblems.merge(left, leftSize, right, rightSize)
       left must equal(sortedExpected)
     }
     "when right array is smaller than left array" in {
-      val left = Array(100, 200, 349, 0)
-      val leftSize = 3
-      val right = Array(12)
+      val left      = Array(100, 200, 349, 0)
+      val leftSize  = 3
+      val right     = Array(12)
       val rightSize = 1
 
-      val leftClone = left.take(leftSize)
+      val leftClone      = left.take(leftSize)
       val sortedExpected = (leftClone ++ right).sorted
 
       ArrayProblems.merge(left, leftSize, right, rightSize)
       left must equal(sortedExpected)
     }
     "when left array is smaller than right array" in {
-      val left = Array(100, 0, 0, 0)
-      val leftSize = 1
-      val right = Array(120, 420, 900)
+      val left      = Array(100, 0, 0, 0)
+      val leftSize  = 1
+      val right     = Array(120, 420, 900)
       val rightSize = 3
 
-      val leftClone = left.take(leftSize)
+      val leftClone      = left.take(leftSize)
       val sortedExpected = (leftClone ++ right).sorted
 
       ArrayProblems.merge(left, leftSize, right, rightSize)
       left must equal(sortedExpected)
     }
     "when both arrays are empty" in {
-      val left = Array.emptyIntArray
+      val left  = Array.emptyIntArray
       val right = Array.emptyIntArray
       ArrayProblems.merge(left, 0, right, 0)
       left must equal(Array.emptyIntArray)
     }
     "when right array is empty" in {
-      val left = Array(1, 2, 3, 0, 0, 0)
+      val left     = Array(1, 2, 3, 0, 0, 0)
       val leftSize = 3
-      val right = Array.emptyIntArray
+      val right    = Array.emptyIntArray
       ArrayProblems.merge(left, leftSize, right, 0)
       left must equal(left)
     }
     "when left array is empty but has placeholders for right array" in {
-      val left = Array(0, 0, 0)
-      val leftSize = 0
-      val right = Array(1, 3, 4)
+      val left      = Array(0, 0, 0)
+      val leftSize  = 0
+      val right     = Array(1, 3, 4)
       val rightSize = 3
       ArrayProblems.merge(left, leftSize, right, rightSize)
       left must equal(right)
@@ -87,12 +87,12 @@ class ArrayProblemsFreeSpec extends AnyFreeSpec with Matchers {
   "Intersection of two arrays II" - {
     "when arrays are of same size" - {
       "when two arrays have no intersections" in {
-        val left = Array(1, 2, 3)
+        val left  = Array(1, 2, 3)
         val right = Array(4, 5, 6)
         ArrayProblems.intersect(left, right) must equal(Array())
       }
       "when multiple distinct ints intersect" in {
-        val left = Array(3, 4, -5, 7, -2)
+        val left  = Array(3, 4, -5, 7, -2)
         val right = Array(10, 11, 4, -1, 7)
         ArrayProblems.intersect(left, right) must contain theSameElementsAs (Array(
           7,
@@ -100,7 +100,7 @@ class ArrayProblemsFreeSpec extends AnyFreeSpec with Matchers {
         ))
       }
       "when multiple identical ints intersect" in {
-        val left = Array(8, 9, -1, 8)
+        val left  = Array(8, 9, -1, 8)
         val right = Array(27, 8, 8, 9)
       }
       "when both arrays are empty" in {
@@ -121,7 +121,7 @@ class ArrayProblemsFreeSpec extends AnyFreeSpec with Matchers {
         )
       }
       "when distinct ints intersect" in {
-        val left = Array(1, 2, 3, 4, 5)
+        val left  = Array(1, 2, 3, 4, 5)
         val right = Array(3, 2, 5)
         ArrayProblems.intersect(left, right) must be(Array(2, 3, 5))
       }
@@ -139,4 +139,5 @@ class ArrayProblemsFreeSpec extends AnyFreeSpec with Matchers {
       ArrayProblems.twoSum(Array(2, 5, 8, 12, 23), 7) mustBe Array(1, 2)
     }
   }
+
 }

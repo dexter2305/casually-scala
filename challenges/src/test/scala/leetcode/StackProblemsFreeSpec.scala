@@ -15,21 +15,21 @@ class StackProblemsFreeSpec extends AnyFreeSpec with Matchers {
         isValid("{[()]}") mustBe true
       }
       "with complex pairs and simple pairs" in {
-        isValid("{[()]}[](){}") must be (true)
+        isValid("{[()]}[](){}") must be(true)
       }
     }
     "invalid pairs" - {
       "with left only" in {
-        isValid("(") must be (false)
+        isValid("(") must be(false)
       }
       "with right only" in {
-        isValid(")") must be (false)
+        isValid(")") must be(false)
       }
       "with right preceding left" in {
-        isValid(")(") must be (false)
+        isValid(")(") must be(false)
       }
       "with left and right mixed" in {
-        isValid("{]{}}[") must be (false)
+        isValid("{]{}}[") must be(false)
       }
     }
   }
@@ -40,15 +40,15 @@ class StackProblemsFreeSpec extends AnyFreeSpec with Matchers {
         val stack = new MyStack()
         stack.push(1)
         stack.push(2)
-        stack.top() must be (stack.top())
+        stack.top() must be(stack.top())
       }
       "peek should not empty the stack" in {
         val stack = new MyStack()
         stack.push(1)
         stack.push(2)
-        val r = scala.util.Random
+        val r     = scala.util.Random
         for (_ <- 0 to r.nextInt(10)) stack.top()
-        stack.empty() must be (false)
+        stack.empty() must be(false)
       }
     }
     "push - pop" - {
@@ -56,8 +56,9 @@ class StackProblemsFreeSpec extends AnyFreeSpec with Matchers {
         val stack = new MyStack()
         stack.push(1)
         stack.push(2)
-        stack.pop() must be (2)
+        stack.pop() must be(2)
       }
     }
   }
+
 }

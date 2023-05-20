@@ -20,7 +20,7 @@ object KadaneAlgorithm extends App {
     max
   }
 
-  //https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+  // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
   /*
       => track min element and profit
          newMin = min (curMin, currentElement)

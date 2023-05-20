@@ -63,12 +63,12 @@ class AlgorithmProblemsWordSpec extends testtypes.UnitTestWordSpec with TableDri
       ("alter input array with a single 0 in the body of array", Array(1, 0, 2, 3), Array(1, 2, 3, 0)),
       ("alter input array with multiple sequential zeroes", Array(1, 0, 0, 0, 2, 3), Array(1, 2, 3, 0, 0, 0)),
       ("alter input array with fragmented zeroes", Array(1, 0, 2, 0, 3), Array(1, 2, 3, 0, 0)),
-      ("alter input array containing leading zeroes in sequence", Array(0, 0, 0, 1), Array(1, 0, 0, 0)),
+      ("alter input array containing leading zeroes in sequence", Array(0, 0, 0, 1), Array(1, 0, 0, 0))
     )
     val exCase2            = Table(
       ("testcase", "input", "answer"),
       ("not alter input array with non-zero", Array(10), Array(10)),
-      ("not alter input array with only 0", Array(0), Array(0)),
+      ("not alter input array with only 0", Array(0), Array(0))
     )
     "array size > 1" must {
       forAll(exMoveZeroes_case1) { (testcase: String, input: Array[Int], answer: Array[Int]) =>

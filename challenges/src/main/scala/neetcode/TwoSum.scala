@@ -13,11 +13,10 @@ object TwoSum extends App {
    */
   def twoSum(nums: Array[Int], target: Int): Array[Int] = {
     @scala.annotation.tailrec
-    def go(map: Map[Int, Int], array: Array[Int], index: Int): Array[Int] = {
+    def go(map: Map[Int, Int], array: Array[Int], index: Int): Array[Int] =
       if (index >= array.length) Array.empty[Int]
       else if (map contains (target - array(index))) Array(index, map(target - array(index)))
       else go(map + (array(index) -> index), array, index + 1)
-    }
     go(Map.empty[Int, Int], array = nums, index = 0)
   }
 

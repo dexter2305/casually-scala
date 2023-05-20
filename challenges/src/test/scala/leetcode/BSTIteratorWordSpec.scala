@@ -5,7 +5,7 @@ import org.scalatest.matchers.must.Matchers
 
 class BSTIteratorWordSpec extends AnyWordSpec with Matchers {
 
-  "A BST iterator"   when {
+  "A BST iterator" when {
     val node = new TreeNode(100)
     val it   = new BSTIterator(node)
     "tree with ONLY one node" should {
@@ -39,4 +39,5 @@ class BSTIteratorWordSpec extends AnyWordSpec with Matchers {
       }
     }
   }
+
 }

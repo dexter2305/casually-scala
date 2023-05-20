@@ -11,7 +11,7 @@ class ArrayAndHashingWordSpec extends UnitTestWordSpec with TableDrivenPropertyC
     ("array", "result"),
     (Array(1, 2, 3, 1), true),
     (Array(1, 2, 3, 4), false),
-    (Array.emptyIntArray, false),
+    (Array.emptyIntArray, false)
   )
   "Contains duplicate" must {
     forAll(examplesContainsDuplicate) { (array: Array[Int], expectation: Boolean) =>
@@ -25,7 +25,7 @@ class ArrayAndHashingWordSpec extends UnitTestWordSpec with TableDrivenPropertyC
     ("array", "opCount"),
     (Array(1, 5, 0, 3, 5), 3),
     (Array(1, 2, 3, 4, 5), 5),
-    (Array(10, 10, 10), 1),
+    (Array(10, 10, 10), 1)
   )
   "Minimum operations to make all zero in array" must {
     forAll(examplesMinOpToMakeZero) { (array: Array[Int], expectedOpCount: Int) =>
@@ -39,7 +39,7 @@ class ArrayAndHashingWordSpec extends UnitTestWordSpec with TableDrivenPropertyC
     ("array", "target", "expectation"),
     (Array(2, 7, 11, 15), 9, Array(0, 1)),
     (Array(3, 2, 4), 6, Array(1, 2)),
-    (Array(3, 3), 6, Array(1, 0)),
+    (Array(3, 3), 6, Array(1, 0))
   )
   "Two Sum" must {
     forAll(examplesTwoSum) { (array: Array[Int], target: Int, expectation: Array[Int]) =>
@@ -52,7 +52,7 @@ class ArrayAndHashingWordSpec extends UnitTestWordSpec with TableDrivenPropertyC
   val examplesAnagram = Table(
     ("s", "t", "is anagram?"),
     ("anagram", "nagaram", true),
-    ("bat", "cat", false),
+    ("bat", "cat", false)
   )
 
   "Is anagram?" must {
@@ -78,7 +78,7 @@ class ArrayAndHashingWordSpec extends UnitTestWordSpec with TableDrivenPropertyC
   val twoSumExample = Table(
     ("Array", "target", "expectation"),
     (Array(1, 2, 3, 4, 5, 6), 11, Array(5, 4)),
-    (Array(-1, -3, 5, 7, 6), 6, Array(0, 3)),
+    (Array(-1, -3, 5, 7, 6), 6, Array(0, 3))
   )
   "Two sum" must {
     forAll(twoSumExample) { (array: Array[Int], target: Int, expectation: Array[Int]) =>

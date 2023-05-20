@@ -7,7 +7,7 @@ class BinarySearchTreeWordSpec extends testtypes.UnitTestWordSpec {
     {
       val root = new TreeNode(100)
       "BST level is 1" should {
-        //searchBST(root, 100) mustBe root
+        // searchBST(root, 100) mustBe root
         "return valid node when search value exists" in { searchBST(root, 100) mustBe root }
         "return null when search value is non-existant" in { searchBST(root, 101) mustBe null }
       }
