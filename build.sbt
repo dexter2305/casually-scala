@@ -11,17 +11,17 @@ ThisBuild / testOptions        := customTestOptions
 ThisBuild / watchBeforeCommand := Watch.clearScreen
 
 lazy val customScalacOptions = Seq(
-  "-deprecation",
-  //"-Ypartial-unification"
+  "-deprecation"
+  // "-Ypartial-unification"
 )
 
 lazy val customTestOptions = Seq(
-  Tests.Argument(TestFrameworks.ScalaTest, "-oSD"),
+  Tests.Argument(TestFrameworks.ScalaTest, "-oSD")
 )
 
 lazy val root = (project in file("."))
   .settings(
-    name := "casually-scala",
+    name := "casually-scala"
   )
   .aggregate(`hello-slick`, `hello-scalatra`)
 
@@ -34,8 +34,8 @@ lazy val `hello-slick` = (project in file("hello-slick"))
       postgres,
       h2,
       slf4j_api,
-      slf4j_scribe,
-    ),
+      slf4j_scribe
+    )
   )
 
 lazy val `hello-scalatra` = (project in file("hello-scalatra"))
@@ -48,8 +48,8 @@ lazy val `hello-scalatra` = (project in file("hello-scalatra"))
       scalatra,
       scalatra_json,
       json4s_jackson,
-      jetty_server % "compile;container",
-    ),
+      jetty_server % "compile;container"
+    )
   )
   .enablePlugins(JettyPlugin)
 
@@ -57,7 +57,7 @@ lazy val `udemy-rtjvm-advanced-scala` = (project in file("udemy-rtjvm-advanced-s
   .settings(
     name := "udemy-rtjvm-advanced-scala",
     libraryDependencies ++= Seq(
-    ),
+    )
   )
 
 lazy val `hello-http4s` = (project in file("hello-http4s"))
@@ -72,24 +72,24 @@ lazy val `hello-http4s` = (project in file("hello-http4s"))
       circe_generic withJavadoc,
       circe_literal withJavadoc,
       scalatest,
-      scalatestplus,
-    ),
+      scalatestplus
+    )
   )
 
 lazy val `hello-cats-effect` = (project in file("hello-cats-effect"))
   .settings(
     name := "hello-cats-effect",
     libraryDependencies ++= Seq(
-      cats_effect withJavadoc,
-    ),
+      cats_effect withJavadoc
+    )
   )
 
 lazy val `hello-cats-core` = (project in file("hello-cats-core"))
   .settings(
     name := "hello-cats-core",
     libraryDependencies ++= Seq(
-      cats_core withJavadoc,
-    ),
+      cats_core withJavadoc
+    )
   )
 
 lazy val `hello-http4s-twirl` = (project in file("hello-https-twirl"))
@@ -103,8 +103,8 @@ lazy val `hello-http4s-twirl` = (project in file("hello-https-twirl"))
       circe_generic withJavadoc,
       circe_literal withJavadoc,
       fs2_core withJavadoc,
-      slf4j_scribe % Runtime,
-    ),
+      slf4j_scribe % Runtime
+    )
   )
   .enablePlugins(SbtTwirl)
 
@@ -113,8 +113,8 @@ lazy val challenges = (project in file("challenges"))
     name := "challenges",
     libraryDependencies ++= Seq(
       scalatest     % Test withJavadoc,
-      scalatestplus % Test withJavadoc,
-    ),
+      scalatestplus % Test withJavadoc
+    )
   )
 
 lazy val `hello-fs2`      = (project in file("hello-fs2"))
@@ -123,8 +123,8 @@ lazy val `hello-fs2`      = (project in file("hello-fs2"))
     libraryDependencies ++= Seq(
       fs2_core withJavadoc,
       fs2_io withJavadoc,
-      cats_effect withJavadoc,
-    ),
+      cats_effect withJavadoc
+    )
   )
 lazy val `hello-log4cats` = (project in file("hello-log4cats"))
   .settings(
@@ -132,39 +132,36 @@ lazy val `hello-log4cats` = (project in file("hello-log4cats"))
     libraryDependencies ++= Seq(
       cats_effect,
       log4cats_slfj withJavadoc,
-      logback_classic,
-    ),
+      logback_classic
+    )
   )
 
 lazy val `hello-circe` = (project in file("hello-circe"))
   .settings(
     name := "hello-circe",
     libraryDependencies ++= Seq(
-      circe_core withJavadoc(),
-      circe_generic withJavadoc(),
-      circe_parser withJavadoc,
-    ),
+      circe_core withJavadoc (),
+      circe_generic withJavadoc (),
+      circe_parser withJavadoc
+    )
   )
 
 lazy val `udemy-scala-essentials` = (project in file("udemy-scala-essentials"))
   .settings(
-    name := "udemy-scala-essentials",
+    name := "udemy-scala-essentials"
   )
-
 
 lazy val `hello-doobie` = (project in file("hello-doobie"))
   .settings(
     name := "hello-doobie",
-    libraryDependencies ++= Seq (
-      doobie_core, 
+    libraryDependencies ++= Seq(
+      doobie_core,
       doobie_hikari,
       doobie_pg
     )
   )
 
-
-
-lazy val `hello-tapir`  = (project in file("hello-tapir"))
+lazy val `hello-tapir` = (project in file("hello-tapir"))
   .settings(
     libraryDependencies ++= Seq(
       cats_core,
@@ -179,13 +176,22 @@ lazy val `hello-tapir`  = (project in file("hello-tapir"))
     )
   )
 
-  lazy val `hello-quill` = (project in file("hello-quill"))
+lazy val `hello-quill` = (project in file("hello-quill"))
   .settings(
     libraryDependencies ++= Seq(
-      quill_jdbc withJavadoc(),
-      //quill_async withJavadoc(), 
+      quill_jdbc withJavadoc (),
+      // quill_async withJavadoc(),
       postgres,
       logback_classic
     )
   )
-    
+
+lazy val `hello-tagless-final` = (project in file("hello-tagless-final"))
+  .settings(
+    libraryDependencies ++= Seq(
+      cats_core withJavadoc (),
+      cats_effect withJavadoc (),
+      scalatest withJavadoc (),
+      scalatestplus withJavadoc (), 
+    )
+  )
