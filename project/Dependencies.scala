@@ -69,7 +69,7 @@ object Dependencies {
   object Version {
 
     val SlickVersion               = "3.3.3"
-    val CatsCoreVersion            = "2.7.0"
+    val CatsCoreVersion            = "2.9.0"
     val CatsEffectVersion          = "3.1.0"
     val DisciplineVersion          = "1.5.0"
     val DisciplineScalatestVersion = "2.2.0"

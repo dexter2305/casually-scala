@@ -191,7 +191,8 @@ lazy val `hello-tagless-final` = (project in file("hello-tagless-final"))
     libraryDependencies ++= Seq(
       cats_core withJavadoc (),
       cats_effect withJavadoc (),
-      scalatest withJavadoc (),
-      scalatestplus withJavadoc (), 
+      cats_laws withJavadoc (), 
+      discipline_core withJavadoc(),
+      discipline_scalatest withJavadoc()
     )
   )
