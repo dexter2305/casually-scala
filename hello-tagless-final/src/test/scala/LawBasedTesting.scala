@@ -1,7 +1,9 @@
 package tg.testing.withlaws
 
-import cats.Id
-import cats.Monad
+import org.scalactic.Prettifier
+import org.scalactic.source.Position
+import org.typelevel.discipline.Laws
+
 case class User(name: String, email: String)
 object User {
 
@@ -41,9 +43,9 @@ trait UserAlgebraLaws[F[_]] {
 object UserAlgebraLaws {
 
   import cats.Monad
-  def apply[F[_]](userAlgebra: UserAlgebra[F]) = new UserAlgebraLaws[F] {
+  def apply[F[_]](userAlgebra: UserAlgebra[F])(implicit ev: Monad[F]) = new UserAlgebraLaws[F] {
 
-    implicit override def M: Monad[F] = Monad[F]
+    implicit override def M: Monad[F] = ev
 
     override def algebra: UserAlgebra[F] = userAlgebra
 
@@ -62,10 +64,15 @@ trait UserAlgebraTests[F[_]] extends org.typelevel.discipline.Laws {
 
   def algebra(implicit eqFOptUser: Eq[F[Option[User]]]) = new SimpleRuleSet(
     "UserAlgebra",
-    // fixme: could not get this working implemented. also it was too time complex. is it really worth?
-    "rule of create and get"                       -> forAll(laws.writeAndGet _),
-    "rule of finding non existing email"           -> forAll(laws.findNonExistingEmail _),
-    "rule of consistency in finding existing user" -> forAll(laws.findByEmailConsistency _)
+    "rule of create and get"                       -> forAll(pairNameEmailGen) { case (name, email) =>
+      laws.writeAndGet(name, email)
+    },
+    "rule of finding non existing email"           -> forAll(pairNameEmailGen) { case (_, email) =>
+      laws.findNonExistingEmail(email)
+    },
+    "rule of consistency in finding existing user" -> forAll(pairNameEmailGen) { case (name, email) =>
+      laws.findByEmailConsistency(name, email)
+    }
   )
 
   lazy val pairNameEmailGen = for {
@@ -78,11 +85,35 @@ trait UserAlgebraTests[F[_]] extends org.typelevel.discipline.Laws {
 
 }
 object UserAlgebraTests {
-
-  def apply[F[_]](algebra: UserAlgebra[F])(implicit M: Monad[F]) = new UserAlgebraTests[F] {
-
-    override def laws: UserAlgebraLaws[F] = UserAlgebraLaws(algebra)
-
+  def apply[F[_]](userAlgebraLaws: UserAlgebraLaws[F]) = new UserAlgebraTests[F] {
+    override def laws: UserAlgebraLaws[F] = userAlgebraLaws
   }
 }
 
+class InMemoryUserAlgebra[F[_]] private (var store: Map[String, User])(implicit A: cats.Applicative[F])
+    extends UserAlgebra[F] {
+
+  import cats.implicits._
+
+  override def create(name: String, email: String): F[Unit] = (store = store + (email -> User(name, email))).pure[F]
+  override def findByEmail(email: String): F[Option[User]]  = store.get(email).pure[F]
+
+}
+object InMemoryUserAlgebra {
+
+  import cats.Applicative
+  def apply[F[_]](implicit A: Applicative[F]) = new InMemoryUserAlgebra[F](Map.empty[String, User])
+
+}
+
+class UserAlgebraSuite
+    extends org.scalatest.wordspec.AnyWordSpec
+    with org.typelevel.discipline.scalatest.WordSpecDiscipline
+    with org.scalatestplus.scalacheck.Checkers {
+
+  import cats.Id
+  import cats.effect.IO
+  checkAll("InMemory-Id", UserAlgebraTests[Id](UserAlgebraLaws[Id](InMemoryUserAlgebra[Id])).algebra)
+  // checkAll("InMemory-IO", UserAlgebraTests[IO](UserAlgebraLaws[IO](InMemoryUserAlgebra[IO])).algebra)
+
+}
