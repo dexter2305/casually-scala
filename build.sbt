@@ -193,6 +193,8 @@ lazy val `hello-tagless-final` = (project in file("hello-tagless-final"))
       cats_effect withJavadoc (),
       cats_laws withJavadoc (), 
       discipline_core withJavadoc(),
-      discipline_scalatest withJavadoc()
+      discipline_scalatest withJavadoc(),
+      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test
+
     )
   )

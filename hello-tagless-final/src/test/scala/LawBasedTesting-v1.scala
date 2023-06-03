@@ -1,4 +1,4 @@
-package tg.testing.withlaws
+package v1
 
 import org.scalactic.Prettifier
 import org.scalactic.source.Position
@@ -117,3 +117,4 @@ class UserAlgebraSuite
   // checkAll("InMemory-IO", UserAlgebraTests[IO](UserAlgebraLaws[IO](InMemoryUserAlgebra[IO])).algebra)
 
 }
+
