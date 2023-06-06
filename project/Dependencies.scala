@@ -27,12 +27,12 @@ object Dependencies {
     }
     object http4s {
 
-      private val artefact         = moduleId("org.http4s")
-      implicit private val version = "0.23.7"
-      val `http4s-dsl`             = artefact("http4s-dsl")(version)
-      val `http4s-blaze-server`    = artefact("http4s-blaze-server")(version)
-      val `http4s-circe`           = artefact("http4s-circe")(version)
-      val `http4s-twirl`           = artefact("http4s-twirl")(version)
+      private val artefact      = moduleId("org.http4s")
+      private val version       = "0.23.7"
+      val `http4s-dsl`          = artefact("http4s-dsl")(version)
+      val `http4s-blaze-server` = artefact("http4s-blaze-server")(version)
+      val `http4s-circe`        = artefact("http4s-circe")(version)
+      val `http4s-twirl`        = artefact("http4s-twirl")(version)
 
     }
 
