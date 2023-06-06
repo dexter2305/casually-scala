@@ -112,7 +112,7 @@ object Dependencies {
       private val artefact  = moduleId("com.typesafe.slick")
       private val version   = "3.3.3"
       val slick             = artefact("slick")(version)
-      val `slick-hikari-cp` = artefact("slick")(version)
+      val `slick-hikari-cp` = artefact("slick-hikari-cp")(version)
 
     }
 
