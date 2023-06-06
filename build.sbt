@@ -29,12 +29,12 @@ lazy val `hello-slick` = (project in file("hello-slick"))
   .settings(
     name := "hello-slick3",
     libraryDependencies ++= Seq(
-      slick,
-      slick_hikari_cp,
-      postgres,
-      h2,
-      slf4j_api,
-      slf4j_scribe
+      com.typesafe.slick,
+      com.typesafe.`slick-hikari-cp`,
+      org.postgresql.postgresql,
+      com.h2database.h2,
+      org.slf4j.`slf4j-api`,
+      com.outr.`scribe-slf4j`
     )
   )
 
@@ -42,13 +42,13 @@ lazy val `hello-scalatra` = (project in file("hello-scalatra"))
   .settings(
     name := "hello-scalatra",
     libraryDependencies ++= Seq(
-      slf4j_api,
-      slf4j_scribe,
-      servlet_api,
-      scalatra,
-      scalatra_json,
-      json4s_jackson,
-      jetty_server % "compile;container"
+      org.slf4j.`slf4j-api`,
+      com.outr.`scribe-slf4j`,
+      javax.servlet.`javax.servlet-api`,
+      org.scalatra.scalatra,
+      org.scalatra.`scalatra-json`,
+      org.json4s.`json4s-jackson`,
+      org.eclipse.jetty.`jetty-webapp` % "compile;container"
     )
   )
   .enablePlugins(JettyPlugin)
@@ -64,23 +64,25 @@ lazy val `hello-http4s` = (project in file("hello-http4s"))
   .settings(
     name := "hello-http4s",
     libraryDependencies ++= Seq(
-      http4s_dsl withJavadoc,
-      http4s_blaze_server withJavadoc,
-      http4s_circe,
-      cats_effect withJavadoc,
-      slf4j_scribe,
-      circe_generic withJavadoc,
-      circe_literal withJavadoc,
-      scalatest,
-      scalatestplus
-    )
+      org.http4s.`http4s-dsl`,
+      org.http4s.`http4s-blaze-server`,
+      org.http4s.`http4s-circe`,
+      org.typelevel.`cats-effect`,
+      com.outr.`scribe-slf4j`,
+      Dependencies.io.circe.`circle-generic`,
+      Dependencies.io.circe.`circe-literal`
+    ),
+    libraryDependencies ++= Seq(
+      org.scalatest.scalatest,
+      org.scalatestplus.`scalacheck-1-17`
+    ).map(_ % Test)
   )
 
 lazy val `hello-cats-effect` = (project in file("hello-cats-effect"))
   .settings(
     name := "hello-cats-effect",
     libraryDependencies ++= Seq(
-      cats_effect withJavadoc
+      org.typelevel.`cats-effect` withJavadoc
     )
   )
 
@@ -88,7 +90,7 @@ lazy val `hello-cats-core` = (project in file("hello-cats-core"))
   .settings(
     name := "hello-cats-core",
     libraryDependencies ++= Seq(
-      cats_core withJavadoc
+      org.typelevel.`cats-core` withJavadoc
     )
   )
 
@@ -96,14 +98,14 @@ lazy val `hello-http4s-twirl` = (project in file("hello-https-twirl"))
   .settings(
     name := "hello-http4s-twirl",
     libraryDependencies ++= Seq(
-      http4s_blaze_server,
-      http4s_dsl withJavadoc,
-      http4s_twirl withJavadoc,
-      http4s_circe withJavadoc,
-      circe_generic withJavadoc,
-      circe_literal withJavadoc,
-      fs2_core withJavadoc,
-      slf4j_scribe % Runtime
+      org.http4s.`http4s-blaze-server`,
+      org.http4s.`http4s-dsl`,
+      org.http4s.`http4s-twirl`,
+      org.http4s.`http4s-circe`,
+      Dependencies.io.circe.`circle-generic`,
+      Dependencies.io.circe.`circe-literal`,
+      co.fs2.`fs2-core`,
+      com.outr.`scribe-slf4j`
     )
   )
   .enablePlugins(SbtTwirl)
@@ -112,27 +114,27 @@ lazy val challenges = (project in file("challenges"))
   .settings(
     name := "challenges",
     libraryDependencies ++= Seq(
-      scalatest     % Test withJavadoc,
-      scalatestplus % Test withJavadoc
-    )
+      org.scalatest.scalatest,
+      org.scalatestplus.`scalacheck-1-17`
+    ).map(_ % Test withJavadoc ())
   )
 
 lazy val `hello-fs2`      = (project in file("hello-fs2"))
   .settings(
     name := "hello-fs2",
     libraryDependencies ++= Seq(
-      fs2_core withJavadoc,
-      fs2_io withJavadoc,
-      cats_effect withJavadoc
+      co.fs2.`fs2-core`,
+      co.fs2.`fs2-io`,
+      org.typelevel.`cats-effect`
     )
   )
 lazy val `hello-log4cats` = (project in file("hello-log4cats"))
   .settings(
     name := "hello-log4cats",
     libraryDependencies ++= Seq(
-      cats_effect,
-      log4cats_slfj withJavadoc,
-      logback_classic
+      org.typelevel.`cats-effect`,
+      org.typelevel.`log4scats-slf4j`,
+      ch.qos.logback.`logback-classic`
     )
   )
 
@@ -140,9 +142,9 @@ lazy val `hello-circe` = (project in file("hello-circe"))
   .settings(
     name := "hello-circe",
     libraryDependencies ++= Seq(
-      circe_core withJavadoc (),
-      circe_generic withJavadoc (),
-      circe_parser withJavadoc
+      Dependencies.io.circe.`circe-core`,
+      Dependencies.io.circe.`circle-generic`,
+      Dependencies.io.circe.`circe-parser`
     )
   )
 
@@ -155,46 +157,49 @@ lazy val `hello-doobie` = (project in file("hello-doobie"))
   .settings(
     name := "hello-doobie",
     libraryDependencies ++= Seq(
-      doobie_core,
-      doobie_hikari,
-      doobie_pg
+      org.tpolecat.`doobie-core`,
+      org.tpolecat.`doobie-hikari`,
+      org.tpolecat.`doobie-postgres`
     )
   )
 
 lazy val `hello-tapir` = (project in file("hello-tapir"))
   .settings(
     libraryDependencies ++= Seq(
-      cats_core,
-      cats_effect,
-      tapir_core,
-      tapir_http4sServer_interpreter,
-      tapir_json_circe,
-      tapir_swagger_ui_bundle,
-      circe_generic,
-      http4s_blaze_server,
-      logback_classic
+      org.typelevel.`cats-core`,
+      org.typelevel.`cats-effect`,
+      com.softwaremill.sttp.tapir.`tapir-core`,
+      com.softwaremill.sttp.tapir.`tapir-http4s-server`,
+      com.softwaremill.sttp.tapir.`tapir-json-circe`,
+      com.softwaremill.sttp.tapir.`tapir-swagger-ui-bundle`,
+      Dependencies.io.circe.`circle-generic`,
+      org.http4s.`http4s-blaze-server`,
+      ch.qos.logback.`logback-classic`
     )
   )
 
 lazy val `hello-quill` = (project in file("hello-quill"))
   .settings(
     libraryDependencies ++= Seq(
-      quill_jdbc withJavadoc (),
-      // quill_async withJavadoc(),
-      postgres,
-      logback_classic
+      Dependencies.io.getquill.`quill-jdbc`,
+      org.postgresql.postgresql,
+      ch.qos.logback.`logback-classic`
     )
   )
 
 lazy val `hello-tagless-final` = (project in file("hello-tagless-final"))
   .settings(
     libraryDependencies ++= Seq(
-      cats_core withJavadoc (),
-      cats_effect withJavadoc (),
-      cats_laws withJavadoc (), 
-      discipline_core withJavadoc(),
-      discipline_scalatest withJavadoc(),
-      "org.typelevel" %% "cats-effect-testing-scalatest" % "1.5.0" % Test
-
-    )
+      org.typelevel.`cats-core`,
+      org.typelevel.`cats-effect`
+    ),
+    libraryDependencies ++= Seq(
+      org.typelevel.`cats-effect-testing-scalatest`,
+      org.scalatest.scalatest,
+      org.scalatestplus.`scalacheck-1-17`,
+      org.scalameta.munit,
+      org.scalameta.`munit-scalacheck`,
+      org.typelevel.`scalacheck-effect-munit`,
+      org.typelevel.`munit-cats-effect-3`
+    ).map(_ % Test withJavadoc ())
   )
