@@ -58,12 +58,12 @@ object Dependencies {
     }
 
     object postgresql {
-      val postgresql = "org.postgresql" %% "postgressql" % "42.3.1"
+      val postgresql = "org.postgresql" % "postgresql" % "42.3.1"
     }
 
     object eclipse {
       object jetty {
-        val `jetty-webapp` = "org.eclipse.jetty" %% "jetty-webapp" % "9.4.44.v20210927"
+        val `jetty-webapp` = "org.eclipse.jetty" % "jetty-webapp" % "9.4.44.v20210927"
       }
     }
 
@@ -112,7 +112,7 @@ object Dependencies {
       private val artefact  = moduleId("com.typesafe.slick")
       private val version   = "3.3.3"
       val slick             = artefact("slick")(version)
-      val `slick-hikari-cp` = artefact("slick-hikari-cp")(version)
+      val `slick-hikari-cp` = artefact("slick-hikaricp")(version)
 
     }
 
@@ -132,7 +132,7 @@ object Dependencies {
 
   object javax {
     object servlet {
-      val `javax.servlet-api` = "javax.servlet" %% "javax.servlet-api" % "3.1.0"
+      val `javax.servlet-api` = "javax.servlet" % "javax.servlet-api" % "3.1.0"
     }
   }
 
