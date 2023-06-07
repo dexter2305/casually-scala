@@ -115,7 +115,9 @@ lazy val challenges = (project in file("challenges"))
     name := "challenges",
     libraryDependencies ++= Seq(
       org.scalatest.scalatest,
-      org.scalatestplus.`scalacheck-1-17`
+      org.scalatestplus.`scalacheck-1-17`,
+      org.scalameta.munit,
+      org.scalameta.`munit-scalacheck`
     ).map(_ % Test withJavadoc ())
   )
 

@@ -1,13 +1,10 @@
 package interviewbit
 
-import org.scalatest.prop.TableDrivenPropertyChecks
-
-class ArrayProblemsWordWordSpec extends testtypes.UnitTestWordSpec with TableDrivenPropertyChecks {
+class ArrayProblemsSuite extends munit.FunSuite {
 
   import ArrayProblems._
 
-  val examples = Table(
-    ("testcase", "array", "firstMissingPosInt"),
+  val examples = Seq(
     ("eval array of all negatives", Array(-1, -2, -3), 1),
     ("eval sequential positive ints starting with 1 to return next element in sequence", Array(1, 2, 3, 4), 5),
     ("eval sequential positive ints shuffled to return missing positive int", Array(1, 4, 3, 2), 5),
@@ -21,11 +18,9 @@ class ArrayProblemsWordWordSpec extends testtypes.UnitTestWordSpec with TableDri
     )
   )
 
-  "First missing positive integer" must {
-    forAll(examples) { (testcase: String, array: Array[Int], expectedMissingNumber: Int) =>
-      testcase in {
-        firstMissingPositive(array) mustBe expectedMissingNumber
-      }
+  test("First missing positive integer") {
+    examples.foreach { case (clue, ints, missingPosition) =>
+      assertEquals(firstMissingPositive(ints), missingPosition, clue)
     }
   }
 

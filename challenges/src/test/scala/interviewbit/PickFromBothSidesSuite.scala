@@ -1,16 +1,14 @@
 package interviewbit
 
-import org.scalatest.freespec.AnyFreeSpec
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.prop.TableDrivenPropertyChecks
 
-class PickFromBothSidesWordSpec extends testtypes.UnitTestWordSpec with TableDrivenPropertyChecks {
+class PickFromBothSidesWordSpec extends munit.FunSuite {
 
   import ArrayProblems._
 
-  val examples = Table(
-    ("testcase", "input array", "elements to take", "sum"),
+  val examples = Seq(
     ("pass with array of only positives", Array(1, 2, 3, 4, 5), 4, 14),
     (
       "pass with array positive and negatives",
@@ -22,11 +20,9 @@ class PickFromBothSidesWordSpec extends testtypes.UnitTestWordSpec with TableDri
     )
   )
 
-  "PickFromBothSides" must {
-    forAll(examples) { (testcase: String, array: Array[Int], n: Int, expectation: Int) =>
-      testcase in {
-        pickFromBothSides(array, n) mustBe expectation
-      }
+  test("PickFromBothSides") {
+    examples.foreach { case (clue, ints, elementsToTake, exp) =>
+      assertEquals(pickFromBothSides(ints, elementsToTake), exp, clue)
     }
   }
 
