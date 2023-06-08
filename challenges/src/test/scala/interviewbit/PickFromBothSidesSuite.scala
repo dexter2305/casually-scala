@@ -4,7 +4,7 @@ import org.scalatest.matchers.must.Matchers
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.prop.TableDrivenPropertyChecks
 
-class PickFromBothSidesWordSpec extends munit.FunSuite {
+class PickFromBothSidesSuite extends munit.FunSuite {
 
   import ArrayProblems._
 
@@ -20,7 +20,7 @@ class PickFromBothSidesWordSpec extends munit.FunSuite {
     )
   )
 
-  test("PickFromBothSides") {
+  test("Pick from both sides examples must pass1") {
     examples.foreach { case (clue, ints, elementsToTake, exp) =>
       assertEquals(pickFromBothSides(ints, elementsToTake), exp, clue)
     }
